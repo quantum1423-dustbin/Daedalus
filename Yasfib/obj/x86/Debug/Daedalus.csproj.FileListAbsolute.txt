@@ -1,0 +1,15 @@
+E:\CSProj\!Daedalus\Yasfib\bin\Debug\daedalus.exe.config
+E:\CSProj\!Daedalus\Yasfib\bin\Debug\FishPhish.cs
+E:\CSProj\!Daedalus\Yasfib\bin\Debug\daedalus.exe
+E:\CSProj\!Daedalus\Yasfib\bin\Debug\daedalus.pdb
+E:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\Yasfib.AboutBox1.resources
+E:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\Yasfib.Form1.resources
+E:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\Yasfib.Form2.resources
+E:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\Yasfib.Form3.resources
+E:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\Yasfib.Form4.resources
+E:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\Yasfib.Properties.Resources.resources
+E:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
+E:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
+E:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\daedalus.exe
+E:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\daedalus.pdb

@@ -1,0 +1,1 @@
+nc win hide ititle "freegate"

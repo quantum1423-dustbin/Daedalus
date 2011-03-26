@@ -1,0 +1,58 @@
+{ +set-image-blocker{blank} }
+/
+
+#Yasfib block list starts
+
+{+block{Ad banners.} +handle-as-image} 
+ .ad.doubleclick.net
+ .ads.r.us/banners/
+ d*.sina.com.cn
+.mediav.com
+.alimama.cn
+.hylinkad.com
+.ogilvy.com
+.neoogilvy.com
+.yoyi.com.cn
+.sc.10086.cn
+.tdimg.com/sales/*
+*affiliate*
+g.163.com
+.mmcdn.cn
+
+{+block{Layered ads.} +handle-as-empty-document} 
+# Block and then ignore
+ adserver.example.net/.*\.js$
+ .allyes.com
+ googlesyndication.com
+*adplay*
+.miaozhen.com
+
+#{+filter{banners-by-size}}
+#/
+
+{+filter{all-popups}}
+/
+
+{+filter{banners-by-link}}
+/
+
+{+filter{jumping-windows}}
+/
+
+#{+filter{demoronizer}}
+#/
+
+{+filter{site-specifics}}
+/
+
+{+filter{google}}
+.google.*
+
+{+filter{yahoo}}
+.yahoo.*
+
+{+filter{msn}}
+.msn.*
+
+{+filter{360}}
+.360.cn

@@ -1,0 +1,1 @@
+copy privoxy\configno.txt config.txt
