@@ -18,7 +18,7 @@ namespace Yasfib
          * THE FUNCTION "CHECKALL" IS LICENSED UNDER THE
          * GPL-INCOMPATIBLE FISHPHISH NON-FREE LICENSE, AND
          * IS (C) 2011 ERIC DONG AND THE AUTHORS OF
-         * YASFIB.
+         * DAEDALUS.
          You may not modify this code in any way, though
          you may redistribute it with your programs.
          Eric Dong and the authors of Yasfib grant you
@@ -28,7 +28,7 @@ namespace Yasfib
          
          1. You may not claim the code as your own.
          2. You may not re-brand FishPhish.
-         3. You must credit Eric Dong or Yasfib in
+         3. You must credit Eric Dong or Daedalus in
          the about page AND in all advertisements
          featuring the phishing engine. You are not
          allowed to credit us with anything smaller
@@ -51,7 +51,6 @@ namespace Yasfib
                 {
                     if (content.Contains("<p>移动<em>106575258196</em></p>") ||
                         content.Contains("<h4>您需要安装安全控件，才可使用安全登录。</h4>") ||
-                        content.Contains(";if(!''.replace(/^/,String)){while(") ||
                         content.Contains("<span class=\"visitor\" id=\"J_VisitorTips_1\">"))
                     {
                         return true;
