@@ -19,19 +19,19 @@ namespace Yasfib
 
         private void Form4_Load(object sender, EventArgs e)
         {
-            if (Yasfib.Form1.isChinese == true)
+            if (Yasfib.MainForm.isChinese == true)
             {
                 cuv.Text="已安装版本：";
                 lav.Text = "最新版本：";
                 button1.Text = "升级！";
             }
-            vers.Text = Yasfib.Form1.versionNumber;
+            vers.Text = Yasfib.MainForm.versionNumber;
         }
         public string uri;
         private void button1_Click(object sender, EventArgs e)
         {
             WebClient Client = new WebClient();
-            if (Yasfib.Form1.isChinese == true)
+            if (Yasfib.MainForm.isChinese == true)
             {
                 uri = "http://www.pisoft.tk/daedl.php?version=chinese";
             }

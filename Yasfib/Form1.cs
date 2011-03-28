@@ -14,8 +14,9 @@ using System.Net;
 using System.Media;
 namespace Yasfib
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
+        public static MainForm Instance { get; private set; }
         [StructLayout(LayoutKind.Sequential)]
         public struct MARGINS
         {
@@ -32,10 +33,13 @@ namespace Yasfib
         public static extern long PlaySound(String lpszName, long hModule, long dwFlags);
 
         
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
+            if (Instance != null)
+                throw new Exception("Only one instance of Form1 is allowed");
 
+            Instance = this;
             Skybound.Gecko.Xpcom.Initialize("xulrunner-o");
             //Skybound.Gecko.Xpcom.ProfileDirectory = "%APPDATA%\\";
             ProcessStartInfo theProcess = new ProcessStartInfo("privoxy.exe");
@@ -70,16 +74,40 @@ namespace Yasfib
             getautocomplete();
 
         }
+        public bool isShell()
+        {
+            if (((Form)(this.tabControl1.SelectedForm)).Tag != "A")
+            {
+                return true;
+            }
+            else return false;
+        }
         void nv(string url)
         {
-            if (url != "about:easteregg")
+            if (((Form)(this.tabControl1.SelectedForm)).Tag != "A")
             {
-                ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Navigate(url);
+                if (url != "about:easteregg")
+                {
+                    gwb.Navigate(url);
+                }
+                else
+                {
+                    gradientDown.Enabled = true;
+                    textBox1.BackColor = Color.White;
+                }
             }
             else
             {
-                gradientDown.Enabled = true;
-                textBox1.BackColor = Color.White;
+                MessageBox.Show("");
+                if (url != "about:easteregg")
+                {
+                    swb.Navigate(url);
+                }
+                else
+                {
+                    gradientDown.Enabled = true;
+                    textBox1.BackColor = Color.White;
+                }
             }
 
         }
@@ -136,8 +164,8 @@ namespace Yasfib
             }
             return lines;
         }
-        public static bool isChinese = true;
-        public static string versionNumber = "4.1.8-r1.1";
+        public static bool isChinese = false;
+        public static string versionNumber = "4.2.0-r1";
         void getautocomplete()
         {
             try
@@ -175,13 +203,20 @@ namespace Yasfib
         }
         private void select(object sender, EventArgs e)
         {
+                textBox1.Text = Convert.ToString(gwb.Url);
+                updateTitle();
+            rtab();
+            textBox1.BackColor = Color.White;
+        }
+        private void selectS(object sender, EventArgs e)
+        {
             try
             {
-                textBox1.Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url);
-                updateTitle();
+                textBox1.Text = Convert.ToString(swb.Url);
+                updateTitleS();
+                rtab();
             }
             catch { }
-            rtab();
         }
         void readBM()
 
@@ -230,7 +265,7 @@ namespace Yasfib
         }
         void menu_openinnewtab(object sender, EventArgs e)
         {
-            string url = ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).StatusText;
+            string url = gwb.StatusText;
             addGeckoTab();
             nv(url);
         }
@@ -284,43 +319,38 @@ namespace Yasfib
             bookmarkThisPageToolStripMenuItem1.Text = "收藏此页面";
             viewSourceToolStripMenuItem1.Text = "源代码";
         }
+        //Shortcut for browser
+        public Skybound.Gecko.GeckoWebBrowser gwb
+        {
+            get
+            {
+                return ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0]));
+            }
+        }
+        public WebBrowser swb
+        {
+            get
+            {
+                return ((WebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0]));
+            }
+        }
+        public string weburl
+        {
+            get
+            {
+                return textBox1.Text;
+            }
+            set
+            {
+                textBox1.Text = value;
+            }
+        }
         public void report()
         {
-            nv("http://sb.allaboutstuff.net/report.php?url=" + Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url));
+            nv("http://sb.allaboutstuff.net/report.php?url=" + Convert.ToString(gwb.Url));
         }
         public void checkphish()
-        {/*
-            try
-            {
-                // Create an isntance of XmlTextReader and call Read method to read the file
-                XmlTextReader textReader = new XmlTextReader("http://checkurl.phishtank.com.nyud.net/checkurl/index.php?app_key=03432834ef95fa478034e81ca1cbdebc222bb7be07ad5830122fa1abf3e3d7fc&url=" + textBox1.Text);
-                textReader.Read();
-                // If the node has value
-                while (textReader.Read())
-                {
-                    // Move to fist element
-                    textReader.MoveToElement();
-                    if (textReader.Name == "in_database")
-                    {
-                        if (textReader.ReadString() == "true")
-                        {
-                            if (checkBox1.Checked==true)
-                            {
-                                MessageBox.Show("警告！本网站为钓鱼网站！");
-                                nv("about:blank"); ;
-                                break;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Warning! This is a phishing site!");
-                                //nv("about:blank"); ;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            catch { }*/
+        {
         }
         public void checkphishie()
         {
@@ -398,9 +428,9 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
             if (e.Button.ToString()=="2")
             {
                 mainCM.Show(Cursor.Position);
-                if (((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).StatusText.StartsWith("http://") ||
-                    ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).StatusText.StartsWith("about:") ||
-                    ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).StatusText.StartsWith("https://"))
+                if (gwb.StatusText.StartsWith("http://") ||
+                    gwb.StatusText.StartsWith("about:") ||
+                    gwb.StatusText.StartsWith("https://"))
                 {
                     openInNewTabToolStripMenuItem1.Enabled = true;
                 }
@@ -413,7 +443,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
         }
         void changing(object sender, EventArgs e)
         {
-            label1.Text = ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).StatusText;
+            label1.Text = gwb.StatusText;
             //updateStatusText();
             if (label1.Text == "" || label1.Text == null)
             {
@@ -424,7 +454,19 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
                 panel2.Visible = true;
             }
         }
-       
+        void changingS(object sender, EventArgs e)
+        {
+            label1.Text = swb.StatusText;
+            //updateStatusText();
+            if (label1.Text == "" || label1.Text == null)
+            {
+                panel2.Visible = false;
+            }
+            else
+            {
+                panel2.Visible = true;
+            }
+        }
         void button1_Click_1(object sender, EventArgs e)
         {
             addGeckoTab();
@@ -434,10 +476,10 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
         {
             try
             {
-                textBox1.Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url);
-                string text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url);
+                textBox1.Text = Convert.ToString(gwb.Url);
+                string text = Convert.ToString(gwb.Url);
                 //System.IO.File.AppendAllText(@"ac.xml", "<url>" + text + "</url>");
-                textBox1.AutoCompleteCustomSource.Add(Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url));
+                textBox1.AutoCompleteCustomSource.Add(Convert.ToString(gwb.Url));
                 label1.Text = "Ready";
                 System.Threading.Thread sampleThread;
                 System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false;
@@ -459,24 +501,38 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
                     System.IO.File.WriteAllText(@"ac.xml", originalXml.OuterXml.ToString());
                 }
                 phishLock = false;
-                //Bitmap bmpIcon = ((Bitmap)((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).FaviconAsImage);
+                //Bitmap bmpIcon = ((Bitmap)gwb.FaviconAsImage);
                 //((Form)(this.tabControl1.SelectedForm)).Icon = Icon.FromHandle(bmpIcon.GetHicon());
             }
             catch { }
         }
         void navIE(object sender, WebBrowserNavigatedEventArgs e)
         {
-            /*textBox1.Text = Convert.ToString(((WebBrowser)(this.tabControl1s.SelectedTab.Controls[0])).Url);
-            textBox1.Items.Add(textBox1.Text);
+            textBox1.Text = Convert.ToString(((WebBrowser)sender).Url);
+            string text = Convert.ToString(gwb.Url);
+            //System.IO.File.AppendAllText(@"ac.xml", "<url>" + text + "</url>");
+            textBox1.AutoCompleteCustomSource.Add(Convert.ToString(gwb.Url));
             label1.Text = "Ready";
             System.Threading.Thread sampleThread;
             System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false;
-            ThreadStart myThreadDelegate = new ThreadStart(checkphishie);
+            ThreadStart myThreadDelegate = new ThreadStart(checkphish);
             sampleThread = new Thread(myThreadDelegate);
             sampleThread.IsBackground = true;
             sampleThread.SetApartmentState(ApartmentState.STA);
             sampleThread.Start();
-            //progressBar1.Style = ProgressBarStyle.Continuous;*/
+            if (isPrivacyMode == false)
+            {
+                XmlDocument originalXml = new XmlDocument();
+                string s = System.IO.File.ReadAllText("ac.xml");
+                originalXml.LoadXml(s);
+                XmlNode menu = originalXml.SelectSingleNode("i");
+                XmlNode newSub = originalXml.CreateNode(XmlNodeType.Element, "url", null);
+                XmlText fff = originalXml.CreateTextNode(textBox1.Text);
+                newSub.AppendChild(fff);
+                menu.AppendChild(newSub);
+                System.IO.File.WriteAllText(@"ac.xml", originalXml.OuterXml.ToString());
+            }
+            phishLock = false;
         }
         void nav(object sender, EventArgs e)
         {
@@ -499,15 +555,15 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
                     button10.Visible = true;
                     button1.Enabled = false;
                 }
-                if (((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).DocumentTitle == "")
+                if (gwb.DocumentTitle == "")
                 {
-                    ((Form)(this.tabControl1.SelectedForm)).Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url.DnsSafeHost);
+                    ((Form)(this.tabControl1.SelectedForm)).Text = Convert.ToString(gwb.Url.DnsSafeHost);
                 }
                 else
                 {
-                    ((Form)(this.tabControl1.SelectedForm)).Text = ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).DocumentTitle;
+                    ((Form)(this.tabControl1.SelectedForm)).Text = gwb.DocumentTitle;
 
-                    //textBox1.Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url);
+                    //textBox1.Text = Convert.ToString(gwb.Url);
                 }
                 //}
                 //else { label1.Text = "Connecting to the web page: " + e.CurrentProgress + " out of " + e.MaximumProgress; progressBar1.Value = e.CurrentProgress; }
@@ -529,7 +585,11 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
             }
             else{
                 nv(textBox1.Text);
-                ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Focus();
+                if (((Form)(this.tabControl1.SelectedForm)).Tag != "A")
+                {
+                    gwb.Focus();
+                }
+                else { swb.Focus(); }
             }
          
         }
@@ -583,7 +643,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
         {
             try
             {
-                ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).GoBack();
+                gwb.GoBack();
             }
             catch { nonFatalError(); }
         }
@@ -594,7 +654,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
         private void button4_Click(object sender, EventArgs e)
         {
 
-            ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).GoForward();
+            gwb.GoForward();
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
@@ -604,18 +664,18 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void reloadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Reload();
+                gwb.Reload();
 
         }
 
         private void backToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).GoBack();
+            gwb.GoBack();
         }
 
         private void forwardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).GoForward();
+            gwb.GoForward();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -635,18 +695,18 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void printDocumentTitleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).DocumentTitle);
-            if (((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).DocumentTitle == "")
+            MessageBox.Show(gwb.DocumentTitle);
+            if (gwb.DocumentTitle == "")
             {
-                ((Form)(this.tabControl1.SelectedForm)).Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url.DnsSafeHost);
-                //((Form)(this.tabControl1.SelectedForm)).Icon = "http://" + Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url.DnsSafeHost) + "/favicon.ico";
-                //textBox1.Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url);
-                //this.Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url) + " - Yasfib 2.0 ETHER";
+                ((Form)(this.tabControl1.SelectedForm)).Text = Convert.ToString(gwb.Url.DnsSafeHost);
+                //((Form)(this.tabControl1.SelectedForm)).Icon = "http://" + Convert.ToString(gwb.Url.DnsSafeHost) + "/favicon.ico";
+                //textBox1.Text = Convert.ToString(gwb.Url);
+                //this.Text = Convert.ToString(gwb.Url) + " - Yasfib 2.0 ETHER";
             }
             else
             {
-                ((Form)(this.tabControl1.SelectedForm)).Text = ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).DocumentTitle;
-                //textBox1.Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url);
+                ((Form)(this.tabControl1.SelectedForm)).Text = gwb.DocumentTitle;
+                //textBox1.Text = Convert.ToString(gwb.Url);
             }
         }
         
@@ -655,10 +715,10 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
         {
             try
             {
-                ((Form)(this.tabControl1.SelectedForm)).Text = ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).DocumentTitle;
-                if (((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).DocumentTitle == "")
+                ((Form)(this.tabControl1.SelectedForm)).Text = gwb.DocumentTitle;
+                if (gwb.DocumentTitle == "")
                 {
-                    ((Form)(this.tabControl1.SelectedForm)).Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url.DnsSafeHost);
+                    ((Form)(this.tabControl1.SelectedForm)).Text = Convert.ToString(gwb.Url.DnsSafeHost);
                 }
             }
             catch { }
@@ -758,33 +818,63 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
                 i++;
             }
             tr.Close();
-            
+            Instance = null;
         }
         void updateTitle()
         {
             if (isChinese == false)
             {
-                if (((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).DocumentTitle != "")
+                if (gwb.DocumentTitle != "")
                 {
-                    this.Text = ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).DocumentTitle + " - Daedalus " + versionNumber;
+                    this.Text = gwb.DocumentTitle + " - Daedalus " + versionNumber;
                 }
                 else
                 {
-                    this.Text = ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url.ToString()+ " - Daedalus " + versionNumber;
+                    this.Text = gwb.Url.ToString()+ " - Daedalus " + versionNumber;
                 }
             }
             else
             {
-                if (((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).DocumentTitle != "")
+                if (gwb.DocumentTitle != "")
                 {
-                    this.Text = ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).DocumentTitle + " - 灵智浏览器 " + versionNumber;
+                    this.Text = gwb.DocumentTitle + " - 灵智浏览器 " + versionNumber;
                 }
                 else
                 {
-                    this.Text = ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url.ToString() + " - 灵智浏览器 " + versionNumber;
+                    this.Text = gwb.Url.ToString() + " - 灵智浏览器 " + versionNumber;
                 }
             }
-            textBox1.Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url);
+            textBox1.Text = Convert.ToString(gwb.Url);
+        }
+        void updateTitleS()
+        {
+            if (isChinese == false)
+            {
+                if (swb.DocumentTitle != "")
+                {
+                    this.Text = swb.DocumentTitle + " - Daedalus " + versionNumber;
+                }
+                else
+                {
+                    this.Text = swb.Url.ToString() + " - Daedalus " + versionNumber;
+                }
+            }
+            else
+            {
+                if (swb.DocumentTitle != "")
+                {
+                    this.Text = swb.DocumentTitle + " - 灵智浏览器 " + versionNumber;
+                }
+                else
+                {
+                    try
+                    {
+                        this.Text = swb.Url.ToString() + " - 灵智浏览器 " + versionNumber;
+                    }
+                    catch { }
+                }
+            }
+            textBox1.Text = Convert.ToString(gwb.Url);
         }
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
@@ -804,11 +894,11 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void addBookmarkToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            addtoBookmarksMenu(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url.ToString(), ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).DocumentTitle);
+            addtoBookmarksMenu(gwb.Url.ToString(), gwb.DocumentTitle);
             /*StreamWriter tr;
             tr = File.AppendText("bookmarks.txt");
-            tr.WriteLine(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).DocumentTitle);
-            tr.WriteLine(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url.ToString());
+            tr.WriteLine(gwb.DocumentTitle);
+            tr.WriteLine(gwb.Url.ToString());
             tr.Close();*/
         }
 
@@ -942,7 +1032,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
             try
             {
                 Form3 fma = new Form3();
-                fma.webBrowser1.Navigate(Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url));
+                fma.webBrowser1.Navigate(Convert.ToString(gwb.Url));
                 fma.webBrowser1.AllowNavigation = false;
                 fma.webBrowser1.IsWebBrowserContextMenuEnabled = false;
                 fma.Show();
@@ -1059,7 +1149,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void printDNSSafeHostToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url.DnsSafeHost));
+            MessageBox.Show(Convert.ToString(gwb.Url.DnsSafeHost));
         }
 
         private void 举报本网页ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1107,8 +1197,8 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
         private void geckoWebBrowser1_CreateWindow(object sender, Skybound.Gecko.GeckoCreateWindowEventArgs e)
         {
             addGeckoTab();
-            e.WebBrowser = ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0]));
-            ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Show();
+            e.WebBrowser = gwb;
+            gwb.Show();
         }
 
         private void enablePublicAntiBlockingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1138,20 +1228,14 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void tabControl1_Click(object sender, EventArgs e)
         {
-            textBox1.Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url);
-            updateTitle();
         }
 
         private void tabControl1_MouseClick(object sender, MouseEventArgs e)
         {
-            textBox1.Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url);
-            updateTitle();
         }
 
         private void tabControl1_MouseDown(object sender, MouseEventArgs e)
         {
-            textBox1.Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url);
-            updateTitle();
         }
 
         private void textBox1_Leave(object sender, EventArgs e)
@@ -1170,14 +1254,14 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
         private void textBox1_TextUpdate(object sender, EventArgs e)
         {
 
-            if (((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).DocumentTitle == "")
+            if (gwb.DocumentTitle == "")
             {
-                ((Form)(this.tabControl1.SelectedForm)).Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url.DnsSafeHost);
+                ((Form)(this.tabControl1.SelectedForm)).Text = Convert.ToString(gwb.Url.DnsSafeHost);
                 updateTitle();
             }
             else
             {
-                ((Form)(this.tabControl1.SelectedForm)).Text = ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).DocumentTitle;
+                ((Form)(this.tabControl1.SelectedForm)).Text = gwb.DocumentTitle;
                 updateTitle();
             }
         }
@@ -1249,7 +1333,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
             if (MessageBox.Show("Do you want to set this page as home? \n 您是否想将此页当作首页？", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 TextWriter tr = new StreamWriter("home");
-                tr.WriteLine(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url.ToString());
+                tr.WriteLine(gwb.Url.ToString());
                 tr.Close();
             }
         }
@@ -1270,7 +1354,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
         {
             try
             {
-                if (((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url.Port == 443)
+                if (gwb.Url.Port == 443)
                 {
                     textBox1.BackColor = Color.PaleGreen;
                 }
@@ -1285,7 +1369,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
                     }
                     if (phishLock == false)
                     {
-                        if (Yasfib.FishPhish.checkAll(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Document.Body.InnerHtml, textBox1.Text) == true)
+                        if (Yasfib.FishPhish.checkAll(gwb.Document.Body.InnerHtml, textBox1.Text) == true)
                         {
                             textBox1.BackColor = System.Drawing.Color.Red;
                             //buttonX2.Visible = true;
@@ -1478,22 +1562,22 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void buttonX2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("The FishPhish filter has detected a possible phish heuristically. \n AAS自行研制的FishPhish系统智能检出可能的钓鱼网站。\n The content does not seem to match with the website, "+((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Url.DnsSafeHost.ToString()+".");
+            MessageBox.Show("The FishPhish filter has detected a possible phish heuristically. \n AAS自行研制的FishPhish系统智能检出可能的钓鱼网站。\n The content does not seem to match with the website, "+gwb.Url.DnsSafeHost.ToString()+".");
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).CopySelection();
+            gwb.CopySelection();
         }
 
         private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).SelectAll();
+            gwb.SelectAll();
         }
 
         private void reloadToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Reload();
+            gwb.Reload();
         }
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1503,12 +1587,12 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void viewSourceToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).ViewSource();
+            gwb.ViewSource();
         }
 
         private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).ShowPrintPreview();
+            //gwb.ShowPrintPreview();
         }
 
 
@@ -1518,13 +1602,70 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
             nv(tr.ReadLine());
             tr.Close();
         }
+        public void addShellTab()
+        {
+            //mditabcontrol code
+            Form foobar = new Form();
+            //foobar.Location.X = 5;
+            //foobar.Location.Y = 502;
+            tabControl1.TabPages.Add(foobar);
+            //tabControl2.TabPages.Add(foobar);
+            WebBrowser browser1 = new WebBrowser();
+            foobar.Controls.Add(browser1);
+            browser1.Dock = DockStyle.Fill;
+            browser1.Navigated += new
+            WebBrowserNavigatedEventHandler(navIE);
+            browser1.NewWindow += new CancelEventHandler(browser1_NewWindow);
+            browser1.StatusTextChanged += new EventHandler(changingS);
+            browser1.DocumentTitleChanged += new EventHandler(browser1_DocumentTitleChanged);
+            browser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(browser1_DocumentCompleted);
+            browser1.BackColor = System.Drawing.Color.White;
+            browser1.GotFocus += new EventHandler(selectS);
+            browser1.ScriptErrorsSuppressed = true;
+            browser1.ContextMenuStrip = browserCM;
+            //browser1.Navigate("about:blank");
+            foobar.GotFocus += new
+            EventHandler(selectS);
+            foobar.Disposed +=
+                new EventHandler(dd);
 
+            //browser1.AllowDnsPrefetch = false;
+            //browser1.BlockPopups = true;
+            textBox1.Text = "about:blank";
+            foobar.Tag = "A";
+            foobar.Text = "IE Shell/IE壳";
+            foobar.Focus();
+            rtab();
+        }
+
+        void browser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            HtmlElementCollection links = (((WebBrowser)(sender)).Document.Links);
+            foreach (HtmlElement var in links)
+            {
+                var.AttachEventHandler("onclick", LinkClicked);
+            }
+        }
+        void browser1_DocumentTitleChanged(object sender, EventArgs e)
+        {
+            updateTitleS();
+        }
+        public string url = "";
+        void browser1_NewWindow(object sender, CancelEventArgs e)
+        {
+            e.Cancel = true;
+            nv(url);
+        }
         private void tabToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(tabControl1.TabPages.Count.ToString());
 
         }
-
+        private void LinkClicked(object sender, EventArgs e)
+        {
+            HtmlElement link = swb.Document.ActiveElement;
+            url = link.GetAttribute("href");
+        }
         private void dToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
@@ -1572,8 +1713,6 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
-            addGeckoTab();
-            nv("about:blank");
         }
 
         private void takeScreenshotToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1668,7 +1807,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void button10_Click_1(object sender, EventArgs e)
         {
-            ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Stop();
+            gwb.Stop();
             button10.Visible = false;
             button1.Enabled = true;
         }
@@ -1711,7 +1850,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void openInNewTabToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            string url = ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).StatusText;
+            string url = gwb.StatusText;
             addGeckoTab();
             nv(url);
         }
@@ -1737,7 +1876,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
         {
             if (phishLock == false)
             {
-                if (Yasfib.FishPhish.checkAll(((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).Document.DocumentElement.InnerHtml.ToString(), textBox1.Text) == true)
+                if (Yasfib.FishPhish.checkAll(gwb.Document.DocumentElement.InnerHtml.ToString(), textBox1.Text) == true)
                 {
                     textBox1.BackColor = System.Drawing.Color.Red;
                     //buttonX2.Visible = true;
@@ -1749,13 +1888,50 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
         }
         private void documentTextToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ((Skybound.Gecko.GeckoWebBrowser)(((Form)(this.tabControl1.SelectedForm)).Controls[0])).SaveDocument("C:\\");
+            gwb.SaveDocument("C:\\");
             MessageBox.Show(rf("fo.html"));
         }
 
         private void tabControl1_ForeColorChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void addShellTabToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addShellTab();
+        }
+
+        private void buttonX1_DoubleClick(object sender, EventArgs e)
+        {
+            addShellTab();
+        }
+
+        private void openANewTabToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addGeckoTab();
+        }
+
+        private void openANewIEShellToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addShellTab();
+        }
+
+        private void duplicateIntoIEShellToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void buttonX1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button.ToString() == "Right")
+            {
+                contextMenuStrip3.Show(Cursor.Position);
+            }
+            else
+            {
+                addGeckoTab();
+                nv("about:blank");
+            }
         }
 
    }

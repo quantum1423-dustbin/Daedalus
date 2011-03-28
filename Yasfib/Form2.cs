@@ -118,7 +118,7 @@ namespace Yasfib
                 abAggressive.Checked = true;
             }
             else { abConservative.Checked = true; }
-            if (Yasfib.Form1.isChinese == true)
+            if (Yasfib.MainForm.isChinese == true)
             {
                 tabPage1.Text = "常规";
                 label1.Text = "启动时：";
@@ -140,6 +140,7 @@ namespace Yasfib
                 abAggressive.Text = "全部网页";
                 abConservative.Text = "智能";
                 label8.Text = "反封杀模式";
+                button8.Text = "设为本页面";
             }
         }
 
@@ -328,6 +329,14 @@ namespace Yasfib
             {
                 HttpProxHost.Text = "141.24.249.130";
                 HttpProxPort.Text = "3128";
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (general.Text == "Show my home page")
+            {
+                homepage.Text = MainForm.Instance.weburl;
             }
         }
     }

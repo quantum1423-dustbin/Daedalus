@@ -1,6 +1,6 @@
 ﻿namespace Yasfib
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.添加新标签ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -108,6 +108,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openANewTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openANewIEShellToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -116,6 +119,7 @@
             this.browserCM.SuspendLayout();
             this.findbox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonX1)).BeginInit();
+            this.contextMenuStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -228,7 +232,7 @@
             this.toolStripSplitButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 2);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(100, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(69, 25);
             this.toolStrip1.TabIndex = 19;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
@@ -342,21 +346,21 @@
             // extremeToolStripMenuItem
             // 
             this.extremeToolStripMenuItem.Name = "extremeToolStripMenuItem";
-            this.extremeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.extremeToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.extremeToolStripMenuItem.Text = "Extreme";
             this.extremeToolStripMenuItem.Click += new System.EventHandler(this.extremeToolStripMenuItem_Click);
             // 
             // normalToolStripMenuItem
             // 
             this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
-            this.normalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.normalToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.normalToolStripMenuItem.Text = "Normal";
             this.normalToolStripMenuItem.Click += new System.EventHandler(this.normalToolStripMenuItem_Click);
             // 
             // offToolStripMenuItem1
             // 
             this.offToolStripMenuItem1.Name = "offToolStripMenuItem1";
-            this.offToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.offToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
             this.offToolStripMenuItem1.Text = "Off";
             this.offToolStripMenuItem1.Click += new System.EventHandler(this.offToolStripMenuItem1_Click);
             // 
@@ -444,14 +448,14 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
             // timer2
             // 
             this.timer2.Enabled = true;
-            this.timer2.Interval = 200;
+            this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick_1);
             // 
             // openFileDialog1
@@ -744,6 +748,7 @@
             this.buttonX1.TabIndex = 36;
             this.buttonX1.TabStop = false;
             this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
+            this.buttonX1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonX1_MouseDown);
             // 
             // button10
             // 
@@ -840,7 +845,29 @@
             this.textBox2.TabIndex = 37;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // Form1
+            // contextMenuStrip3
+            // 
+            this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openANewTabToolStripMenuItem,
+            this.openANewIEShellToolStripMenuItem});
+            this.contextMenuStrip3.Name = "contextMenuStrip3";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(177, 48);
+            // 
+            // openANewTabToolStripMenuItem
+            // 
+            this.openANewTabToolStripMenuItem.Name = "openANewTabToolStripMenuItem";
+            this.openANewTabToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.openANewTabToolStripMenuItem.Text = "Open a new tab";
+            this.openANewTabToolStripMenuItem.Click += new System.EventHandler(this.openANewTabToolStripMenuItem_Click);
+            // 
+            // openANewIEShellToolStripMenuItem
+            // 
+            this.openANewIEShellToolStripMenuItem.Name = "openANewIEShellToolStripMenuItem";
+            this.openANewIEShellToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.openANewIEShellToolStripMenuItem.Text = "Open a new IE shell";
+            this.openANewIEShellToolStripMenuItem.Click += new System.EventHandler(this.openANewIEShellToolStripMenuItem_Click);
+            // 
+            // MainForm
             // 
             this.AcceptButton = this.go;
             this.AllowDrop = true;
@@ -870,7 +897,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Daedalus";
             this.TransparencyKey = System.Drawing.Color.BlanchedAlmond;
@@ -895,6 +922,7 @@
             this.findbox.ResumeLayout(false);
             this.findbox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonX1)).EndInit();
+            this.contextMenuStrip3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -962,7 +990,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private MdiTabControl.TabControl tabControl1;
         private System.Windows.Forms.GroupBox findbox;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox tosearch;
@@ -980,6 +1007,10 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.PictureBox buttonX1;
         private System.Windows.Forms.TextBox textBox2;
+        public MdiTabControl.TabControl tabControl1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
+        private System.Windows.Forms.ToolStripMenuItem openANewTabToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openANewIEShellToolStripMenuItem;
     }
 }
 
