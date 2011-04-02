@@ -1,21 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Net;
-
-namespace Yasfib
-{
-    class FishPhish
-    {
-        public static string string2domain(string Url)
-        {
-            if (!Url.Contains("://"))
-                Url = "http://" + Url;
-
-            return new Uri(Url).Host;
-        }
-        /* LICENSE 
-         * THE FUNCTION "CHECKALL" IS LICENSED UNDER THE
+﻿    /* LICENSE 
+         * THIS C SHARP SOURCE CODE IS LICENSED UNDER THE
          * GPL-INCOMPATIBLE FISHPHISH NON-FREE LICENSE, AND
          * IS (C) 2011 ERIC DONG AND THE AUTHORS OF
          * DAEDALUS.
@@ -33,6 +17,22 @@ namespace Yasfib
          featuring the phishing engine. You are not
          allowed to credit us with anything smaller
          than 9 point text.*/
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Net;
+namespace Yasfib
+{
+    class FishPhish
+    {
+        public static string string2domain(string Url)
+        {
+            if (!Url.Contains("://"))
+                Url = "http://" + Url;
+
+            return new Uri(Url).Host;
+        }
+        
         public static bool checkAll(string content, string url)
         {
             try

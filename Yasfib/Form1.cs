@@ -32,7 +32,7 @@ namespace Yasfib
         [DllImport("winmm.dll")]
         public static extern long PlaySound(String lpszName, long hModule, long dwFlags);
 
-        
+
         public MainForm()
         {
             InitializeComponent();
@@ -45,7 +45,7 @@ namespace Yasfib
             ProcessStartInfo theProcess = new ProcessStartInfo("privoxy.exe");
             theProcess.WindowStyle = ProcessWindowStyle.Hidden;
             Process.Start(theProcess);
-            Skybound.Gecko.GeckoPreferences.User["general.useragent.override"]="Mozilla/5.0 (Windows; U; en-US; rv:1.9.0.10) Gecko/2009042316 Firefox/3.0.10 (fake; Yasfib 4.0.x; Windows; U; .NET CLR 2.0)";
+            Skybound.Gecko.GeckoPreferences.User["general.useragent.override"] = "Mozilla/5.0 (Windows; U; en-US; rv:1.9.0.10) Gecko/2009042316 Firefox/3.0.10 (fake; Yasfib 4.0.x; Windows; U; .NET CLR 2.0)";
             //lowToolStripMenuItem.Enabled = true;
             if (rf("config/proxybool.conf") == "1")
             {
@@ -98,7 +98,7 @@ namespace Yasfib
             }
             else
             {
-                MessageBox.Show("");
+                //MessageBox.Show("");
                 if (url != "about:easteregg")
                 {
                     swb.Navigate(url);
@@ -165,27 +165,27 @@ namespace Yasfib
             return lines;
         }
         public static bool isChinese = false;
-        public static string versionNumber = "4.2.0-r1";
+        public static string versionNumber = "4.2.0-r2";
         void getautocomplete()
         {
             try
             {
-            // Create an isntance of XmlTextReader and call Read method to read the file
-            XmlTextReader textReader = new XmlTextReader("ac.xml");
-            textReader.Read();
-            // If the node has value
-            while (textReader.Read())
-            {
-                // Move to fist element
-                textReader.MoveToElement();
-                if (textReader.Name == "url")
+                // Create an isntance of XmlTextReader and call Read method to read the file
+                XmlTextReader textReader = new XmlTextReader("ac.xml");
+                textReader.Read();
+                // If the node has value
+                while (textReader.Read())
                 {
-                    //MessageBox.Show("");
-                    textBox1.AutoCompleteCustomSource.Add(textReader.ReadString());
-                    //textBox1.Items.Add(textReader.ReadString());
-                    //MessageBox.Show(textReader.ReadString());
+                    // Move to fist element
+                    textReader.MoveToElement();
+                    if (textReader.Name == "url")
+                    {
+                        //MessageBox.Show("");
+                        textBox1.AutoCompleteCustomSource.Add(textReader.ReadString());
+                        //textBox1.Items.Add(textReader.ReadString());
+                        //MessageBox.Show(textReader.ReadString());
+                    }
                 }
-            }
             }
             catch { }
         }
@@ -203,8 +203,8 @@ namespace Yasfib
         }
         private void select(object sender, EventArgs e)
         {
-                textBox1.Text = Convert.ToString(gwb.Url);
-                updateTitle();
+            textBox1.Text = Convert.ToString(gwb.Url);
+            updateTitle();
             rtab();
             textBox1.BackColor = Color.White;
         }
@@ -219,7 +219,6 @@ namespace Yasfib
             catch { }
         }
         void readBM()
-
         {
             try
             {
@@ -240,7 +239,8 @@ namespace Yasfib
             }
             catch { }
         }
-        void addtoBookmarksMenu(string url, string name){
+        void addtoBookmarksMenu(string url, string name)
+        {
             ToolStripMenuItem newmi = new ToolStripMenuItem();
             newmi.Tag = url;
             newmi.Text = name;
@@ -271,7 +271,7 @@ namespace Yasfib
         }
         void translate2CN()
         {
-            this.Text = "灵智浏览器 "+versionNumber;
+            this.Text = "灵智浏览器 " + versionNumber;
             fileToolStripMenuItem1.Text = "文件";
             editToolStripMenuItem.Text = "工具";
             bookmarksToolStripMenuItem1.Text = "收藏";
@@ -389,16 +389,17 @@ namespace Yasfib
         public void addGeckoTab()
         {
             //mditabcontrol code
-                Form foobar = new Form();
-                //foobar.Location.X = 5;
-                //foobar.Location.Y = 502;
-                tabControl1.TabPages.Add(foobar);
+            Form foobar = new Form();
+            //foobar.Location.X = 5;
+            //foobar.Location.Y = 502;
+            tabControl1.TabPages.Add(foobar);
             //tabControl2.TabPages.Add(foobar);
             Skybound.Gecko.GeckoWebBrowser browser1 = new Skybound.Gecko.GeckoWebBrowser();
             foobar.Controls.Add(browser1);
             browser1.Dock = DockStyle.Fill;
             browser1.Navigated += new
             Skybound.Gecko.GeckoNavigatedEventHandler(nav);
+            browser1.Navigating += new Skybound.Gecko.GeckoNavigatingEventHandler(browser1_Navigating);
             browser1.ProgressChanged += new
             Skybound.Gecko.GeckoProgressEventHandler(loading);
             browser1.CreateWindow += new
@@ -411,7 +412,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
             browser1.NoDefaultContextMenu = true;
             browser1.DomMouseDown += new Skybound.Gecko.GeckoDomMouseEventHandler(browser1_DomMouseDown);
             //browser1.Navigate("about:blank");
-            foobar.GotFocus+= new
+            foobar.GotFocus += new
             EventHandler(select);
             foobar.Disposed +=
                 new EventHandler(dd);
@@ -423,9 +424,14 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
             rtab();
         }
 
+        void browser1_Navigating(object sender, Skybound.Gecko.GeckoNavigatingEventArgs e)
+        {
+            dl.RunWorkerAsync(e.Uri.ToString());
+        }
+
         void browser1_DomMouseDown(object sender, Skybound.Gecko.GeckoDomMouseEventArgs e)
         {
-            if (e.Button.ToString()=="2")
+            if (e.Button.ToString() == "2")
             {
                 mainCM.Show(Cursor.Position);
                 if (gwb.StatusText.StartsWith("http://") ||
@@ -550,7 +556,8 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
                     button10.Visible = false;
                     button1.Enabled = true;
                 }
-                else {
+                else
+                {
                     progressBar1.Visible = true;
                     button10.Visible = true;
                     button1.Enabled = false;
@@ -576,14 +583,15 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
         {
             if (textBox1.Text == "about:daedalus")
             {
-                nv("javascript:document.write(\'<html><head><title>About Daedalus</title><meta content=text/html; charset=UTF-8 http-equiv=Content-Type></head><body><font face=Arial><h1>Daedalus "+versionNumber+"</h1>This browser is released under the GNU General Public License v3. If you have downloaded this browser under a restrictive or commercial license, please report abuse to <a href=mailto:ericcesium133@aol.com>the developer</a>.<hr>The entire program is Copyright &copy; 2010~2012 Eric Dong (Quantum1423). Many thanks to the GeckoFX community for helping out with code snippets. The developer hereby releases the product to the open source community under the terms of the GNU General Public License.<hr>\');" + "document.write(\"" + gplv3 + "\");");
+                nv("javascript:document.write(\'<html><head><title>About Daedalus</title><meta content=text/html; charset=UTF-8 http-equiv=Content-Type></head><body><font face=Arial><h1>Daedalus " + versionNumber + "</h1>This browser is released under the GNU General Public License v3. If you have downloaded this browser under a restrictive or commercial license, please report abuse to <a href=mailto:ericcesium133@aol.com>the developer</a>.<hr>The entire program is Copyright &copy; 2010~2012 Eric Dong (Quantum1423). Many thanks to the GeckoFX community for helping out with code snippets. The developer hereby releases the product to the open source community under the terms of the GNU General Public License.<hr>\');" + "document.write(\"" + gplv3 + "\");");
                 /*nv("javascript:document.write('" + gplv3 + "')");*/
             }
             else if (textBox1.Text == "about:hack:edit")
             {
                 nv("JavaScript:document.body.contentEditable='true'; document.designMode='on'; void 0");
             }
-            else{
+            else
+            {
                 nv(textBox1.Text);
                 if (((Form)(this.tabControl1.SelectedForm)).Tag != "A")
                 {
@@ -591,7 +599,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
                 }
                 else { swb.Focus(); }
             }
-         
+
         }
         public bool abWorking = true;
         private void Form1_Load(object sender, EventArgs e)
@@ -604,7 +612,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
             }
             catch { MessageBox.Show("Error: corrupted/missing anti-blocking module. Upgrade module immediately \n 错误：丢失反封杀模块。请立即升级反封杀模块。"); abWorking = false; } foreach (Process clsProcess in Process.GetProcesses())
             {
-                
+
                 if (clsProcess.ProcessName.Contains("dwm"))
                 {
                     MARGINS margins = new MARGINS();
@@ -628,7 +636,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
             TextReader gpl = new StreamReader("LICENSE.txt");
             //this.FormBorderStyle = FormBorderStyle.None;
         }
-        
+
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
 
@@ -649,7 +657,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
         }
         void nonFatalError()
         {
-            MessageBox.Show("Sorry, an error occured. But don't worry, Daedalus hasn't crashed! \n 对不起，程序出现错误。但不要担心，程序没有崩溃！"); 
+            MessageBox.Show("Sorry, an error occured. But don't worry, Daedalus hasn't crashed! \n 对不起，程序出现错误。但不要担心，程序没有崩溃！");
         }
         private void button4_Click(object sender, EventArgs e)
         {
@@ -664,7 +672,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void reloadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                gwb.Reload();
+            gwb.Reload();
 
         }
 
@@ -709,9 +717,8 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
                 //textBox1.Text = Convert.ToString(gwb.Url);
             }
         }
-        
+
         private void timer1_Tick(object sender, EventArgs e)
-        
         {
             try
             {
@@ -830,7 +837,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
                 }
                 else
                 {
-                    this.Text = gwb.Url.ToString()+ " - Daedalus " + versionNumber;
+                    this.Text = gwb.Url.ToString() + " - Daedalus " + versionNumber;
                 }
             }
             else
@@ -911,7 +918,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
         private void tabControl1s_Selecting(object sender, TabControlEventArgs e)
         {
 
-            
+
         }
 
         private void tabControl1s_MouseClick(object sender, MouseEventArgs e)
@@ -1031,11 +1038,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
         {
             try
             {
-                Form3 fma = new Form3();
-                fma.webBrowser1.Navigate(Convert.ToString(gwb.Url));
-                fma.webBrowser1.AllowNavigation = false;
-                fma.webBrowser1.IsWebBrowserContextMenuEnabled = false;
-                fma.Show();
+                gwb.print();
             }
             catch { }
         }
@@ -1181,7 +1184,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void 确定ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void toolStripTextBox1_Click(object sender, EventArgs e)
@@ -1248,7 +1251,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
             TextReader tr = new StreamReader("home");
             nv(tr.ReadLine());
             tr.Close();
-            
+
         }
 
         private void textBox1_TextUpdate(object sender, EventArgs e)
@@ -1273,22 +1276,22 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void tabControl1_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
 
         private void tabControl1_GetTabRegion(object sender, MdiTabControl.TabControl.GetTabRegionEventArgs e)
         {
             // you can create a new point array or just modify the existing one
             e.Points[1] = new Point(7, 0);
-            e.Points[4] = new Point(e.TabWidth-7, 0);
+            e.Points[4] = new Point(e.TabWidth - 7, 0);
         }
 
         private void caretBrowsingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
-       
+
 
         private void textBox1_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -1296,7 +1299,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void button7_Click(object sender, EventArgs e)
         {
-            if (button7.FlatStyle==FlatStyle.Flat)
+            if (button7.FlatStyle == FlatStyle.Flat)
             {
                 setProxy();
                 button7.FlatStyle = FlatStyle.System;
@@ -1340,7 +1343,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void Form1_Click(object sender, EventArgs e)
         {
-            
+
         }
         void proc(string filename)
         {
@@ -1384,7 +1387,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
         }
         void warnPhish()
         {
-                MessageBox.Show("Phishing site detected. \n 检测出钓鱼网站！", "Warning!");
+            MessageBox.Show("Phishing site detected. \n 检测出钓鱼网站！", "Warning!");
         }
         private void upgradeAntiblockingModuleToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1414,7 +1417,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void button8_Click(object sender, EventArgs e)
         {
-            if (button8.FlatStyle==FlatStyle.Flat)
+            if (button8.FlatStyle == FlatStyle.Flat)
             {
                 isPrivacyMode = false;
                 button8.FlatStyle = FlatStyle.System;
@@ -1422,7 +1425,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
             }
             else
             {
-                isPrivacyMode=true;
+                isPrivacyMode = true;
                 button8.FlatStyle = FlatStyle.Flat;
                 button8.ForeColor = Color.White;
             }
@@ -1451,7 +1454,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
             if (findbox.Visible)
             {
                 findbox.Visible = false;
-                
+
             }
             else
             {
@@ -1478,14 +1481,14 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void autoDotComToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void textBox1_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Control == true)
             {
-                if (e.KeyValue==13)
+                if (e.KeyValue == 13)
                 {
                     nv("www." + textBox1.Text + ".com");
                 }
@@ -1494,17 +1497,17 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+
         }
 
         private void textBox1_MouseCaptureChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void textBox1_MouseClick(object sender, MouseEventArgs e)
         {
-           
+
         }
 
         private void textBox1_Click(object sender, EventArgs e)
@@ -1562,7 +1565,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void buttonX2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("The FishPhish filter has detected a possible phish heuristically. \n AAS自行研制的FishPhish系统智能检出可能的钓鱼网站。\n The content does not seem to match with the website, "+gwb.Url.DnsSafeHost.ToString()+".");
+            MessageBox.Show("The FishPhish filter has detected a possible phish heuristically. \n AAS自行研制的FishPhish系统智能检出可能的钓鱼网站。\n The content does not seem to match with the website, " + gwb.Url.DnsSafeHost.ToString() + ".");
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1934,8 +1937,11 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
             }
         }
 
-   }
+        private void dl_DoWork(object sender, DoWorkEventArgs e)
+        {
+        }
 
+    }
 }
 
 
