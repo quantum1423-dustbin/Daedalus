@@ -92,6 +92,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MdiTabControl, Version=1.0.2527.15294, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="OpenGeckoSharp, Version=0.0.1.0, Culture=neutral, PublicKeyToken=3209ac31600d1857, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\OpenGeckoSharp.dll</HintPath>
@@ -207,6 +208,9 @@
     <None Include="Resources\yasfib_normal.png" />
     <None Include="Resources\yasfib_compress.png" />
     <None Include="Resources\add.png" />
+    <None Include="Resources\zoomout.png" />
+    <None Include="Resources\zoomnothing.png" />
+    <None Include="Resources\zoomin.png" />
     <Content Include="yasfib_logo.ico" />
     <None Include="Resources\yasfibBackTop.png" />
     <None Include="Resources\yasfibBack1.png" />

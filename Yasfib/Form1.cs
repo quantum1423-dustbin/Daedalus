@@ -164,8 +164,8 @@ namespace Yasfib
             }
             return lines;
         }
-        public static bool isChinese = false;
-        public static string versionNumber = "4.2.0-r2";
+        public static bool isChinese = true;
+        public static string versionNumber = "4.3.0-r1";
         void getautocomplete()
         {
             try
@@ -318,6 +318,8 @@ namespace Yasfib
             updateYasfibToolStripMenuItem.Text = "升级浏览器";
             bookmarkThisPageToolStripMenuItem1.Text = "收藏此页面";
             viewSourceToolStripMenuItem1.Text = "源代码";
+            openANewIEShellToolStripMenuItem.Text = "打开新的IE壳";
+            openANewTabToolStripMenuItem.Text = "打开新标签";
         }
         //Shortcut for browser
         public Skybound.Gecko.GeckoWebBrowser gwb
@@ -410,6 +412,8 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
             browser1.BackColor = System.Drawing.Color.White;
             browser1.ContextMenuStrip = browserCM;
             browser1.NoDefaultContextMenu = true;
+            browser1.MouseWheel += new MouseEventHandler(browser1_MouseWheel);
+            browser1.KeyPress += new KeyPressEventHandler(browser1_KeyPress);
             browser1.DomMouseDown += new Skybound.Gecko.GeckoDomMouseEventHandler(browser1_DomMouseDown);
             //browser1.Navigate("about:blank");
             foobar.GotFocus += new
@@ -422,6 +426,16 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
             textBox1.Text = "about:blank";
             foobar.Focus();
             rtab();
+        }
+
+        void browser1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        void browser1_MouseWheel(object sender, MouseEventArgs e)
+        {
+
         }
 
         void browser1_Navigating(object sender, Skybound.Gecko.GeckoNavigatingEventArgs e)
@@ -1639,6 +1653,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
             foobar.Text = "IE Shell/IE壳";
             foobar.Focus();
             rtab();
+            swb.Navigate("http://www.pisoft.tk/ieshell.php");
         }
 
         void browser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -1939,6 +1954,34 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void dl_DoWork(object sender, DoWorkEventArgs e)
         {
+        }
+
+        private void zoomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gwb.Window.TextZoom += 0.1f;
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            try { gwb.Window.TextZoom -= 0.1f; }
+            catch { }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            try { gwb.Window.TextZoom += 0.1f; }
+            catch { }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            try { gwb.Window.TextZoom = 1; }
+            catch { }
+        }
+
+        private void tabControl1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
 
     }
