@@ -165,7 +165,7 @@ namespace Yasfib
             return lines;
         }
         public static bool isChinese = true;
-        public static string versionNumber = "4.3.0-r1";
+        public static string versionNumber = "4.3.0-r2";
         void getautocomplete()
         {
             try
@@ -707,7 +707,7 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            this.AcceptButton = go;
         }
 
         private void goToConfigPageToolStripMenuItem_Click(object sender, EventArgs e)
@@ -983,13 +983,13 @@ Skybound.Gecko.GeckoContextMenuEventHandler(menu);
                     if (isChinese == true)
                     {
                         fgab();
-                        button10.Enabled = false;
+                        //button10.Enabled = false;
                         enableAntiblockingToolStripMenuItem1.Text = "停止反封杀";
                     }
                     else
                     {
                         fgab();
-                        button10.Enabled = false;
+                        //button10.Enabled = false;
                         enableAntiblockingToolStripMenuItem1.Text = "Disable Anti-blocking";
                     }
                 }
