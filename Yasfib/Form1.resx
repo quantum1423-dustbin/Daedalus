@@ -155,7 +155,7 @@
     <value>703, 15</value>
   </metadata>
   <metadata name="mainCM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>172, 27</value>
+    <value>218, 42</value>
   </metadata>
   <metadata name="browserCM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>172, 19</value>
@@ -167,7 +167,7 @@
     <value>327, 54</value>
   </metadata>
   <metadata name="gradientDown.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>491, 19</value>
+    <value>469, 19</value>
   </metadata>
   <metadata name="gradientUp.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>491, 19</value>
