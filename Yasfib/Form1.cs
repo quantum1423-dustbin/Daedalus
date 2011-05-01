@@ -54,7 +54,7 @@ namespace Yasfib
                 theProcess.WindowStyle = ProcessWindowStyle.Hidden;
                 Process.Start(theProcess);
             }
-            Skybound.Gecko.GeckoPreferences.User["general.useragent.override"] = "Mozilla/5.0 (Windows; U; en-US; rv:1.9.0.10) Gecko/2009042316 Firefox/3.0.10 (fake; Yasfib 4.0.x; Windows; U; .NET CLR 2.0)";
+            Skybound.Gecko.GeckoPreferences.User["general.useragent.override"] = "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.16) Gecko/20110319  (fake; Yasfib 5.x; Windows; U; .NET CLR 2.0)";
             //lowToolStripMenuItem.Enabled = true;
             if (rf("config/proxybool.conf") == "1")
             {

@@ -28,8 +28,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "E:\CSProj\!Daedalus\Yasfib\bin\Debug\daedalus.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\CSProj\!Daedalus\Yasfib\bin\Debug\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\CSProj\!Daedalus\Yasfib\bin\Debug\daedalus.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\CSProj\!Daedalus\Yasfib\bin\Debug\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Run]
