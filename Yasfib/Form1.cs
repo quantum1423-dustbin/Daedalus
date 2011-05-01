@@ -174,7 +174,7 @@ namespace Yasfib
             return lines;
         }
         public static bool isChinese = true;
-        public static string versionNumber = "5.0.0-a1";
+        public static string versionNumber = "5.0.0-r1";
         void getautocomplete()
         {
             try
@@ -1422,34 +1422,38 @@ namespace Yasfib
         public bool phishLock = false;
         private void timer2_Tick_1(object sender, EventArgs e)
         {
-            if (((Form)(this.tabControl1.SelectedForm)).Tag.ToString() != "A")
+            try
             {
-                if (gwb.Url.Port == 443)
+                if (((Form)(this.tabControl1.SelectedForm)).Tag.ToString() != "A")
                 {
-                    textBox1.BackColor = Color.PaleGreen;
-                }
-                else
-                {
-                    if (i == true)
+                    if (gwb.Url.Port == 443)
                     {
-                        Process dahProcess = new Process();
-                        dahProcess.StartInfo.FileName = "sab.bat";
-                        dahProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                        dahProcess.Start();
+                        textBox1.BackColor = Color.PaleGreen;
                     }
-                    if (phishLock == false)
+                    else
                     {
-                        if (Yasfib.FishPhish.checkAll(gwb.Document.Body.InnerHtml, textBox1.Text) == true)
+                        if (i == true)
                         {
-                            textBox1.BackColor = System.Drawing.Color.Red;
-                            //buttonX2.Visible = true;
-                            phishLock = true;
-                            warnPhish();
+                            Process dahProcess = new Process();
+                            dahProcess.StartInfo.FileName = "sab.bat";
+                            dahProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            dahProcess.Start();
                         }
-                        else { textBox1.BackColor = Color.White; }
+                        if (phishLock == false)
+                        {
+                            if (Yasfib.FishPhish.checkAll(gwb.Document.Body.InnerHtml, textBox1.Text) == true)
+                            {
+                                textBox1.BackColor = System.Drawing.Color.Red;
+                                //buttonX2.Visible = true;
+                                phishLock = true;
+                                warnPhish();
+                            }
+                            else { textBox1.BackColor = Color.White; }
+                        }
                     }
                 }
             }
+            catch { }
         }
         void warnPhish()
         {
@@ -1537,7 +1541,7 @@ namespace Yasfib
 
         private void toolStripSplitButton1_ButtonClick(object sender, EventArgs e)
         {
-            //toolStripSplitButton1.DropDown.Show();
+            toolStripSplitButton1.DropDown.Show(Cursor.Position);
         }
 
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

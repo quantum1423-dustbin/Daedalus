@@ -73,6 +73,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.mainCM = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openInNewTabToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyLinkLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,7 +117,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.copyLinkLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -238,7 +238,7 @@
             this.toolStripSplitButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 2);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(69, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(100, 25);
             this.toolStrip1.TabIndex = 19;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
@@ -268,7 +268,7 @@
             this.printPageToolStripMenuItem1,
             this.exitToolStripMenuItem1});
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
-            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
+            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.fileToolStripMenuItem1.Text = "File";
             // 
             // addTabCtrlTToolStripMenuItem
@@ -310,7 +310,7 @@
             this.optionsToolStripMenuItem1,
             this.updateYasfibToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editToolStripMenuItem.Text = "Tools";
             // 
             // viewSourceToolStripMenuItem
@@ -420,7 +420,7 @@
             this.manageBookmarksToolStripMenuItem,
             this.toolStripMenuItem2});
             this.bookmarksToolStripMenuItem1.Name = "bookmarksToolStripMenuItem1";
-            this.bookmarksToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
+            this.bookmarksToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.bookmarksToolStripMenuItem1.Text = "Bookmarks";
             // 
             // bookmarkThisPageToolStripMenuItem
@@ -448,7 +448,7 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
@@ -487,6 +487,13 @@
             this.openInNewTabToolStripMenuItem1.Size = new System.Drawing.Size(195, 22);
             this.openInNewTabToolStripMenuItem1.Text = "Open in new tab";
             this.openInNewTabToolStripMenuItem1.Click += new System.EventHandler(this.openInNewTabToolStripMenuItem1_Click);
+            // 
+            // copyLinkLocationToolStripMenuItem
+            // 
+            this.copyLinkLocationToolStripMenuItem.Name = "copyLinkLocationToolStripMenuItem";
+            this.copyLinkLocationToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.copyLinkLocationToolStripMenuItem.Text = "Copy link location";
+            this.copyLinkLocationToolStripMenuItem.Click += new System.EventHandler(this.copyLinkLocationToolStripMenuItem_Click);
             // 
             // copyToolStripMenuItem
             // 
@@ -924,13 +931,6 @@
             this.webBrowser1.ScrollBarsEnabled = false;
             this.webBrowser1.Size = new System.Drawing.Size(20, 20);
             this.webBrowser1.TabIndex = 38;
-            // 
-            // copyLinkLocationToolStripMenuItem
-            // 
-            this.copyLinkLocationToolStripMenuItem.Name = "copyLinkLocationToolStripMenuItem";
-            this.copyLinkLocationToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.copyLinkLocationToolStripMenuItem.Text = "Copy link location";
-            this.copyLinkLocationToolStripMenuItem.Click += new System.EventHandler(this.copyLinkLocationToolStripMenuItem_Click);
             // 
             // MainForm
             // 
