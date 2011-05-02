@@ -37,7 +37,7 @@ namespace Yasfib
             }
             else
             {
-                uri = "http://www.pisoft.tk/daedl.php?version=chinese";
+                uri = "http://www.pisoft.tk/daedl.php?version=english";
             }
             Client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
             Client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
