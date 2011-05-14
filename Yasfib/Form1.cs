@@ -54,7 +54,7 @@ namespace Yasfib
                 theProcess.WindowStyle = ProcessWindowStyle.Hidden;
                 Process.Start(theProcess);
             }
-            Skybound.Gecko.GeckoPreferences.User["general.useragent.override"] = "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.16) Gecko/20110319  (fake; Yasfib 5.x; Windows; U; .NET CLR 2.0)";
+            Skybound.Gecko.GeckoPreferences.User["general.useragent.override"] = "Mozilla/5.0 (U; Windows; en-US; rv:1.9.2) Gecko/20100127 Firefox/3.6 (fake; Daedalus 4.5.x; Windows; U; .NET CLR 2.0)";
             //lowToolStripMenuItem.Enabled = true;
             if (rf("config/proxybool.conf") == "1")
             {
@@ -173,10 +173,11 @@ namespace Yasfib
             }
             return lines;
         }
-        public static bool isChinese = true;
-        public static string versionNumber = "4.5.0-r1";
+        public static bool isChinese = false;
+        public static string versionNumber = "4.5.0-r2";
         void getautocomplete()
         {
+            textBox1.AutoCompleteCustomSource.Clear();
             try
             {
                 // Create an isntance of XmlTextReader and call Read method to read the file
@@ -303,7 +304,7 @@ namespace Yasfib
             enableAntiblockingToolStripMenuItem1.Text = "开始反封杀";
             添加新标签ToolStripMenuItem.Text = "添加新标签 (Ctrl + T)";
             addTabCtrlTToolStripMenuItem.Text = "添加新标签";
-            manageBookmarksToolStripMenuItem.Text = "手动编辑收藏夹";
+            //manageBookmarksToolStripMenuItem.Text = "手动编辑收藏夹";
             toolStripSplitButton1.Text = "主菜单";
             //button7.Text = "压";
             //setHomePageToolStripMenuItem.Text = "将本页设为主页";
@@ -584,19 +585,11 @@ namespace Yasfib
         {
             try
             {
-                label1.Text = (Math.Floor(Math.Log10(e.CurrentProgress + 1) * 1000)).ToString() + "/" + (Math.Floor(Math.Log10(e.MaximumProgress + 1) * 1000)).ToString();
+                //label1.Text = (Math.Floor(Math.Log10(e.CurrentProgress + 1) * 1000)).ToString() + "/" + (Math.Floor(Math.Log10(e.MaximumProgress + 1) * 1000)).ToString();
                 //updateStatusText();
-                if (label1.Text == "" || label1.Text == null)
-                {
-                    panel2.Visible = false;
-                }
-                else
-                {
-                    panel2.Visible = true;
-                }
                 progressBar1.Maximum = e.MaximumProgress;
                 progressBar1.Value = e.CurrentProgress;
-                if (e.CurrentProgress.ToString()==e.MaximumProgress.ToString())
+                if (e.CurrentProgress.ToString()==e.MaximumProgress.ToString() || e.CurrentProgress==0)
                 {
                     progressBar1.Visible = false;
                     button10.Visible = false;
@@ -2044,6 +2037,16 @@ namespace Yasfib
         private void copyLinkLocationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(cacheString);
+        }
+
+        private void historyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Form3 fma = new Form3();
+                fma.Show();
+            }
+            catch { }
         }
 
     }

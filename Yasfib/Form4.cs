@@ -57,6 +57,7 @@ namespace Yasfib
             MessageBox.Show("Update Completed");
             proc("a.exe");
             this.Close();
+            Application.Exit();
         }
         void proc(string filename)
         {

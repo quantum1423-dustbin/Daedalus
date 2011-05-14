@@ -1,1 +1,1 @@
-nc win hide ititle "freegate"
+nc win hide ititle "freeu"

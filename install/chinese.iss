@@ -8,7 +8,7 @@
 AppId={{5607BD7C-6FDB-4513-8DDC-5D9770233C66}
 AppName=灵智浏览器
 ;AppVersion=0.6AppVerName=灵智浏览器
-AppPublisher=All About Stuff, NPO
+AppPublisher=PiSoft
 DefaultDirName={pf}\Daedalus
 DefaultGroupName=灵智浏览器
 DisableDirPage=yes

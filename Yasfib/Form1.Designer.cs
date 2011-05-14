@@ -65,7 +65,6 @@
             this.updateYasfibToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookmarksToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bookmarkThisPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageBookmarksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,6 +105,7 @@
             this.openANewTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openANewIEShellToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dl = new System.ComponentModel.BackgroundWorker();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.button13 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.buttonX1 = new System.Windows.Forms.PictureBox();
@@ -116,7 +116,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -268,7 +267,7 @@
             this.printPageToolStripMenuItem1,
             this.exitToolStripMenuItem1});
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
-            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
+            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.fileToolStripMenuItem1.Text = "File";
             // 
             // addTabCtrlTToolStripMenuItem
@@ -310,7 +309,7 @@
             this.optionsToolStripMenuItem1,
             this.updateYasfibToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editToolStripMenuItem.Text = "Tools";
             // 
             // viewSourceToolStripMenuItem
@@ -352,21 +351,21 @@
             // extremeToolStripMenuItem
             // 
             this.extremeToolStripMenuItem.Name = "extremeToolStripMenuItem";
-            this.extremeToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.extremeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.extremeToolStripMenuItem.Text = "Extreme";
             this.extremeToolStripMenuItem.Click += new System.EventHandler(this.extremeToolStripMenuItem_Click);
             // 
             // normalToolStripMenuItem
             // 
             this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
-            this.normalToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.normalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.normalToolStripMenuItem.Text = "Normal";
             this.normalToolStripMenuItem.Click += new System.EventHandler(this.normalToolStripMenuItem_Click);
             // 
             // offToolStripMenuItem1
             // 
             this.offToolStripMenuItem1.Name = "offToolStripMenuItem1";
-            this.offToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.offToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.offToolStripMenuItem1.Text = "Off";
             this.offToolStripMenuItem1.Click += new System.EventHandler(this.offToolStripMenuItem1_Click);
             // 
@@ -417,10 +416,9 @@
             // 
             this.bookmarksToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bookmarkThisPageToolStripMenuItem,
-            this.manageBookmarksToolStripMenuItem,
             this.toolStripMenuItem2});
             this.bookmarksToolStripMenuItem1.Name = "bookmarksToolStripMenuItem1";
-            this.bookmarksToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
+            this.bookmarksToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.bookmarksToolStripMenuItem1.Text = "Bookmarks";
             // 
             // bookmarkThisPageToolStripMenuItem
@@ -429,13 +427,6 @@
             this.bookmarkThisPageToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.bookmarkThisPageToolStripMenuItem.Text = "Bookmark this page";
             this.bookmarkThisPageToolStripMenuItem.Click += new System.EventHandler(this.addBookmarkToolStripMenuItem_Click);
-            // 
-            // manageBookmarksToolStripMenuItem
-            // 
-            this.manageBookmarksToolStripMenuItem.Name = "manageBookmarksToolStripMenuItem";
-            this.manageBookmarksToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.manageBookmarksToolStripMenuItem.Text = "Edit bookmarks";
-            this.manageBookmarksToolStripMenuItem.Click += new System.EventHandler(this.manageBookmarksToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -448,13 +439,13 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
@@ -789,6 +780,16 @@
             // 
             this.dl.DoWork += new System.ComponentModel.DoWorkEventHandler(this.dl_DoWork);
             // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Location = new System.Drawing.Point(337, 5);
+            this.webBrowser1.Margin = new System.Windows.Forms.Padding(0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.ScrollBarsEnabled = false;
+            this.webBrowser1.Size = new System.Drawing.Size(20, 20);
+            this.webBrowser1.TabIndex = 38;
+            // 
             // button13
             // 
             this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -922,16 +923,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button6_Click);
             // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Location = new System.Drawing.Point(337, 5);
-            this.webBrowser1.Margin = new System.Windows.Forms.Padding(0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.ScrollBarsEnabled = false;
-            this.webBrowser1.Size = new System.Drawing.Size(20, 20);
-            this.webBrowser1.TabIndex = 38;
-            // 
             // MainForm
             // 
             this.AcceptButton = this.go;
@@ -1055,7 +1046,6 @@
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem bookmarksToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem bookmarkThisPageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manageBookmarksToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;

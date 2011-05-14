@@ -6,31 +6,11 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.IO;
-using System.Net;
-using System.Media;
 
 namespace Yasfib
 {
     public partial class Form3 : Form
     {
-        [StructLayout(LayoutKind.Sequential)]
-        public struct MARGINS
-        {
-            public int cxLeftWidth;
-            public int cxRightWidth;
-            public int cyTopHeight;
-            public int cyButtomheight;
-        }
-
-        [DllImport("dwmapi.dll")]
-
-        public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMarinset);
-        //[DllImport("winmm.dll")]
-        
         public Form3()
         {
             InitializeComponent();
@@ -38,34 +18,34 @@ namespace Yasfib
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            foreach (Process clsProcess in Process.GetProcesses())
+            if (Yasfib.MainForm.isChinese)
             {
-                if (clsProcess.ProcessName.Contains("dwm"))
+                this.Text = "历史纪录";
+                button1.Text = "清空";
+            }
+            try
+            {
+                XmlTextReader textReader = new XmlTextReader("ac.xml");
+                textReader.Read();
+                while (textReader.Read())
                 {
-                    MARGINS margins = new MARGINS();
-                    margins.cxLeftWidth = -1;
-                    margins.cxRightWidth = -1;
-                    margins.cyTopHeight = -1;
-                    margins.cyButtomheight = -1;
-                    //set all the four value -1 to apply glass effect to the whole window
-                    //set your own value to make specific part of the window glassy.
-                    IntPtr hwnd = this.Handle;
-                    int result = DwmExtendFrameIntoClientArea(hwnd, ref margins);
-                    this.BackColor = System.Drawing.Color.BlanchedAlmond;
-                    this.BackgroundImage = null;
+                    textReader.MoveToElement();
+                    if (textReader.Name == "url")
+                    {
+                        listBox1.Items.Add(textReader.ReadString());
+                    }
                 }
             }
+            catch { }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            webBrowser1.ShowPrintDialog();
-            this.Hide();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            listBox1.Items.Clear();
+            System.IO.TextWriter rpHistory = new System.IO.StreamWriter("ac.xml");
+            rpHistory.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\"?><i></i>");
+            rpHistory.Close();
+            MessageBox.Show("Daedalus will clean the history when it next starts up. \r 浏览器会在下次启动时彻底清空历史纪录。");
         }
     }
 }

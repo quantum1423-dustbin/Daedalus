@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Yasfib")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Daedalus")]
+[assembly: AssemblyDescription("Daedalus is a fast and safe browser that you'll never throw away!")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("All About Stuff, NPO")]
-[assembly: AssemblyProduct("Yasfib")]
+[assembly: AssemblyCompany("PiSoft")]
+[assembly: AssemblyProduct("Daedalus")]
 [assembly: AssemblyCopyright("Copyright ©  2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
