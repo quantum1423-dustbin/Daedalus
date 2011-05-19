@@ -173,7 +173,7 @@ namespace Yasfib
             }
             return lines;
         }
-        public static bool isChinese = false;
+        public static bool isChinese = true;
         public static string versionNumber = "4.5.0-r2";
         void getautocomplete()
         {
@@ -616,7 +616,7 @@ namespace Yasfib
                 //}
                 //else { label1.Text = "Connecting to the web page: " + e.CurrentProgress + " out of " + e.MaximumProgress; progressBar1.Value = e.CurrentProgress; }
                 //updateStatusText();
-                updateTitle();
+                //updateTitle();
             }
             catch { }
         }
