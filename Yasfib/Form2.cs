@@ -168,10 +168,15 @@ namespace Yasfib
 
         private void button2_Click(object sender, EventArgs e)
         {
+            MainForm.log("-Saving config-");
             wf("config/general.conf", general.Text);
+            MainForm.log("GENERAL: "+general.Text);
             wf("home", homepage.Text);
+            MainForm.log("HPAGE: " + homepage.Text);
             wf("config/uproxyip.conf", HttpProxHost.Text);
+            MainForm.log("PROXYHOST: " + HttpProxHost.Text);
             wf("config/uproxyport.conf", HttpProxPort.Text);
+            MainForm.log("PROXYPORT: " + HttpProxPort.Text);
             wf("config/sproxyip.conf", HttpsProxHost.Text);
             wf("config/sproxyport.conf", HttpsProxPort.Text);
             if (checkBox1.Checked == true)

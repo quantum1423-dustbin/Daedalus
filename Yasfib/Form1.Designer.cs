@@ -61,6 +61,7 @@
             this.deleteBrowsingHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileSharingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.downloadManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.programLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.updateYasfibToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookmarksToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,7 +99,6 @@
             this.gradientDown = new System.Windows.Forms.Timer(this.components);
             this.gradientUp = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button8 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -110,12 +110,14 @@
             this.button11 = new System.Windows.Forms.Button();
             this.buttonX1 = new System.Windows.Forms.PictureBox();
             this.button12 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -306,6 +308,7 @@
             this.viewSourceToolStripMenuItem,
             this.optionsToolStripMenuItem,
             this.downloadManagerToolStripMenuItem,
+            this.programLogToolStripMenuItem,
             this.optionsToolStripMenuItem1,
             this.updateYasfibToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
@@ -397,6 +400,13 @@
             this.downloadManagerToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.downloadManagerToolStripMenuItem.Text = "Download manager";
             this.downloadManagerToolStripMenuItem.Click += new System.EventHandler(this.下载管理器ToolStripMenuItem_Click);
+            // 
+            // programLogToolStripMenuItem
+            // 
+            this.programLogToolStripMenuItem.Name = "programLogToolStripMenuItem";
+            this.programLogToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.programLogToolStripMenuItem.Text = "Program Log";
+            this.programLogToolStripMenuItem.Click += new System.EventHandler(this.programLogToolStripMenuItem_Click_2);
             // 
             // optionsToolStripMenuItem1
             // 
@@ -691,13 +701,16 @@
             // button7
             // 
             this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button7.Font = new System.Drawing.Font("Verdana", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.Location = new System.Drawing.Point(465, 2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(44, 25);
             this.button7.TabIndex = 30;
-            this.button7.Text = "WH";
+            this.button7.Text = "$";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.button7.MouseHover += new System.EventHandler(this.button7_MouseHover);
+            this.button7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button7_MouseMove);
             // 
             // gradientDown
             // 
@@ -722,19 +735,6 @@
             this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyDown);
-            // 
-            // button8
-            // 
-            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button8.BackColor = System.Drawing.Color.Green;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button8.Location = new System.Drawing.Point(509, 2);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(44, 25);
-            this.button8.TabIndex = 34;
-            this.button8.Text = "PM";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // progressBar1
             // 
@@ -836,6 +836,19 @@
             this.button12.TabIndex = 40;
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button8
+            // 
+            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button8.BackColor = System.Drawing.Color.Green;
+            this.button8.BackgroundImage = global::Yasfib.Properties.Resources.privacy;
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button8.Location = new System.Drawing.Point(509, 2);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(44, 25);
+            this.button8.TabIndex = 34;
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button10
             // 
@@ -1076,6 +1089,8 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.ToolStripMenuItem copyLinkLocationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem programLogToolStripMenuItem;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

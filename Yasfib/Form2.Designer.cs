@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button8 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.homepage = new System.Windows.Forms.TextBox();
             this.general = new System.Windows.Forms.ComboBox();
@@ -60,7 +61,6 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -93,6 +93,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(229, 134);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(132, 23);
+            this.button8.TabIndex = 4;
+            this.button8.Text = "Set to current page";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label2
             // 
@@ -162,7 +172,7 @@
             this.abConservative.AutoSize = true;
             this.abConservative.Location = new System.Drawing.Point(14, 3);
             this.abConservative.Name = "abConservative";
-            this.abConservative.Size = new System.Drawing.Size(95, 16);
+            this.abConservative.Size = new System.Drawing.Size(94, 18);
             this.abConservative.TabIndex = 9;
             this.abConservative.TabStop = true;
             this.abConservative.Text = "Conservative";
@@ -173,7 +183,7 @@
             this.abAggressive.AutoSize = true;
             this.abAggressive.Location = new System.Drawing.Point(114, 3);
             this.abAggressive.Name = "abAggressive";
-            this.abAggressive.Size = new System.Drawing.Size(83, 16);
+            this.abAggressive.Size = new System.Drawing.Size(83, 18);
             this.abAggressive.TabIndex = 10;
             this.abAggressive.TabStop = true;
             this.abAggressive.Text = "Aggressive";
@@ -203,7 +213,7 @@
             this.abOff.AutoSize = true;
             this.abOff.Location = new System.Drawing.Point(229, 41);
             this.abOff.Name = "abOff";
-            this.abOff.Size = new System.Drawing.Size(41, 16);
+            this.abOff.Size = new System.Drawing.Size(42, 18);
             this.abOff.TabIndex = 7;
             this.abOff.TabStop = true;
             this.abOff.Text = "Off";
@@ -215,7 +225,7 @@
             this.abOn.AutoSize = true;
             this.abOn.Location = new System.Drawing.Point(294, 41);
             this.abOn.Name = "abOn";
-            this.abOn.Size = new System.Drawing.Size(35, 16);
+            this.abOn.Size = new System.Drawing.Size(41, 18);
             this.abOn.TabIndex = 6;
             this.abOn.TabStop = true;
             this.abOn.Text = "On";
@@ -399,16 +409,6 @@
             this.button2.Text = "OK";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(229, 134);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(132, 23);
-            this.button8.TabIndex = 4;
-            this.button8.Text = "Set to current page";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // Form2
             // 

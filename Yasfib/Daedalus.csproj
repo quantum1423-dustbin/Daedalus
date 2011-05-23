@@ -221,6 +221,8 @@
     <None Include="Resources\zoomout.png" />
     <None Include="Resources\zoomnothing.png" />
     <None Include="Resources\zoomin.png" />
+    <None Include="Resources\privacy.png" />
+    <None Include="Resources\privacy2.png" />
     <Content Include="yasfib_logo.ico" />
     <None Include="Resources\yasfibBackTop.png" />
     <None Include="Resources\yasfibBack1.png" />

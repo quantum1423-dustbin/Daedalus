@@ -1,0 +1,1 @@
+copy dummy.xml log.xml

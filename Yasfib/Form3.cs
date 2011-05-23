@@ -20,12 +20,9 @@ namespace Yasfib
         {
             if (Yasfib.MainForm.isChinese)
             {
-                this.Text = "历史纪录";
-                button1.Text = "清空";
+                this.Text = "系统日志";
             }
-            try
-            {
-                XmlTextReader textReader = new XmlTextReader("ac.xml");
+                XmlTextReader textReader = new XmlTextReader("loggy.xml");
                 textReader.Read();
                 while (textReader.Read())
                 {
@@ -35,17 +32,15 @@ namespace Yasfib
                         listBox1.Items.Add(textReader.ReadString());
                     }
                 }
-            }
-            catch { }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            System.IO.TextWriter rpHistory = new System.IO.StreamWriter("ac.xml");
-            rpHistory.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\"?><i></i>");
-            rpHistory.Close();
-            MessageBox.Show("Daedalus will clean the history when it next starts up. \r 浏览器会在下次启动时彻底清空历史纪录。");
+                listBox1.Items.Clear();
+                System.IO.TextWriter rpHistory = new System.IO.StreamWriter("log.xml");
+                rpHistory.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\"?><i></i>");
+                rpHistory.Close();
+            //MessageBox.Show("Daedalus will clean the history when it next starts up. \r 浏览器会在下次启动时彻底清空历史纪录。");
         }
     }
 }
