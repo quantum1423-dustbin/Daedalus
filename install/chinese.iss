@@ -37,6 +37,6 @@ Filename: "{app}\speedup.bat"
 
 [Icons]
 Name: "{group}\灵智浏览器"; Filename: "{app}\daedalus.exe"
-Name: "{group}\{cm:UninstallProgram,ÁéÖÇä¯ÀÀÆ÷}"; Filename: "{uninstallexe}"
+Name: "{group}\{cm:UninstallProgram,灵智浏览器}"; Filename: "{uninstallexe}"
 Name: "{commondesktop}\灵智浏览器"; Filename: "{app}\daedalus.exe"; Tasks: desktopicon
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\灵智浏览器"; Filename: "{app}\daedalus.exe"; Tasks: quicklaunchicon

@@ -178,8 +178,8 @@ namespace Yasfib
             }
             return lines;
         }
-        public static bool isChinese = true;
-        public static string versionNumber = "4.5.1-r1";
+        public static bool isChinese = false;
+        public static string versionNumber = "4.5.1-r2";
         void getautocomplete()
         {
             textBox1.AutoCompleteCustomSource.Clear();
@@ -431,6 +431,7 @@ namespace Yasfib
                 browser1.StatusTextChanged += new EventHandler(changing);
                 browser1.BackColor = System.Drawing.Color.White;
                 browser1.DomMouseDown += new Skybound.Gecko.GeckoDomMouseEventHandler(browser1_DomMouseDown);
+                browser1.DocumentCompleted += new EventHandler(browser1_DocumentCompleted);
                 //browser1.DomClick += new Skybound.Gecko.GeckoDomEventHandler(browser1_DomClick);
                 //1browser1.DomContextMenu += new Skybound.Gecko.GeckoDomMouseEventHandler(browser1_DomContextMenu);
                 browser1.NoDefaultContextMenu = true;
@@ -450,6 +451,11 @@ namespace Yasfib
                 
             }
             catch { }
+        }
+
+        void browser1_DocumentCompleted(object sender, EventArgs e)
+        {
+            updateTitle();
         }
 
         void browser1_DomContextMenu(object sender, Skybound.Gecko.GeckoDomMouseEventArgs e)
@@ -540,7 +546,7 @@ namespace Yasfib
         {
             try
             {
-                updateTitle();
+                
                 textBox1.Text = Convert.ToString(gwb.Url);
                 string text = Convert.ToString(gwb.Url);
                 //System.IO.File.AppendAllText(@"ac.xml", "<url>" + text + "</url>");
@@ -1133,11 +1139,17 @@ namespace Yasfib
 
         private void printPageToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //x.Visible = false;
             try
             {
-                gwb.print();
+                webBrowser1.Navigate(gwb.Url);
+                webBrowser1.ShowPrintPreviewDialog();
             }
-            catch { }
+            catch (WebException y)
+            {
+                MessageBox.Show(y.Message);
+            }
+
         }
 
         private void qToolBar1_Click(object sender, EventArgs e)
@@ -1618,16 +1630,7 @@ namespace Yasfib
 
         private void findToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (findbox.Visible)
-            {
-                findbox.Visible = false;
-
-            }
-            else
-            {
-                findbox.Visible = true;
-                tosearch.Focus();
-            }
+            nv("javascript:window.find(\"" + "" + "\", false, false, true, false, true, true); void(0);");
         }
         public string gplv3{
 

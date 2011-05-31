@@ -949,12 +949,12 @@
             this.Controls.Add(this.button11);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.buttonX1);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.go);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.findbox);
             this.Controls.Add(this.button3);
