@@ -73,7 +73,8 @@ namespace Yasfib
             Skybound.Gecko.GeckoPreferences.User["network.http.pipelining"] = true;
             Skybound.Gecko.GeckoPreferences.User["network.http.pipelining.ssl"] = true;
             Skybound.Gecko.GeckoPreferences.User["network.http.proxy.pipelining"] = true;
-            Skybound.Gecko.GeckoPreferences.User["nglayout.initialpaint.delay"] = 100;
+            Skybound.Gecko.GeckoPreferences.User["nglayout.initialpaint.delay"] = 0;
+            Skybound.Gecko.GeckoPreferences.User["browser.cache.memory.enable"] = false; 
             //MessageBox.Show("You are now using high-grade security. Privoxy is helping you block phishing websites and advertisements.");
             //geckoWebBrowser1.Navigate("http://w3.org");
             addGeckoTab();
@@ -178,8 +179,8 @@ namespace Yasfib
             }
             return lines;
         }
-        public static bool isChinese = false;
-        public static string versionNumber = "4.5.1-r2";
+        public static bool isChinese = true;
+        public static string versionNumber = "4.5.1-r3";
         void getautocomplete()
         {
             textBox1.AutoCompleteCustomSource.Clear();
@@ -1140,15 +1141,7 @@ namespace Yasfib
         private void printPageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //x.Visible = false;
-            try
-            {
-                webBrowser1.Navigate(gwb.Url);
-                webBrowser1.ShowPrintPreviewDialog();
-            }
-            catch (WebException y)
-            {
-                MessageBox.Show(y.Message);
-            }
+            gwb.Print();
 
         }
 
@@ -1630,7 +1623,15 @@ namespace Yasfib
 
         private void findToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            nv("javascript:window.find(\"" + "" + "\", false, false, true, false, true, true); void(0);");
+            if (findbox.Visible)
+            {
+                findbox.Visible = false;
+            }
+            else
+            {
+                findbox.Visible = true;
+                tosearch.Focus();
+            }
         }
         public string gplv3{
 
@@ -2187,6 +2188,11 @@ namespace Yasfib
         private void button7_MouseHover(object sender, EventArgs e)
         {
 
+        }
+
+        private void garbageCollectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GC.Collect();
         }
 
     }

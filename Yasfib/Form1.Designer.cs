@@ -64,6 +64,7 @@
             this.programLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.updateYasfibToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.garbageCollectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookmarksToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bookmarkThisPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -310,7 +311,8 @@
             this.downloadManagerToolStripMenuItem,
             this.programLogToolStripMenuItem,
             this.optionsToolStripMenuItem1,
-            this.updateYasfibToolStripMenuItem});
+            this.updateYasfibToolStripMenuItem,
+            this.garbageCollectToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.editToolStripMenuItem.Text = "Tools";
@@ -421,6 +423,13 @@
             this.updateYasfibToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.updateYasfibToolStripMenuItem.Text = "Update Daedalus";
             this.updateYasfibToolStripMenuItem.Click += new System.EventHandler(this.updateYasfibToolStripMenuItem_Click);
+            // 
+            // garbageCollectToolStripMenuItem
+            // 
+            this.garbageCollectToolStripMenuItem.Name = "garbageCollectToolStripMenuItem";
+            this.garbageCollectToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.garbageCollectToolStripMenuItem.Text = "Collect garbage";
+            this.garbageCollectToolStripMenuItem.Click += new System.EventHandler(this.garbageCollectToolStripMenuItem_Click);
             // 
             // bookmarksToolStripMenuItem1
             // 
@@ -1091,6 +1100,7 @@
         private System.Windows.Forms.ToolStripMenuItem copyLinkLocationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem programLogToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolStripMenuItem garbageCollectToolStripMenuItem;
     }
 }
 
