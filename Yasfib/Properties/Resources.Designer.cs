@@ -60,6 +60,118 @@ namespace Yasfib.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap _001_01 {
+            get {
+                object obj = ResourceManager.GetObject("001_01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _001_011 {
+            get {
+                object obj = ResourceManager.GetObject("001_011", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _001_02 {
+            get {
+                object obj = ResourceManager.GetObject("001_02", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _001_05 {
+            get {
+                object obj = ResourceManager.GetObject("001_05", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _001_10 {
+            get {
+                object obj = ResourceManager.GetObject("001_10", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _001_20 {
+            get {
+                object obj = ResourceManager.GetObject("001_20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _001_21 {
+            get {
+                object obj = ResourceManager.GetObject("001_21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _001_23 {
+            get {
+                object obj = ResourceManager.GetObject("001_23", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _001_25 {
+            get {
+                object obj = ResourceManager.GetObject("001_25", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _001_37 {
+            get {
+                object obj = ResourceManager.GetObject("001_37", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _001_39 {
+            get {
+                object obj = ResourceManager.GetObject("001_39", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _001_391 {
+            get {
+                object obj = ResourceManager.GetObject("001_391", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _001_392 {
+            get {
+                object obj = ResourceManager.GetObject("001_392", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _001_40 {
+            get {
+                object obj = ResourceManager.GetObject("001_40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _001_41 {
+            get {
+                object obj = ResourceManager.GetObject("001_41", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _001_45 {
+            get {
+                object obj = ResourceManager.GetObject("001_45", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap add {
             get {
                 object obj = ResourceManager.GetObject("add", resourceCulture);
@@ -67,9 +179,79 @@ namespace Yasfib.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Add_To_Favorite {
+            get {
+                object obj = ResourceManager.GetObject("Add To Favorite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap back2 {
             get {
                 object obj = ResourceManager.GetObject("back2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Bandwidth {
+            get {
+                object obj = ResourceManager.GetObject("Bandwidth", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap box_download_48 {
+            get {
+                object obj = ResourceManager.GetObject("box_download_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Cancel_Red_Button {
+            get {
+                object obj = ResourceManager.GetObject("Cancel Red Button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Cancel_Red_Button1 {
+            get {
+                object obj = ResourceManager.GetObject("Cancel Red Button1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap circle_green {
+            get {
+                object obj = ResourceManager.GetObject("circle_green", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap cross_48 {
+            get {
+                object obj = ResourceManager.GetObject("cross_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap cross_481 {
+            get {
+                object obj = ResourceManager.GetObject("cross_481", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Database {
+            get {
+                object obj = ResourceManager.GetObject("Database", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Document {
+            get {
+                object obj = ResourceManager.GetObject("Document", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -91,6 +273,13 @@ namespace Yasfib.Properties {
         internal static System.Drawing.Bitmap favicon {
             get {
                 object obj = ResourceManager.GetObject("favicon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Favorite {
+            get {
+                object obj = ResourceManager.GetObject("Favorite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,6 +312,13 @@ namespace Yasfib.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Help_Blue_Button {
+            get {
+                object obj = ResourceManager.GetObject("Help Blue Button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap home {
             get {
                 object obj = ResourceManager.GetObject("home", resourceCulture);
@@ -137,9 +333,30 @@ namespace Yasfib.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap navigate_48 {
+            get {
+                object obj = ResourceManager.GetObject("navigate_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap newtab {
             get {
                 object obj = ResourceManager.GetObject("newtab", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap paper_content_pencil_48 {
+            get {
+                object obj = ResourceManager.GetObject("paper_content_pencil_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Print {
+            get {
+                object obj = ResourceManager.GetObject("Print", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -210,6 +427,48 @@ namespace Yasfib.Properties {
         internal static System.Drawing.Bitmap stop {
             get {
                 object obj = ResourceManager.GetObject("stop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap table_48 {
+            get {
+                object obj = ResourceManager.GetObject("table_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap table_481 {
+            get {
+                object obj = ResourceManager.GetObject("table_481", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap table_green_48 {
+            get {
+                object obj = ResourceManager.GetObject("table_green_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tabs_48 {
+            get {
+                object obj = ResourceManager.GetObject("tabs_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Tools {
+            get {
+                object obj = ResourceManager.GetObject("Tools", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Upload {
+            get {
+                object obj = ResourceManager.GetObject("Upload", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -118,101 +118,212 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="home" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\home.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Favorite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Favorite.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="back2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\back2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="yasfib" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\yasfib.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="yasfib_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\yasfib_normal.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="zoomnothing" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\zoomnothing.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="kkk" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\kkk.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="table_481" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\table_481.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stop.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="reload1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\reload1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ssl" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ssl.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ssl2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ssl2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="forward2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forward2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="001_25" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_25.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="yasfibBackTop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\yasfibBackTop.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="sign_step1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sign_step1.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="favicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\favicon.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="download11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\download11.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="newtab" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\newtab.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="zoomout" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\zoomout.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="zoomin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\zoomin.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="reload" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\reload.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="001_23" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_23.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="forward1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forward1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="download1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\download1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ssl1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ssl1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="yasfib_compress" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\yasfib_compress.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Upload" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Upload.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="yasfibBack1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\yasfibBack1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="go" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\go.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="yasfib_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\yasfib_logo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="privacy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\privacy.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ssl3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ssl3.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="001_20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_20.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="forward" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forward.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="001_37" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_37.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="001_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_10.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Database" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Database.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ssl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ssl.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zoomin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoomin.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="001_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_01.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="newtab" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newtab.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reload1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reload1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="download1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\download1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cross_481" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cross_481.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="table_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\table_48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="download11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\download11.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="001_21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_21.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ssl3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ssl3.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="001_41" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_41.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="home" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\home.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Add To Favorite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add To Favorite.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kkk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kkk.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="circle_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\circle_green.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ssl2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ssl2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="yasfibBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\yasfibBack.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="001_011" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_011.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zoomout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoomout.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="001_392" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_392.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ssl1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ssl1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="yasfib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yasfib.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cross_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cross_48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tools" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tools.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bandwidth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bandwidth.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="go" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\go.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="privacy2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\privacy2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="001_391" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_391.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="001_45" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_45.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yasfib_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yasfib_logo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="back2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="001_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_40.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="paper_content_pencil_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\paper_content_pencil_48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Print" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Print.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reload" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reload.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yasfibBack1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yasfibBack1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="forward2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forward2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Help Blue Button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Help Blue Button.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="001_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_02.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cancel Red Button1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cancel Red Button1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yasfib_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yasfib_normal.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Document" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Document.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="001_39" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_39.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cancel Red Button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cancel Red Button.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="box_download_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\box_download_48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tabs_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tabs_48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zoomnothing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoomnothing.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="favicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\favicon.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yasfib_compress" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yasfib_compress.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sign_step1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sign_step1.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="001_05" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_05.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="privacy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\privacy.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="table_green_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\table_green_48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="navigate_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\navigate_48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
