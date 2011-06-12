@@ -43,9 +43,40 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.添加新IE壳标签ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.addTabCtrlTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printPageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ppToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewSourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enableAntiblockingToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pipeliningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.extremeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.normalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.offToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.upgradeAntiblockingModuleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteBrowsingHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileSharingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.downloadManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.programLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateYasfibToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bookmarksToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bookmarkThisPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.mainCM = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openInNewTabToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyLinkLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookmarkThisPageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.viewSourceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,39 +116,8 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
-            this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.addTabCtrlTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printPageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewSourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.enableAntiblockingToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.pipeliningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.extremeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.normalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.offToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.upgradeAntiblockingModuleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteBrowsingHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileSharingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.downloadManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.programLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.updateYasfibToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bookmarksToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.bookmarkThisPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.openInNewTabToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyLinkLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ppToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
@@ -245,6 +245,249 @@
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
+            // toolStripSplitButton1
+            // 
+            this.toolStripSplitButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripSplitButton1.DropDownButtonWidth = 15;
+            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem1,
+            this.editToolStripMenuItem,
+            this.bookmarksToolStripMenuItem1,
+            this.helpToolStripMenuItem});
+            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
+            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(57, 22);
+            this.toolStripSplitButton1.Text = "Menu";
+            this.toolStripSplitButton1.ButtonClick += new System.EventHandler(this.toolStripSplitButton1_ButtonClick);
+            // 
+            // fileToolStripMenuItem1
+            // 
+            this.fileToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addTabCtrlTToolStripMenuItem,
+            this.findToolStripMenuItem,
+            this.printPageToolStripMenuItem1,
+            this.ppToolStripMenuItem,
+            this.exitToolStripMenuItem1});
+            this.fileToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.Document;
+            this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
+            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
+            this.fileToolStripMenuItem1.Text = "File";
+            // 
+            // addTabCtrlTToolStripMenuItem
+            // 
+            this.addTabCtrlTToolStripMenuItem.Image = global::Yasfib.Properties.Resources.tabs_48;
+            this.addTabCtrlTToolStripMenuItem.Name = "addTabCtrlTToolStripMenuItem";
+            this.addTabCtrlTToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this.addTabCtrlTToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.addTabCtrlTToolStripMenuItem.Text = "Add Tab";
+            this.addTabCtrlTToolStripMenuItem.Click += new System.EventHandler(this.addTabCtrlTToolStripMenuItem_Click);
+            // 
+            // findToolStripMenuItem
+            // 
+            this.findToolStripMenuItem.Image = global::Yasfib.Properties.Resources._001_37;
+            this.findToolStripMenuItem.Name = "findToolStripMenuItem";
+            this.findToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+            this.findToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.findToolStripMenuItem.Text = "Find";
+            this.findToolStripMenuItem.Click += new System.EventHandler(this.findToolStripMenuItem_Click);
+            // 
+            // printPageToolStripMenuItem1
+            // 
+            this.printPageToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.Print;
+            this.printPageToolStripMenuItem1.Name = "printPageToolStripMenuItem1";
+            this.printPageToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
+            this.printPageToolStripMenuItem1.Text = "Print...";
+            this.printPageToolStripMenuItem1.Click += new System.EventHandler(this.printPageToolStripMenuItem_Click);
+            // 
+            // ppToolStripMenuItem
+            // 
+            this.ppToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Print;
+            this.ppToolStripMenuItem.Name = "ppToolStripMenuItem";
+            this.ppToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.ppToolStripMenuItem.Text = "Print Preview";
+            this.ppToolStripMenuItem.Click += new System.EventHandler(this.ppToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem1
+            // 
+            this.exitToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.cross_481;
+            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
+            this.exitToolStripMenuItem1.Text = "Exit";
+            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewSourceToolStripMenuItem,
+            this.optionsToolStripMenuItem,
+            this.downloadManagerToolStripMenuItem,
+            this.programLogToolStripMenuItem,
+            this.optionsToolStripMenuItem1,
+            this.updateYasfibToolStripMenuItem});
+            this.editToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Tools;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.editToolStripMenuItem.Text = "Tools";
+            // 
+            // viewSourceToolStripMenuItem
+            // 
+            this.viewSourceToolStripMenuItem.Image = global::Yasfib.Properties.Resources._001_45;
+            this.viewSourceToolStripMenuItem.Name = "viewSourceToolStripMenuItem";
+            this.viewSourceToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.viewSourceToolStripMenuItem.Text = "View source";
+            this.viewSourceToolStripMenuItem.Click += new System.EventHandler(this.本页源代码ToolStripMenuItem_Click);
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.enableAntiblockingToolStripMenuItem1,
+            this.pipeliningToolStripMenuItem,
+            this.upgradeAntiblockingModuleToolStripMenuItem,
+            this.deleteBrowsingHistoryToolStripMenuItem,
+            this.fileSharingToolStripMenuItem});
+            this.optionsToolStripMenuItem.Image = global::Yasfib.Properties.Resources.table_48;
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.optionsToolStripMenuItem.Text = "Quick options";
+            // 
+            // enableAntiblockingToolStripMenuItem1
+            // 
+            this.enableAntiblockingToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.circle_green;
+            this.enableAntiblockingToolStripMenuItem1.Name = "enableAntiblockingToolStripMenuItem1";
+            this.enableAntiblockingToolStripMenuItem1.Size = new System.Drawing.Size(237, 22);
+            this.enableAntiblockingToolStripMenuItem1.Text = "Enable Anti-blocking";
+            this.enableAntiblockingToolStripMenuItem1.Click += new System.EventHandler(this.premiumToolStripMenuItem_Click);
+            // 
+            // pipeliningToolStripMenuItem
+            // 
+            this.pipeliningToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.extremeToolStripMenuItem,
+            this.normalToolStripMenuItem,
+            this.offToolStripMenuItem1});
+            this.pipeliningToolStripMenuItem.Image = global::Yasfib.Properties.Resources._001_25;
+            this.pipeliningToolStripMenuItem.Name = "pipeliningToolStripMenuItem";
+            this.pipeliningToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.pipeliningToolStripMenuItem.Text = "Pipelining";
+            // 
+            // extremeToolStripMenuItem
+            // 
+            this.extremeToolStripMenuItem.Name = "extremeToolStripMenuItem";
+            this.extremeToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.extremeToolStripMenuItem.Text = "Extreme";
+            this.extremeToolStripMenuItem.Click += new System.EventHandler(this.extremeToolStripMenuItem_Click);
+            // 
+            // normalToolStripMenuItem
+            // 
+            this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
+            this.normalToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.normalToolStripMenuItem.Text = "Normal";
+            this.normalToolStripMenuItem.Click += new System.EventHandler(this.normalToolStripMenuItem_Click);
+            // 
+            // offToolStripMenuItem1
+            // 
+            this.offToolStripMenuItem1.Name = "offToolStripMenuItem1";
+            this.offToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.offToolStripMenuItem1.Text = "Off";
+            this.offToolStripMenuItem1.Click += new System.EventHandler(this.offToolStripMenuItem1_Click);
+            // 
+            // upgradeAntiblockingModuleToolStripMenuItem
+            // 
+            this.upgradeAntiblockingModuleToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Upload;
+            this.upgradeAntiblockingModuleToolStripMenuItem.Name = "upgradeAntiblockingModuleToolStripMenuItem";
+            this.upgradeAntiblockingModuleToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.upgradeAntiblockingModuleToolStripMenuItem.Text = "Upgrade Anti-blocking Module";
+            this.upgradeAntiblockingModuleToolStripMenuItem.Click += new System.EventHandler(this.upgradeAntiblockingModuleToolStripMenuItem_Click);
+            // 
+            // deleteBrowsingHistoryToolStripMenuItem
+            // 
+            this.deleteBrowsingHistoryToolStripMenuItem.Image = global::Yasfib.Properties.Resources.cross_48;
+            this.deleteBrowsingHistoryToolStripMenuItem.Name = "deleteBrowsingHistoryToolStripMenuItem";
+            this.deleteBrowsingHistoryToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.deleteBrowsingHistoryToolStripMenuItem.Text = "Delete Browsing History";
+            this.deleteBrowsingHistoryToolStripMenuItem.Click += new System.EventHandler(this.deleteBrowsingHistoryToolStripMenuItem_Click);
+            // 
+            // fileSharingToolStripMenuItem
+            // 
+            this.fileSharingToolStripMenuItem.Enabled = false;
+            this.fileSharingToolStripMenuItem.Name = "fileSharingToolStripMenuItem";
+            this.fileSharingToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.fileSharingToolStripMenuItem.Text = "File Sharing";
+            this.fileSharingToolStripMenuItem.Click += new System.EventHandler(this.fileSharingToolStripMenuItem_Click);
+            // 
+            // downloadManagerToolStripMenuItem
+            // 
+            this.downloadManagerToolStripMenuItem.Image = global::Yasfib.Properties.Resources.box_download_48;
+            this.downloadManagerToolStripMenuItem.Name = "downloadManagerToolStripMenuItem";
+            this.downloadManagerToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.downloadManagerToolStripMenuItem.Text = "Download manager";
+            this.downloadManagerToolStripMenuItem.Click += new System.EventHandler(this.下载管理器ToolStripMenuItem_Click);
+            // 
+            // programLogToolStripMenuItem
+            // 
+            this.programLogToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Database;
+            this.programLogToolStripMenuItem.Name = "programLogToolStripMenuItem";
+            this.programLogToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.programLogToolStripMenuItem.Text = "Program Log";
+            this.programLogToolStripMenuItem.Click += new System.EventHandler(this.programLogToolStripMenuItem_Click_2);
+            // 
+            // optionsToolStripMenuItem1
+            // 
+            this.optionsToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.table_green_48;
+            this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
+            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
+            this.optionsToolStripMenuItem1.Text = "Preferences...";
+            this.optionsToolStripMenuItem1.Click += new System.EventHandler(this.optionsToolStripMenuItem1_Click);
+            // 
+            // updateYasfibToolStripMenuItem
+            // 
+            this.updateYasfibToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Upload;
+            this.updateYasfibToolStripMenuItem.Name = "updateYasfibToolStripMenuItem";
+            this.updateYasfibToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.updateYasfibToolStripMenuItem.Text = "Update Daedalus";
+            this.updateYasfibToolStripMenuItem.Click += new System.EventHandler(this.updateYasfibToolStripMenuItem_Click);
+            // 
+            // bookmarksToolStripMenuItem1
+            // 
+            this.bookmarksToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bookmarkThisPageToolStripMenuItem,
+            this.toolStripMenuItem2});
+            this.bookmarksToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.Favorite;
+            this.bookmarksToolStripMenuItem1.Name = "bookmarksToolStripMenuItem1";
+            this.bookmarksToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
+            this.bookmarksToolStripMenuItem1.Text = "Bookmarks";
+            // 
+            // bookmarkThisPageToolStripMenuItem
+            // 
+            this.bookmarkThisPageToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Add_To_Favorite;
+            this.bookmarkThisPageToolStripMenuItem.Name = "bookmarkThisPageToolStripMenuItem";
+            this.bookmarkThisPageToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.bookmarkThisPageToolStripMenuItem.Text = "Bookmark this page";
+            this.bookmarkThisPageToolStripMenuItem.Click += new System.EventHandler(this.addBookmarkToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(200, 22);
+            this.toolStripMenuItem2.Text = "__________________";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Help_Blue_Button;
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
+            // 
             // timer2
             // 
             this.timer2.Enabled = true;
@@ -267,6 +510,38 @@
             this.viewSourceToolStripMenuItem1});
             this.mainCM.Name = "mainCM";
             this.mainCM.Size = new System.Drawing.Size(196, 158);
+            // 
+            // openInNewTabToolStripMenuItem1
+            // 
+            this.openInNewTabToolStripMenuItem1.Image = global::Yasfib.Properties.Resources._001_011;
+            this.openInNewTabToolStripMenuItem1.Name = "openInNewTabToolStripMenuItem1";
+            this.openInNewTabToolStripMenuItem1.Size = new System.Drawing.Size(195, 22);
+            this.openInNewTabToolStripMenuItem1.Text = "Open in new tab";
+            this.openInNewTabToolStripMenuItem1.Click += new System.EventHandler(this.openInNewTabToolStripMenuItem1_Click);
+            // 
+            // copyLinkLocationToolStripMenuItem
+            // 
+            this.copyLinkLocationToolStripMenuItem.Image = global::Yasfib.Properties.Resources.paper_content_pencil_48;
+            this.copyLinkLocationToolStripMenuItem.Name = "copyLinkLocationToolStripMenuItem";
+            this.copyLinkLocationToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.copyLinkLocationToolStripMenuItem.Text = "Copy link location";
+            this.copyLinkLocationToolStripMenuItem.Click += new System.EventHandler(this.copyLinkLocationToolStripMenuItem_Click);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Image = global::Yasfib.Properties.Resources.paper_content_pencil_48;
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
+            // selectAllToolStripMenuItem
+            // 
+            this.selectAllToolStripMenuItem.Image = global::Yasfib.Properties.Resources.navigate_48;
+            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.selectAllToolStripMenuItem.Text = "Select All";
+            this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
             // reloadToolStripMenuItem
             // 
@@ -680,241 +955,6 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.reloadToolStripMenuItem_Click);
             // 
-            // toolStripSplitButton1
-            // 
-            this.toolStripSplitButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripSplitButton1.DropDownButtonWidth = 15;
-            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem1,
-            this.editToolStripMenuItem,
-            this.bookmarksToolStripMenuItem1,
-            this.helpToolStripMenuItem});
-            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(57, 22);
-            this.toolStripSplitButton1.Text = "Menu";
-            this.toolStripSplitButton1.ButtonClick += new System.EventHandler(this.toolStripSplitButton1_ButtonClick);
-            // 
-            // fileToolStripMenuItem1
-            // 
-            this.fileToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addTabCtrlTToolStripMenuItem,
-            this.findToolStripMenuItem,
-            this.printPageToolStripMenuItem1,
-            this.ppToolStripMenuItem,
-            this.exitToolStripMenuItem1});
-            this.fileToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.Document;
-            this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
-            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.fileToolStripMenuItem1.Text = "File";
-            // 
-            // addTabCtrlTToolStripMenuItem
-            // 
-            this.addTabCtrlTToolStripMenuItem.Image = global::Yasfib.Properties.Resources.tabs_48;
-            this.addTabCtrlTToolStripMenuItem.Name = "addTabCtrlTToolStripMenuItem";
-            this.addTabCtrlTToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.addTabCtrlTToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.addTabCtrlTToolStripMenuItem.Text = "Add Tab";
-            this.addTabCtrlTToolStripMenuItem.Click += new System.EventHandler(this.addTabCtrlTToolStripMenuItem_Click);
-            // 
-            // findToolStripMenuItem
-            // 
-            this.findToolStripMenuItem.Image = global::Yasfib.Properties.Resources._001_37;
-            this.findToolStripMenuItem.Name = "findToolStripMenuItem";
-            this.findToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.findToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.findToolStripMenuItem.Text = "Find";
-            this.findToolStripMenuItem.Click += new System.EventHandler(this.findToolStripMenuItem_Click);
-            // 
-            // printPageToolStripMenuItem1
-            // 
-            this.printPageToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.Print;
-            this.printPageToolStripMenuItem1.Name = "printPageToolStripMenuItem1";
-            this.printPageToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
-            this.printPageToolStripMenuItem1.Text = "Print...";
-            this.printPageToolStripMenuItem1.Click += new System.EventHandler(this.printPageToolStripMenuItem_Click);
-            // 
-            // exitToolStripMenuItem1
-            // 
-            this.exitToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.cross_481;
-            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
-            this.exitToolStripMenuItem1.Text = "Exit";
-            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewSourceToolStripMenuItem,
-            this.optionsToolStripMenuItem,
-            this.downloadManagerToolStripMenuItem,
-            this.programLogToolStripMenuItem,
-            this.optionsToolStripMenuItem1,
-            this.updateYasfibToolStripMenuItem});
-            this.editToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Tools;
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.editToolStripMenuItem.Text = "Tools";
-            // 
-            // viewSourceToolStripMenuItem
-            // 
-            this.viewSourceToolStripMenuItem.Image = global::Yasfib.Properties.Resources._001_45;
-            this.viewSourceToolStripMenuItem.Name = "viewSourceToolStripMenuItem";
-            this.viewSourceToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.viewSourceToolStripMenuItem.Text = "View source";
-            this.viewSourceToolStripMenuItem.Click += new System.EventHandler(this.本页源代码ToolStripMenuItem_Click);
-            // 
-            // optionsToolStripMenuItem
-            // 
-            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.enableAntiblockingToolStripMenuItem1,
-            this.pipeliningToolStripMenuItem,
-            this.upgradeAntiblockingModuleToolStripMenuItem,
-            this.deleteBrowsingHistoryToolStripMenuItem,
-            this.fileSharingToolStripMenuItem});
-            this.optionsToolStripMenuItem.Image = global::Yasfib.Properties.Resources.table_48;
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.optionsToolStripMenuItem.Text = "Quick options";
-            // 
-            // enableAntiblockingToolStripMenuItem1
-            // 
-            this.enableAntiblockingToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.circle_green;
-            this.enableAntiblockingToolStripMenuItem1.Name = "enableAntiblockingToolStripMenuItem1";
-            this.enableAntiblockingToolStripMenuItem1.Size = new System.Drawing.Size(237, 22);
-            this.enableAntiblockingToolStripMenuItem1.Text = "Enable Anti-blocking";
-            this.enableAntiblockingToolStripMenuItem1.Click += new System.EventHandler(this.premiumToolStripMenuItem_Click);
-            // 
-            // pipeliningToolStripMenuItem
-            // 
-            this.pipeliningToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.extremeToolStripMenuItem,
-            this.normalToolStripMenuItem,
-            this.offToolStripMenuItem1});
-            this.pipeliningToolStripMenuItem.Image = global::Yasfib.Properties.Resources._001_25;
-            this.pipeliningToolStripMenuItem.Name = "pipeliningToolStripMenuItem";
-            this.pipeliningToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
-            this.pipeliningToolStripMenuItem.Text = "Pipelining";
-            // 
-            // extremeToolStripMenuItem
-            // 
-            this.extremeToolStripMenuItem.Name = "extremeToolStripMenuItem";
-            this.extremeToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
-            this.extremeToolStripMenuItem.Text = "Extreme";
-            this.extremeToolStripMenuItem.Click += new System.EventHandler(this.extremeToolStripMenuItem_Click);
-            // 
-            // normalToolStripMenuItem
-            // 
-            this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
-            this.normalToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
-            this.normalToolStripMenuItem.Text = "Normal";
-            this.normalToolStripMenuItem.Click += new System.EventHandler(this.normalToolStripMenuItem_Click);
-            // 
-            // offToolStripMenuItem1
-            // 
-            this.offToolStripMenuItem1.Name = "offToolStripMenuItem1";
-            this.offToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
-            this.offToolStripMenuItem1.Text = "Off";
-            this.offToolStripMenuItem1.Click += new System.EventHandler(this.offToolStripMenuItem1_Click);
-            // 
-            // upgradeAntiblockingModuleToolStripMenuItem
-            // 
-            this.upgradeAntiblockingModuleToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Upload;
-            this.upgradeAntiblockingModuleToolStripMenuItem.Name = "upgradeAntiblockingModuleToolStripMenuItem";
-            this.upgradeAntiblockingModuleToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
-            this.upgradeAntiblockingModuleToolStripMenuItem.Text = "Upgrade Anti-blocking Module";
-            this.upgradeAntiblockingModuleToolStripMenuItem.Click += new System.EventHandler(this.upgradeAntiblockingModuleToolStripMenuItem_Click);
-            // 
-            // deleteBrowsingHistoryToolStripMenuItem
-            // 
-            this.deleteBrowsingHistoryToolStripMenuItem.Image = global::Yasfib.Properties.Resources.cross_48;
-            this.deleteBrowsingHistoryToolStripMenuItem.Name = "deleteBrowsingHistoryToolStripMenuItem";
-            this.deleteBrowsingHistoryToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
-            this.deleteBrowsingHistoryToolStripMenuItem.Text = "Delete Browsing History";
-            this.deleteBrowsingHistoryToolStripMenuItem.Click += new System.EventHandler(this.deleteBrowsingHistoryToolStripMenuItem_Click);
-            // 
-            // fileSharingToolStripMenuItem
-            // 
-            this.fileSharingToolStripMenuItem.Enabled = false;
-            this.fileSharingToolStripMenuItem.Name = "fileSharingToolStripMenuItem";
-            this.fileSharingToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
-            this.fileSharingToolStripMenuItem.Text = "File Sharing";
-            this.fileSharingToolStripMenuItem.Click += new System.EventHandler(this.fileSharingToolStripMenuItem_Click);
-            // 
-            // downloadManagerToolStripMenuItem
-            // 
-            this.downloadManagerToolStripMenuItem.Image = global::Yasfib.Properties.Resources.box_download_48;
-            this.downloadManagerToolStripMenuItem.Name = "downloadManagerToolStripMenuItem";
-            this.downloadManagerToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.downloadManagerToolStripMenuItem.Text = "Download manager";
-            this.downloadManagerToolStripMenuItem.Click += new System.EventHandler(this.下载管理器ToolStripMenuItem_Click);
-            // 
-            // programLogToolStripMenuItem
-            // 
-            this.programLogToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Database;
-            this.programLogToolStripMenuItem.Name = "programLogToolStripMenuItem";
-            this.programLogToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.programLogToolStripMenuItem.Text = "Program Log";
-            this.programLogToolStripMenuItem.Click += new System.EventHandler(this.programLogToolStripMenuItem_Click_2);
-            // 
-            // optionsToolStripMenuItem1
-            // 
-            this.optionsToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.table_green_48;
-            this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
-            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
-            this.optionsToolStripMenuItem1.Text = "Preferences...";
-            this.optionsToolStripMenuItem1.Click += new System.EventHandler(this.optionsToolStripMenuItem1_Click);
-            // 
-            // updateYasfibToolStripMenuItem
-            // 
-            this.updateYasfibToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Upload;
-            this.updateYasfibToolStripMenuItem.Name = "updateYasfibToolStripMenuItem";
-            this.updateYasfibToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.updateYasfibToolStripMenuItem.Text = "Update Daedalus";
-            this.updateYasfibToolStripMenuItem.Click += new System.EventHandler(this.updateYasfibToolStripMenuItem_Click);
-            // 
-            // bookmarksToolStripMenuItem1
-            // 
-            this.bookmarksToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bookmarkThisPageToolStripMenuItem,
-            this.toolStripMenuItem2});
-            this.bookmarksToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.Favorite;
-            this.bookmarksToolStripMenuItem1.Name = "bookmarksToolStripMenuItem1";
-            this.bookmarksToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.bookmarksToolStripMenuItem1.Text = "Bookmarks";
-            // 
-            // bookmarkThisPageToolStripMenuItem
-            // 
-            this.bookmarkThisPageToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Add_To_Favorite;
-            this.bookmarkThisPageToolStripMenuItem.Name = "bookmarkThisPageToolStripMenuItem";
-            this.bookmarkThisPageToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.bookmarkThisPageToolStripMenuItem.Text = "Bookmark this page";
-            this.bookmarkThisPageToolStripMenuItem.Click += new System.EventHandler(this.addBookmarkToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(200, 22);
-            this.toolStripMenuItem2.Text = "__________________";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Help_Blue_Button;
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
-            // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -942,46 +982,6 @@
             this.button7.Click += new System.EventHandler(this.button7_Click);
             this.button7.MouseHover += new System.EventHandler(this.button7_MouseHover);
             this.button7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button7_MouseMove);
-            // 
-            // openInNewTabToolStripMenuItem1
-            // 
-            this.openInNewTabToolStripMenuItem1.Image = global::Yasfib.Properties.Resources._001_011;
-            this.openInNewTabToolStripMenuItem1.Name = "openInNewTabToolStripMenuItem1";
-            this.openInNewTabToolStripMenuItem1.Size = new System.Drawing.Size(195, 22);
-            this.openInNewTabToolStripMenuItem1.Text = "Open in new tab";
-            this.openInNewTabToolStripMenuItem1.Click += new System.EventHandler(this.openInNewTabToolStripMenuItem1_Click);
-            // 
-            // copyLinkLocationToolStripMenuItem
-            // 
-            this.copyLinkLocationToolStripMenuItem.Image = global::Yasfib.Properties.Resources.paper_content_pencil_48;
-            this.copyLinkLocationToolStripMenuItem.Name = "copyLinkLocationToolStripMenuItem";
-            this.copyLinkLocationToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.copyLinkLocationToolStripMenuItem.Text = "Copy link location";
-            this.copyLinkLocationToolStripMenuItem.Click += new System.EventHandler(this.copyLinkLocationToolStripMenuItem_Click);
-            // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Image = global::Yasfib.Properties.Resources.paper_content_pencil_48;
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.copyToolStripMenuItem.Text = "Copy";
-            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
-            // 
-            // selectAllToolStripMenuItem
-            // 
-            this.selectAllToolStripMenuItem.Image = global::Yasfib.Properties.Resources.navigate_48;
-            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.selectAllToolStripMenuItem.Text = "Select All";
-            this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
-            // 
-            // ppToolStripMenuItem
-            // 
-            this.ppToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Print;
-            this.ppToolStripMenuItem.Name = "ppToolStripMenuItem";
-            this.ppToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.ppToolStripMenuItem.Text = "Print Preview";
-            this.ppToolStripMenuItem.Click += new System.EventHandler(this.ppToolStripMenuItem_Click);
             // 
             // webBrowser1
             // 

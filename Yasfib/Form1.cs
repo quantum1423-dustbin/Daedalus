@@ -179,8 +179,8 @@ namespace Yasfib
             }
             return lines;
         }
-        public static bool isChinese = true;
-        public static string versionNumber = "4.5.5-r1";
+        public static bool isChinese = false;
+        public static string versionNumber = "4.5.5-r2";
         void getautocomplete()
         {
             textBox1.AutoCompleteCustomSource.Clear();
@@ -449,6 +449,8 @@ namespace Yasfib
                 foobar.Focus();
                 foobar.Tag = "-";
                 rtab();
+                Bitmap interbediate = new Bitmap(Yasfib.Properties.Resources._001_40);
+                ((Form)(this.tabControl1.SelectedForm)).Icon = Icon.FromHandle(interbediate.GetHicon());
                 //browser1.Navigate("about:blank");
 
             }
@@ -484,7 +486,7 @@ namespace Yasfib
         void browser1_DocumentCompleted(object sender, EventArgs e)
         {
             updateTitle();
-            GF();
+            //GF();
         }
         void GF()
         {
