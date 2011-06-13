@@ -179,7 +179,7 @@ namespace Yasfib
             }
             return lines;
         }
-        public static bool isChinese = false;
+        public static bool isChinese = true;
         public static string versionNumber = "4.5.5-r2";
         void getautocomplete()
         {
@@ -486,7 +486,7 @@ namespace Yasfib
         void browser1_DocumentCompleted(object sender, EventArgs e)
         {
             updateTitle();
-            //GF();
+            textBox1.Text = Convert.ToString(gwb.Url);
         }
         void GF()
         {
@@ -687,11 +687,11 @@ namespace Yasfib
                 }
                 if (gwb.DocumentTitle == "")
                 {
-                    ((Form)(this.tabControl1.SelectedForm)).Text = Convert.ToString(gwb.Url.DnsSafeHost);
+                    ((Form)(((Skybound.Gecko.GeckoWebBrowser)(sender)).Parent)).Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(sender)).Url.DnsSafeHost);
                 }
                 else
                 {
-                    ((Form)(this.tabControl1.SelectedForm)).Text = gwb.DocumentTitle;
+                    ((Form)(((Skybound.Gecko.GeckoWebBrowser)(sender)).Parent)).Text = ((Skybound.Gecko.GeckoWebBrowser)(sender)).DocumentTitle;
 
                     //textBox1.Text = Convert.ToString(gwb.Url);
                 }
