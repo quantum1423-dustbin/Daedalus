@@ -1,4 +1,5 @@
-﻿using System; 
+﻿#define AERO
+using System; 
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,7 +42,7 @@ namespace Yasfib
                 throw new Exception("Only one instance of Form1 is allowed");
 
             Instance = this;
-            Skybound.Gecko.Xpcom.Initialize("xulrunner");
+            Skybound.Gecko.Xpcom.Initialize("xulrunner-o");
             //Skybound.Gecko.Xpcom.ProfileDirectory = "%APPDATA%\\";
             int moreThanOne = 0;
             Process[] processid = Process.GetProcessesByName("daedalus");
@@ -101,6 +102,10 @@ namespace Yasfib
             }
             if (((Form)(this.tabControl1.SelectedForm)).Tag.ToString() != "A")
             {
+                if (url.Contains("foobariamus"))
+                {
+                    translate2NV();
+                }
                 if (url != "about:easteregg")
                 {
                     gwb.Navigate(url);
@@ -179,8 +184,8 @@ namespace Yasfib
             }
             return lines;
         }
-        public static bool isChinese = true;
-        public static string versionNumber = "4.5.5-r2";
+        public static bool isChinese = false;
+        public static string versionNumber = "5.0.1-r1 ALPHA 01";
         void getautocomplete()
         {
             textBox1.AutoCompleteCustomSource.Clear();
@@ -220,7 +225,7 @@ namespace Yasfib
         private void select(object sender, EventArgs e)
         {
             textBox1.Text = Convert.ToString(gwb.Url);
-            updateTitle();
+            updateTitle(true);
             rtab();
             textBox1.BackColor = Color.White;
         }
@@ -315,10 +320,10 @@ namespace Yasfib
             toolStripSplitButton1.Text = "主菜单";
             //button7.Text = "压";
             //setHomePageToolStripMenuItem.Text = "将本页设为主页";
-            upgradeAntiblockingModuleToolStripMenuItem.Text = "升级反封杀模块";
+            //upgradeAntiblockingModuleToolStripMenuItem.Text = "升级反封杀模块";
             //button8.Text = "无痕";
             deleteBrowsingHistoryToolStripMenuItem.Text = "删除浏览记录";
-            fileSharingToolStripMenuItem.Text = "AAS极速网盘";
+            //fileSharingToolStripMenuItem.Text = "AAS极速网盘";
             editBadWordListToolStripMenuItem.Text = "编辑脏词数据库";
             editInappropriateContentKeywordListToolStripMenuItem.Text = "编辑黄色内容关键词";
             //buttonX2.Text = "可能为钓鱼网站！";
@@ -341,6 +346,20 @@ namespace Yasfib
             programLogToolStripMenuItem.Text = "系统日志";
             findToolStripMenuItem.Text = "查找";
             helpToolStripMenuItem.Text = "帮助";
+            translateMeToolStripMenuItem.Text = "翻译所选文本";
+        }
+        void translate2NV()
+        {
+            this.Text = "Txedalus " + versionNumber;
+            ppToolStripMenuItem.Text = "Pamrel si";
+            fileToolStripMenuItem1.Text = "Pamrel";
+            editToolStripMenuItem.Text = "Aysäo";
+            bookmarksToolStripMenuItem1.Text = "Swey";
+            printPageToolStripMenuItem1.Text = "Pamrel si...";
+            exitToolStripMenuItem1.Text = "Hum";
+            bookmarkThisPageToolStripMenuItem.Text = "\"Bookmark\" fìpamrel";
+            //showBookmarksToolStripMenuItem.Text = "显示所有收藏";
+            viewSourceToolStripMenuItem.Text = "Fìpamrelyä tsim";
         }
         //Shortcut for browser
         public Skybound.Gecko.GeckoWebBrowser gwb
@@ -377,37 +396,6 @@ namespace Yasfib
         }
         public void checkphishie()
         {
-            /*try
-            {
-                // Create an isntance of XmlTextReader and call Read method to read the file
-                XmlTextReader textReader = new XmlTextReader("http://checkurl.phishtank.com.nyud.net/checkurl/index.php?app_key=03432834ef95fa478034e81ca1cbdebc222bb7be07ad5830122fa1abf3e3d7fc&url=" + textBox1.Text);
-                textReader.Read();
-                // If the node has value
-                while (textReader.Read())
-                {
-                    // Move to fist element
-                    textReader.MoveToElement();
-                    if (textReader.Name == "in_database")
-                    {
-                        if (textReader.ReadString() == "true")
-                        {
-                            if (checkBox1.Checked == true)
-                            {
-                                MessageBox.Show("警告！本网站为钓鱼网站！");
-                                ((WebBrowser)(this.tabControl1s.SelectedTab.Controls[0])).Navigate("about:blank");
-                                break;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Warning! This is a phishing site!");
-                                ((WebBrowser)(this.tabControl1s.SelectedTab.Controls[0])).Navigate("about:blank");
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            catch { }*/
         }
         public void addGeckoTab()
         {
@@ -438,6 +426,7 @@ namespace Yasfib
                 //1browser1.DomContextMenu += new Skybound.Gecko.GeckoDomMouseEventHandler(browser1_DomContextMenu);
                 browser1.NoDefaultContextMenu = true;
                 browser1.ContextMenuStrip = mainCM;
+                browser1.DocumentTitleChanged+= new EventHandler(browser_DocumentTitleChanged);
                 foobar.GotFocus += new
                 EventHandler(select);
                 foobar.Disposed +=
@@ -452,9 +441,13 @@ namespace Yasfib
                 Bitmap interbediate = new Bitmap(Yasfib.Properties.Resources._001_40);
                 ((Form)(this.tabControl1.SelectedForm)).Icon = Icon.FromHandle(interbediate.GetHicon());
                 //browser1.Navigate("about:blank");
-
+                textBox1.Focus();
             }
             catch { }
+        }
+        void browser_DocumentTitleChanged(object sender, EventArgs e)
+        {
+            updateTitle(false);
         }
         void getFavicon()
         {
@@ -485,7 +478,17 @@ namespace Yasfib
         }
         void browser1_DocumentCompleted(object sender, EventArgs e)
         {
-            updateTitle();
+            updateTitle(true);
+            if (gwb.DocumentTitle == "")
+            {
+                ((Form)(((Skybound.Gecko.GeckoWebBrowser)(sender)).Parent)).Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(sender)).Url.DnsSafeHost);
+            }
+            else
+            {
+                ((Form)(((Skybound.Gecko.GeckoWebBrowser)(sender)).Parent)).Text = ((Skybound.Gecko.GeckoWebBrowser)(sender)).DocumentTitle;
+
+                //textBox1.Text = Convert.ToString(gwb.Url);
+            }
             textBox1.Text = Convert.ToString(gwb.Url);
         }
         void GF()
@@ -531,9 +534,8 @@ namespace Yasfib
 
         void browser1_Navigating(object sender, Skybound.Gecko.GeckoNavigatingEventArgs e)
         {
-            //dl.RunWorkerAsync(e.Uri.ToString());
         }
-
+        public string burl = "";
         void browser1_DomMouseDown(object sender, Skybound.Gecko.GeckoDomMouseEventArgs e)
         {
             cacheString = gwb.StatusText;
@@ -548,6 +550,11 @@ namespace Yasfib
                     copyLinkLocationToolStripMenuItem.Visible = true;
                 }
                 else { openInNewTabToolStripMenuItem1.Visible = false; copyLinkLocationToolStripMenuItem.Visible = false; }
+                if (gwb.CanCopySelection)
+                {
+                    translateMeToolStripMenuItem.Visible = true;
+                }
+                else translateMeToolStripMenuItem.Visible = false;
             }
         }
         private void dd(object sender, EventArgs e)
@@ -756,10 +763,9 @@ namespace Yasfib
             }
             catch { MessageBox.Show("Error: corrupted/missing anti-blocking module. Upgrade module immediately \n 错误：丢失反封杀模块。请立即升级反封杀模块。"); abWorking = false; } foreach (Process clsProcess in Process.GetProcesses())
             {
-
+#if AERO
                 if (clsProcess.ProcessName.Contains("dwm"))
                 {
-                    //log("DWM service detected, enabling Aero");
                     MARGINS margins = new MARGINS();
                     margins.cxLeftWidth = 10;
                     margins.cxRightWidth = 10;
@@ -773,9 +779,10 @@ namespace Yasfib
                     tabControl1.BackHighColor = System.Drawing.Color.BlanchedAlmond;
                     tabControl1.BackLowColor = System.Drawing.Color.BlanchedAlmond;
                     this.BackgroundImage = null;
-                    tabControl1.TabBackHighColorDisabled = Color.LightSkyBlue;
+                    //tabControl1.TabBackHighColorDisabled = Color.LightSkyBlue;
                     //label1.ForeColor = Color.White;
                 }
+#endif
             }
             readBM();
             TextReader gpl = new StreamReader("LICENSE.txt");
@@ -871,7 +878,7 @@ namespace Yasfib
                 }
             }
             catch { }*/
-
+            rtab();
         }
         void getIcon()
         {
@@ -969,7 +976,7 @@ namespace Yasfib
             TextWriter tr = new StreamWriter("bookmarks.txt");
             foreach (ToolStripMenuItem mark in bookmarksToolStripMenuItem1.DropDownItems)
             {
-                if (i >= 3)
+                if (i >= 2)
                 {
                     tr.WriteLine(mark.Text);
                     tr.WriteLine(mark.Tag);
@@ -980,7 +987,7 @@ namespace Yasfib
             Instance = null;
             proc("exit.bat");
         }
-        void updateTitle()
+        void updateTitle(bool url)
         {
             //log("Called updateTitle() function");
             if (isChinese == false)
@@ -1005,7 +1012,7 @@ namespace Yasfib
                     this.Text = gwb.Url.ToString() + " - 灵智浏览器 " + versionNumber;
                 }
             }
-            textBox1.Text = Convert.ToString(gwb.Url);
+            if (url) textBox1.Text = Convert.ToString(gwb.Url);
         }
         void updateTitleS()
         {
@@ -1039,7 +1046,7 @@ namespace Yasfib
         }
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            updateTitle();
+            updateTitle(true);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1056,11 +1063,11 @@ namespace Yasfib
         private void addBookmarkToolStripMenuItem_Click(object sender, EventArgs e)
         {
             addtoBookmarksMenu(gwb.Url.ToString(), gwb.DocumentTitle);
-            /*StreamWriter tr;
+            StreamWriter tr;
             tr = File.AppendText("bookmarks.txt");
             tr.WriteLine(gwb.DocumentTitle);
             tr.WriteLine(gwb.Url.ToString());
-            tr.Close();*/
+            tr.Close();
         }
 
         private void showBookmarksToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1366,6 +1373,7 @@ namespace Yasfib
         private void button6_Click(object sender, EventArgs e)
         {
             nv("http://www.google.com/search?q=" + textBox2.Text);
+            textBox2.Clear();
         }
 
         private void googleThisToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1414,12 +1422,12 @@ namespace Yasfib
             if (gwb.DocumentTitle == "")
             {
                 ((Form)(this.tabControl1.SelectedForm)).Text = Convert.ToString(gwb.Url.DnsSafeHost);
-                updateTitle();
+                updateTitle(true);
             }
             else
             {
                 ((Form)(this.tabControl1.SelectedForm)).Text = gwb.DocumentTitle;
-                updateTitle();
+                updateTitle(true);
             }
         }
 
@@ -1502,9 +1510,8 @@ namespace Yasfib
         }
         void proc(string filename)
         {
-            Process dahProcess = new Process();
-            dahProcess.StartInfo.FileName = filename;
-            dahProcess.Start();
+            TukruPS.PluginSystem.Operations d = new TukruPS.PluginSystem.Operations();
+            d.Run(filename);
         }
         public bool i = true;
         public bool phishLock = false;
@@ -2177,19 +2184,19 @@ namespace Yasfib
 
         private void button11_Click(object sender, EventArgs e)
         {
-            try { gwb.Window.TextZoom -= 0.1f; }
+            try { gwb.PageZoom -= 0.1f; }
             catch { }
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-            try { gwb.Window.TextZoom += 0.1f; }
+            try { gwb.PageZoom += 0.1f; }
             catch { }
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            try { gwb.Window.TextZoom = 1; }
+            try { gwb.PageZoom = 1; }
             catch { }
         }
 
@@ -2265,7 +2272,54 @@ namespace Yasfib
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            
+            System.Net.WebRequest wr = System.Net.WebRequest.Create(burl);
+            if (wr.GetResponse().ContentType != "text/html" ||
+                wr.GetResponse().ContentType != "text/plain" ||
+                wr.GetResponse().ContentType != "application/xhtml+xml" ||
+                wr.GetResponse().ContentType != "application/atom+xml" ||
+                wr.GetResponse().ContentType != "text/xml")
+            {
+                webBrowser1.Navigate(burl);
+            }
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            gwb.PageZoom = (trackBar1.Value / 10.0f) * (trackBar1.Value / 10.0f);
+        }
+
+        private void trackBar1_MouseDown(object sender, MouseEventArgs e)
+        {
+            gwb.PageZoom = 1;
+            trackBar1.Value = 10;
+        }
+
+        private void browserCM_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void mainCM_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void translateMeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string lang;
+            if (isChinese)
+            {
+                lang = "zh-CN";
+            }
+            else { lang = "en"; }
+            try
+            {
+                gwb.CopySelection();
+                string temp = Clipboard.GetText();
+                addGeckoTab();
+                nv("http://translate.google.com/?hl=en#auto|" + lang + "|" + temp);
+            }
+            catch {}
         }
 
     }

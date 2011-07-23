@@ -1,6 +1,25 @@
 /*
-//@line 44 "e:\xr19rel\WINNT_5.2_Depend\mozilla\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
+//@line 45 "e:\builds\moz2_slave\rel-192-xr-w32-bld\build\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
 */
+
+///////////////////////////////////////////////////////////////////////////////
+//// Helper Functions
+
+/**
+ * Determines if a given directory is able to be used to download to.
+ *
+ * @param aDirectory
+ *        The directory to check.
+ * @returns true if we can use the directory, false otherwise.
+ */
+function isUsableDirectory(aDirectory)
+{
+  return aDirectory.exists() && aDirectory.isDirectory() &&
+         aDirectory.isWritable();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//// nsUnkownContentTypeDialog
 
 /* This file implements the nsIHelperAppLauncherDialog interface.
  *
@@ -15,6 +34,8 @@
 
 const PREF_BD_USEDOWNLOADDIR = "browser.download.useDownloadDir";
 const nsITimer = Components.interfaces.nsITimer;
+
+Components.utils.import("resource://gre/modules/DownloadLastDir.jsm");
 
 /* ctor
  */
@@ -108,6 +129,9 @@ nsUnknownContentTypeDialog.prototype = {
 
       let prefs = Components.classes["@mozilla.org/preferences-service;1"]
                             .getService(Components.interfaces.nsIPrefBranch);
+      let bundle = Components.classes["@mozilla.org/intl/stringbundle;1"].
+        getService(Components.interfaces.nsIStringBundleService).
+        createBundle("chrome://mozapps/locale/downloads/unknownContentType.properties");
 
       if (!aForcePrompt) {
         // Check to see if the user wishes to auto save to the default download
@@ -122,7 +146,23 @@ nsUnknownContentTypeDialog.prototype = {
           let dnldMgr = Components.classes["@mozilla.org/download-manager;1"]
                                   .getService(Components.interfaces.nsIDownloadManager);
           let defaultFolder = dnldMgr.userDownloadsDirectory;
-          result = this.validateLeafName(defaultFolder, aDefaultFile, aSuggestedFileExtension);
+
+          try {
+            result = this.validateLeafName(defaultFolder, aDefaultFile, aSuggestedFileExtension);
+          }
+          catch (ex) {
+            if (ex.result == Components.results.NS_ERROR_FILE_ACCESS_DENIED) {
+              let prompter = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].
+                getService(Components.interfaces.nsIPromptService);
+
+              // Display error alert (using text supplied by back-end)
+              prompter.alert(this.dialog,
+                             bundle.GetStringFromName("badPermissions.title"),
+                             bundle.GetStringFromName("badPermissions"));
+
+              return;
+            }
+          }
 
           // Check to make sure we have a valid directory, otherwise, prompt
           if (result)
@@ -133,10 +173,6 @@ nsUnknownContentTypeDialog.prototype = {
       // Use file picker to show dialog.
       var nsIFilePicker = Components.interfaces.nsIFilePicker;
       var picker = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
-
-      var bundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-      bundle = bundle.createBundle("chrome://mozapps/locale/downloads/unknownContentType.properties");
-
       var windowTitle = bundle.GetStringFromName("saveDialogTitle");
       var parent = aContext.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsIDOMWindowInternal);
       picker.init(parent, windowTitle, nsIFilePicker.modeSave);
@@ -161,19 +197,34 @@ nsUnknownContentTypeDialog.prototype = {
 
       picker.appendFilters( nsIFilePicker.filterAll );
 
-      // Default to lastDir if it's valid, use the user's default
-      // downloads directory otherwise.
+      var inPrivateBrowsing = false;
+      try {
+        var pbs = Components.classes["@mozilla.org/privatebrowsing;1"]
+                            .getService(Components.interfaces.nsIPrivateBrowsingService);
+        inPrivateBrowsing = pbs.privateBrowsingEnabled;
+      }
+      catch (e) {
+      }
+
+      // Default to lastDir if it is valid, otherwise use the user's default
+      // downloads directory.  userDownloadsDirectory should always return a
+      // valid directory, so we can safely default to it.
       var dnldMgr = Components.classes["@mozilla.org/download-manager;1"]
                               .getService(Components.interfaces.nsIDownloadManager);
+      picker.displayDirectory = dnldMgr.userDownloadsDirectory;
+
+      // The last directory preference may not exist, which will throw.
       try {
-        var lastDir = prefs.getComplexValue("browser.download.lastDir",
-                            Components.interfaces.nsILocalFile);
-        if (lastDir.exists())
-          picker.displayDirectory = lastDir;
+        var lastDir;
+        if (inPrivateBrowsing && gDownloadLastDir.file)
+          lastDir = gDownloadLastDir.file;
         else
-          picker.displayDirectory = dnldMgr.userDownloadsDirectory;
-      } catch (ex) {
-        picker.displayDirectory = dnldMgr.userDownloadsDirectory;
+          lastDir = prefs.getComplexValue("browser.download.lastDir",
+                          Components.interfaces.nsILocalFile);
+        if (isUsableDirectory(lastDir))
+          picker.displayDirectory = lastDir;
+      }
+      catch (ex) {
       }
 
       if (picker.show() == nsIFilePicker.returnCancel) {
@@ -195,8 +246,14 @@ nsUnknownContentTypeDialog.prototype = {
             result.remove(false);
         }
         catch (e) { }
-        var newDir = result.parent;
-        prefs.setComplexValue("browser.download.lastDir", Components.interfaces.nsILocalFile, newDir);
+        var newDir = result.parent.QueryInterface(Components.interfaces.nsILocalFile);
+
+        // Do not store the last save directory as a pref inside the private browsing mode
+        if (inPrivateBrowsing)
+          gDownloadLastDir.file = newDir;
+        else
+          prefs.setComplexValue("browser.download.lastDir", Components.interfaces.nsILocalFile, newDir);
+
         result = this.validateLeafName(newDir, result.leafName, null);
       }
       return result;
@@ -220,7 +277,7 @@ nsUnknownContentTypeDialog.prototype = {
      */
     validateLeafName: function (aLocalFile, aLeafName, aFileExt)
     {
-      if (!aLocalFile || !aLocalFile.exists())
+      if (!(aLocalFile && isUsableDirectory(aLocalFile)))
         return null;
 
       // Remove any leading periods, since we don't want to save hidden files
@@ -233,7 +290,7 @@ nsUnknownContentTypeDialog.prototype = {
 
       this.makeFileUnique(aLocalFile);
 
-//@line 278 "e:\xr19rel\WINNT_5.2_Depend\mozilla\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
+//@line 336 "e:\builds\moz2_slave\rel-192-xr-w32-bld\build\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
       let ext;
       try {
         // We can fail here if there's no primary extension set
@@ -251,7 +308,7 @@ nsUnknownContentTypeDialog.prototype = {
         f.remove(false);
         this.makeFileUnique(aLocalFile);
       }
-//@line 296 "e:\xr19rel\WINNT_5.2_Depend\mozilla\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
+//@line 354 "e:\builds\moz2_slave\rel-192-xr-w32-bld\build\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
 
       return aLocalFile;
     },
@@ -290,6 +347,10 @@ nsUnknownContentTypeDialog.prototype = {
       }
       catch (e) {
         dump("*** exception in validateLeafName: " + e + "\n");
+
+        if (e.result == Components.results.NS_ERROR_FILE_ACCESS_DENIED)
+          throw e;
+
         if (aLocalFile.leafName == "" || aLocalFile.isDirectory()) {
           aLocalFile.append("unnamed");
           if (aLocalFile.exists())
@@ -402,8 +463,13 @@ nsUnknownContentTypeDialog.prototype = {
         this.dialogElement("normalBox").collapsed = true;
         // show basic choice 
         this.dialogElement("basicBox").collapsed = false;
-        // change button labels
-        this.mDialog.document.documentElement.getButton("accept").label = this.dialogElement("strings").getString("unknownAccept.label");
+        // change button labels and icons; use "save" icon for the accept
+        // button since it's the only action possible
+        let acceptButton = this.mDialog.document.documentElement
+                               .getButton("accept");
+        acceptButton.label = this.dialogElement("strings")
+                                 .getString("unknownAccept.label");
+        acceptButton.setAttribute("icon", "save");
         this.mDialog.document.documentElement.getButton("cancel").label = this.dialogElement("strings").getString("unknownCancel.label");
         // hide other handler
         this.dialogElement("openHandler").collapsed = true;
@@ -419,7 +485,7 @@ nsUnknownContentTypeDialog.prototype = {
         // want users to be able to autodownload .exe files. 
         var rememberChoice = this.dialogElement("rememberChoice");
 
-//@line 482 "e:\xr19rel\WINNT_5.2_Depend\mozilla\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
+//@line 549 "e:\builds\moz2_slave\rel-192-xr-w32-bld\build\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
         if (shouldntRememberChoice) {
           rememberChoice.checked = false;
           rememberChoice.disabled = true;
@@ -559,7 +625,7 @@ nsUnknownContentTypeDialog.prototype = {
     // Returns true if opening the default application makes sense.
     openWithDefaultOK: function() {
         // The checking is different on Windows...
-//@line 622 "e:\xr19rel\WINNT_5.2_Depend\mozilla\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
+//@line 689 "e:\builds\moz2_slave\rel-192-xr-w32-bld\build\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
         // Windows presents some special cases.
         // We need to prevent use of "system default" when the file is
         // executable (so the user doesn't launch nasty programs downloaded
@@ -569,7 +635,7 @@ nsUnknownContentTypeDialog.prototype = {
         
         //  Default is Ok if the file isn't executable (and vice-versa).
         return !this.mLauncher.targetFileIsExecutable;
-//@line 637 "e:\xr19rel\WINNT_5.2_Depend\mozilla\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
+//@line 704 "e:\builds\moz2_slave\rel-192-xr-w32-bld\build\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
     },
     
     // Set "default" application description field.
@@ -590,9 +656,9 @@ nsUnknownContentTypeDialog.prototype = {
 
     // getPath:
     getPath: function (aFile) {
-//@line 660 "e:\xr19rel\WINNT_5.2_Depend\mozilla\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
+//@line 727 "e:\builds\moz2_slave\rel-192-xr-w32-bld\build\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
       return aFile.path;
-//@line 662 "e:\xr19rel\WINNT_5.2_Depend\mozilla\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
+//@line 729 "e:\builds\moz2_slave\rel-192-xr-w32-bld\build\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
     },
 
     // initAppAndSaveToDiskValues:
@@ -633,7 +699,10 @@ nsUnknownContentTypeDialog.prototype = {
           this.chosenApp.executable.path) {
         otherHandler.setAttribute("path",
                                   this.getPath(this.chosenApp.executable));
+
+//@line 774 "e:\builds\moz2_slave\rel-192-xr-w32-bld\build\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
         otherHandler.label = this.chosenApp.executable.leafName;
+//@line 776 "e:\builds\moz2_slave\rel-192-xr-w32-bld\build\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
         otherHandler.hidden = false;
       }
 
@@ -789,7 +858,7 @@ nsUnknownContentTypeDialog.prototype = {
             !helperApp.executable.exists()) {
           // Show alert and try again.        
           var bundle = this.dialogElement("strings");                    
-          var msg = bundle.getFormattedString("badApp", [this.dialogElement("otherHandler").path]);
+          var msg = bundle.getFormattedString("badApp", [this.dialogElement("otherHandler").getAttribute("path")]);
           var svc = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
           svc.alert(this.mDialog, bundle.getString("badApp.title"), msg);
 
@@ -821,7 +890,7 @@ nsUnknownContentTypeDialog.prototype = {
           // for the file to be saved to to pass to |saveToDisk| - otherwise
           // we must ask the user to pick a save name.
 
-//@line 904 "e:\xr19rel\WINNT_5.2_Depend\mozilla\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
+//@line 977 "e:\builds\moz2_slave\rel-192-xr-w32-bld\build\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
 
           // see @notify
           // we cannot use opener's setTimeout, see bug 420405
@@ -876,20 +945,20 @@ nsUnknownContentTypeDialog.prototype = {
     // Retrieve the pretty description from the file
     getFileDisplayName: function getFileDisplayName(file)
     { 
-//@line 959 "e:\xr19rel\WINNT_5.2_Depend\mozilla\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
+//@line 1032 "e:\builds\moz2_slave\rel-192-xr-w32-bld\build\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
         if (file instanceof Components.interfaces.nsILocalFileWin) {
           try {
             return file.getVersionInfoField("FileDescription");
           } catch (ex) {
           }
         }
-//@line 966 "e:\xr19rel\WINNT_5.2_Depend\mozilla\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
+//@line 1039 "e:\builds\moz2_slave\rel-192-xr-w32-bld\build\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
         return file.leafName;
     },
 
     // chooseApp:  Open file picker and prompt user for application.
     chooseApp: function() {
-//@line 972 "e:\xr19rel\WINNT_5.2_Depend\mozilla\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
+//@line 1045 "e:\builds\moz2_slave\rel-192-xr-w32-bld\build\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
     // Protect against the lack of an extension    
     var fileExtension = "";
     try {
@@ -954,7 +1023,7 @@ nsUnknownContentTypeDialog.prototype = {
         openHandler.selectedItem = this.dialogElement(lastSelectedID);
     }
 
-//@line 1076 "e:\xr19rel\WINNT_5.2_Depend\mozilla\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
+//@line 1155 "e:\builds\moz2_slave\rel-192-xr-w32-bld\build\toolkit\mozapps\downloads\src\nsHelperAppDlg.js.in"
     },
 
     // Turn this on to get debugging messages.
@@ -1004,14 +1073,8 @@ nsUnknownContentTypeDialog.prototype = {
 // This Component's module implementation.  All the code below is used to get this
 // component registered and accessible via XPCOM.
 var module = {
-    firstTime: true,
-
     // registerSelf: Register this component.
     registerSelf: function (compMgr, fileSpec, location, type) {
-        if (this.firstTime) {
-            this.firstTime = false;
-            throw Components.results.NS_ERROR_FACTORY_REGISTER_AGAIN;
-        }
         compMgr = compMgr.QueryInterface(Components.interfaces.nsIComponentRegistrar);
 
         compMgr.registerFactoryLocation( this.cid,

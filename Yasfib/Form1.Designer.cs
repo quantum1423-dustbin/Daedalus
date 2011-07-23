@@ -58,9 +58,7 @@
             this.extremeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.normalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.offToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.upgradeAntiblockingModuleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteBrowsingHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileSharingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.downloadManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.programLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,6 +74,7 @@
             this.openInNewTabToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.copyLinkLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.translateMeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookmarkThisPageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,11 +105,10 @@
             this.openANewIEShellToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dl = new System.ComponentModel.BackgroundWorker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.button13 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.buttonX1 = new System.Windows.Forms.PictureBox();
-            this.button12 = new System.Windows.Forms.Button();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.button10 = new System.Windows.Forms.Button();
+            this.buttonX1 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -118,7 +116,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -127,6 +124,7 @@
             this.browserCM.SuspendLayout();
             this.findbox.SuspendLayout();
             this.contextMenuStrip3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonX1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -236,11 +234,12 @@
             this.toolStrip1.AllowItemReorder = true;
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSplitButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 2);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(69, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(60, 25);
             this.toolStrip1.TabIndex = 19;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
@@ -272,7 +271,7 @@
             this.exitToolStripMenuItem1});
             this.fileToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.Document;
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
-            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
+            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.fileToolStripMenuItem1.Text = "File";
             // 
             // addTabCtrlTToolStripMenuItem
@@ -328,7 +327,7 @@
             this.updateYasfibToolStripMenuItem});
             this.editToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Tools;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editToolStripMenuItem.Text = "Tools";
             // 
             // viewSourceToolStripMenuItem
@@ -344,9 +343,7 @@
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.enableAntiblockingToolStripMenuItem1,
             this.pipeliningToolStripMenuItem,
-            this.upgradeAntiblockingModuleToolStripMenuItem,
-            this.deleteBrowsingHistoryToolStripMenuItem,
-            this.fileSharingToolStripMenuItem});
+            this.deleteBrowsingHistoryToolStripMenuItem});
             this.optionsToolStripMenuItem.Image = global::Yasfib.Properties.Resources.table_48;
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
@@ -356,7 +353,7 @@
             // 
             this.enableAntiblockingToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.circle_green;
             this.enableAntiblockingToolStripMenuItem1.Name = "enableAntiblockingToolStripMenuItem1";
-            this.enableAntiblockingToolStripMenuItem1.Size = new System.Drawing.Size(237, 22);
+            this.enableAntiblockingToolStripMenuItem1.Size = new System.Drawing.Size(204, 22);
             this.enableAntiblockingToolStripMenuItem1.Text = "Enable Anti-blocking";
             this.enableAntiblockingToolStripMenuItem1.Click += new System.EventHandler(this.premiumToolStripMenuItem_Click);
             // 
@@ -368,7 +365,7 @@
             this.offToolStripMenuItem1});
             this.pipeliningToolStripMenuItem.Image = global::Yasfib.Properties.Resources._001_25;
             this.pipeliningToolStripMenuItem.Name = "pipeliningToolStripMenuItem";
-            this.pipeliningToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.pipeliningToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.pipeliningToolStripMenuItem.Text = "Pipelining";
             // 
             // extremeToolStripMenuItem
@@ -392,29 +389,13 @@
             this.offToolStripMenuItem1.Text = "Off";
             this.offToolStripMenuItem1.Click += new System.EventHandler(this.offToolStripMenuItem1_Click);
             // 
-            // upgradeAntiblockingModuleToolStripMenuItem
-            // 
-            this.upgradeAntiblockingModuleToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Upload;
-            this.upgradeAntiblockingModuleToolStripMenuItem.Name = "upgradeAntiblockingModuleToolStripMenuItem";
-            this.upgradeAntiblockingModuleToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
-            this.upgradeAntiblockingModuleToolStripMenuItem.Text = "Upgrade Anti-blocking Module";
-            this.upgradeAntiblockingModuleToolStripMenuItem.Click += new System.EventHandler(this.upgradeAntiblockingModuleToolStripMenuItem_Click);
-            // 
             // deleteBrowsingHistoryToolStripMenuItem
             // 
             this.deleteBrowsingHistoryToolStripMenuItem.Image = global::Yasfib.Properties.Resources.cross_48;
             this.deleteBrowsingHistoryToolStripMenuItem.Name = "deleteBrowsingHistoryToolStripMenuItem";
-            this.deleteBrowsingHistoryToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.deleteBrowsingHistoryToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.deleteBrowsingHistoryToolStripMenuItem.Text = "Delete Browsing History";
             this.deleteBrowsingHistoryToolStripMenuItem.Click += new System.EventHandler(this.deleteBrowsingHistoryToolStripMenuItem_Click);
-            // 
-            // fileSharingToolStripMenuItem
-            // 
-            this.fileSharingToolStripMenuItem.Enabled = false;
-            this.fileSharingToolStripMenuItem.Name = "fileSharingToolStripMenuItem";
-            this.fileSharingToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
-            this.fileSharingToolStripMenuItem.Text = "File Sharing";
-            this.fileSharingToolStripMenuItem.Click += new System.EventHandler(this.fileSharingToolStripMenuItem_Click);
             // 
             // downloadManagerToolStripMenuItem
             // 
@@ -455,7 +436,7 @@
             this.toolStripMenuItem2});
             this.bookmarksToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.Favorite;
             this.bookmarksToolStripMenuItem1.Name = "bookmarksToolStripMenuItem1";
-            this.bookmarksToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
+            this.bookmarksToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.bookmarksToolStripMenuItem1.Text = "Bookmarks";
             // 
             // bookmarkThisPageToolStripMenuItem
@@ -478,7 +459,7 @@
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Help_Blue_Button;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
@@ -504,12 +485,14 @@
             this.openInNewTabToolStripMenuItem1,
             this.copyLinkLocationToolStripMenuItem,
             this.copyToolStripMenuItem,
+            this.translateMeToolStripMenuItem,
             this.selectAllToolStripMenuItem,
             this.reloadToolStripMenuItem,
             this.bookmarkThisPageToolStripMenuItem1,
             this.viewSourceToolStripMenuItem1});
             this.mainCM.Name = "mainCM";
-            this.mainCM.Size = new System.Drawing.Size(196, 158);
+            this.mainCM.Size = new System.Drawing.Size(196, 180);
+            this.mainCM.Opening += new System.ComponentModel.CancelEventHandler(this.mainCM_Opening);
             // 
             // openInNewTabToolStripMenuItem1
             // 
@@ -534,6 +517,15 @@
             this.copyToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
+            // translateMeToolStripMenuItem
+            // 
+            this.translateMeToolStripMenuItem.Image = global::Yasfib.Properties.Resources._001_50;
+            this.translateMeToolStripMenuItem.Name = "translateMeToolStripMenuItem";
+            this.translateMeToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.translateMeToolStripMenuItem.Text = "Translate me!";
+            this.translateMeToolStripMenuItem.Visible = false;
+            this.translateMeToolStripMenuItem.Click += new System.EventHandler(this.translateMeToolStripMenuItem_Click);
             // 
             // selectAllToolStripMenuItem
             // 
@@ -574,6 +566,7 @@
             this.reloadToolStripMenuItem1});
             this.browserCM.Name = "contextMenuStrip3";
             this.browserCM.Size = new System.Drawing.Size(173, 48);
+            this.browserCM.Opening += new System.ComponentModel.CancelEventHandler(this.browserCM_Opening);
             // 
             // openInNewTabToolStripMenuItem
             // 
@@ -647,16 +640,17 @@
             this.tabControl1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabControl1.BackHighColor = System.Drawing.Color.Empty;
             this.tabControl1.ContextMenuStrip = this.contextMenuStrip1;
+            this.tabControl1.ControlButtonBorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.tabControl1.DropButtonVisible = false;
-            this.tabControl1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.FontBoldOnSelect = false;
             this.tabControl1.Location = new System.Drawing.Point(0, 30);
             this.tabControl1.MenuRenderer = null;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Size = new System.Drawing.Size(784, 535);
-            this.tabControl1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.tabControl1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
             this.tabControl1.TabBackHighColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.tabControl1.TabBackHighColorDisabled = System.Drawing.Color.Empty;
+            this.tabControl1.TabBackHighColorDisabled = System.Drawing.Color.AliceBlue;
             this.tabControl1.TabBackLowColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.tabControl1.TabBackLowColorDisabled = System.Drawing.Color.White;
             this.tabControl1.TabBorderEnhanced = true;
@@ -664,6 +658,9 @@
             this.tabControl1.TabCloseButtonImage = null;
             this.tabControl1.TabCloseButtonImageDisabled = null;
             this.tabControl1.TabCloseButtonImageHot = null;
+            this.tabControl1.TabCloseButtonSize = new System.Drawing.Size(14, 14);
+            this.tabControl1.TabGlassGradient = true;
+            this.tabControl1.TabHeight = 24;
             this.tabControl1.TabIconSize = new System.Drawing.Size(15, 15);
             this.tabControl1.TabIndex = 18;
             this.tabControl1.TabMaximumWidth = 250;
@@ -752,7 +749,7 @@
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBox1.Location = new System.Drawing.Point(178, 4);
             this.textBox1.Name = "textBox1";
@@ -806,64 +803,29 @@
             // 
             this.dl.DoWork += new System.ComponentModel.DoWorkEventHandler(this.dl_DoWork);
             // 
-            // button13
+            // webBrowser1
             // 
-            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button13.BackgroundImage = global::Yasfib.Properties.Resources._001_01;
-            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button13.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Location = new System.Drawing.Point(609, 2);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(25, 25);
-            this.button13.TabIndex = 41;
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
+            this.webBrowser1.Location = new System.Drawing.Point(337, 5);
+            this.webBrowser1.Margin = new System.Windows.Forms.Padding(0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.ScrollBarsEnabled = false;
+            this.webBrowser1.Size = new System.Drawing.Size(20, 20);
+            this.webBrowser1.TabIndex = 38;
             // 
-            // button11
+            // trackBar1
             // 
-            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button11.BackgroundImage = global::Yasfib.Properties.Resources._001_02;
-            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button11.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Location = new System.Drawing.Point(559, 2);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(25, 25);
-            this.button11.TabIndex = 39;
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // buttonX1
-            // 
-            this.buttonX1.Image = global::Yasfib.Properties.Resources.add;
-            this.buttonX1.Location = new System.Drawing.Point(741, 32);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(31, 23);
-            this.buttonX1.TabIndex = 36;
-            this.buttonX1.TabStop = false;
-            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
-            this.buttonX1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonX1_MouseDown);
-            // 
-            // button12
-            // 
-            this.button12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button12.BackgroundImage = global::Yasfib.Properties.Resources._001_10;
-            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button12.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Location = new System.Drawing.Point(584, 2);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(25, 25);
-            this.button12.TabIndex = 40;
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
+            this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBar1.AutoSize = false;
+            this.trackBar1.Location = new System.Drawing.Point(548, 2);
+            this.trackBar1.Maximum = 20;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(87, 24);
+            this.trackBar1.TabIndex = 39;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar1.Value = 10;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.trackBar1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.trackBar1_MouseDown);
             // 
             // button10
             // 
@@ -879,6 +841,18 @@
             this.button10.TabIndex = 31;
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click_1);
+            // 
+            // buttonX1
+            // 
+            this.buttonX1.BackgroundImage = global::Yasfib.Properties.Resources.add;
+            this.buttonX1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonX1.Location = new System.Drawing.Point(718, 31);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(31, 21);
+            this.buttonX1.TabIndex = 36;
+            this.buttonX1.TabStop = false;
+            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
+            this.buttonX1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonX1_MouseDown);
             // 
             // button3
             // 
@@ -983,35 +957,22 @@
             this.button7.MouseHover += new System.EventHandler(this.button7_MouseHover);
             this.button7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button7_MouseMove);
             // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Location = new System.Drawing.Point(337, 5);
-            this.webBrowser1.Margin = new System.Windows.Forms.Padding(0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.ScrollBarsEnabled = false;
-            this.webBrowser1.Size = new System.Drawing.Size(20, 20);
-            this.webBrowser1.TabIndex = 38;
-            // 
             // MainForm
             // 
             this.AcceptButton = this.go;
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(784, 562);
-            this.Controls.Add(this.button13);
-            this.Controls.Add(this.button11);
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.buttonX1);
-            this.Controls.Add(this.button12);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.go);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button10);
+            this.Controls.Add(this.buttonX1);
             this.Controls.Add(this.findbox);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button8);
@@ -1052,6 +1013,7 @@
             this.findbox.ResumeLayout(false);
             this.findbox.PerformLayout();
             this.contextMenuStrip3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonX1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1108,9 +1070,7 @@
         private System.Windows.Forms.ToolStripMenuItem extremeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem normalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem offToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem upgradeAntiblockingModuleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteBrowsingHistoryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fileSharingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem downloadManagerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem bookmarksToolStripMenuItem1;
@@ -1141,14 +1101,13 @@
         private System.Windows.Forms.ToolStripMenuItem openANewIEShellToolStripMenuItem;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.ComponentModel.BackgroundWorker dl;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
         private System.Windows.Forms.ToolStripMenuItem copyLinkLocationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem programLogToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStripMenuItem ppToolStripMenuItem;
         public System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.ToolStripMenuItem translateMeToolStripMenuItem;
     }
 }
 
