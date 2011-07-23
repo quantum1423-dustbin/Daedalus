@@ -28,5 +28,3 @@ D:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\ResGen.write.1.tlog
 D:\CSProj\!Daedalus\Yasfib\bin\Debug\FishPhish.cs
 D:\CSProj\!Daedalus\Yasfib\bin\Debug\daedalus.exe
 D:\CSProj\!Daedalus\Yasfib\bin\Debug\daedalus.pdb
-D:\CSProj\!Daedalus\Yasfib\bin\Debug\OpenGeckoSharp.pdb
-D:\CSProj\!Daedalus\Yasfib\bin\Debug\TukruPS.pdb

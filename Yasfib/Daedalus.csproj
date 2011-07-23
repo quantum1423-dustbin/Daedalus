@@ -265,6 +265,7 @@
     <None Include="Resources\paper_content_pencil_48.png" />
     <None Include="Resources\navigate_48.png" />
     <None Include="Resources\001_50.png" />
+    <None Include="Resources\yasfib_logo1.png" />
     <Content Include="yasfib_logo.ico" />
     <None Include="Resources\yasfibBackTop.png" />
     <None Include="Resources\yasfibBack1.png" />

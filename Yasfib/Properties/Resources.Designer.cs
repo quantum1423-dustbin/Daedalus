@@ -501,6 +501,13 @@ namespace Yasfib.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap yasfib_logo1 {
+            get {
+                object obj = ResourceManager.GetObject("yasfib_logo1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap yasfib_normal {
             get {
                 object obj = ResourceManager.GetObject("yasfib_normal", resourceCulture);

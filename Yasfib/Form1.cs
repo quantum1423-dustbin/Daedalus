@@ -184,8 +184,8 @@ namespace Yasfib
             }
             return lines;
         }
-        public static bool isChinese = false;
-        public static string versionNumber = "5.0.1-r1 ALPHA 01";
+        public static bool isChinese = true;
+        public static string versionNumber = "5.0.1-r1 BETA";
         void getautocomplete()
         {
             textBox1.AutoCompleteCustomSource.Clear();
