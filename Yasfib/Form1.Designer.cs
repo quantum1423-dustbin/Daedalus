@@ -520,6 +520,8 @@
             // 
             this.textBox1o.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1o.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBox1o.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBox1o.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1o.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.textBox1o.DefaultToGlass = false;
