@@ -74,6 +74,13 @@ namespace Yasfib.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap _001_012 {
+            get {
+                object obj = ResourceManager.GetObject("001_012", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap _001_02 {
             get {
                 object obj = ResourceManager.GetObject("001_02", resourceCulture);
@@ -123,6 +130,13 @@ namespace Yasfib.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap _001_29 {
+            get {
+                object obj = ResourceManager.GetObject("001_29", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap _001_37 {
             get {
                 object obj = ResourceManager.GetObject("001_37", resourceCulture);
@@ -147,6 +161,20 @@ namespace Yasfib.Properties {
         internal static System.Drawing.Bitmap _001_392 {
             get {
                 object obj = ResourceManager.GetObject("001_392", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _001_393 {
+            get {
+                object obj = ResourceManager.GetObject("001_393", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _001_394 {
+            get {
+                object obj = ResourceManager.GetObject("001_394", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -189,6 +217,13 @@ namespace Yasfib.Properties {
         internal static System.Drawing.Bitmap Add_To_Favorite {
             get {
                 object obj = ResourceManager.GetObject("Add To Favorite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap app_48 {
+            get {
+                object obj = ResourceManager.GetObject("app_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,6 +308,13 @@ namespace Yasfib.Properties {
         internal static System.Drawing.Bitmap download11 {
             get {
                 object obj = ResourceManager.GetObject("download11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Export_To_Document {
+            get {
+                object obj = ResourceManager.GetObject("Export To Document", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

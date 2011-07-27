@@ -21,17 +21,19 @@ namespace Yasfib
         [StructLayout(LayoutKind.Sequential)]
         public struct MARGINS
         {
-            public int cxLeftWidth;
-            public int cxRightWidth;
-            public int cyTopHeight;
-            public int cyButtomheight;
-        }
+            public int cxLeftWidth;      // width of left border that retains its size
+            public int cxRightWidth;     // width of right border that retains its size
+            public int cyTopHeight;      // height of top border that retains its size
+            public int cyBottomHeight;   // height of bottom border that retains its size
+        };
 
-        [DllImport("dwmapi.dll")]
 
-        public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMarinset);
-        [DllImport("winmm.dll")]
-        public static extern long PlaySound(String lpszName, long hModule, long dwFlags);
+        [System.Runtime.InteropServices.DllImport("dwmapi.dll")]
+        public extern static int DwmIsCompositionEnabled(ref int en);
+
+        [System.Runtime.InteropServices.DllImport("dwmapi.dll")]
+        public extern static int DwmExtendFrameIntoClientArea(IntPtr hwnd,
+                                 ref MARGINS margin);
 
 
         public MainForm()
@@ -74,8 +76,15 @@ namespace Yasfib
             Skybound.Gecko.GeckoPreferences.User["network.http.pipelining"] = true;
             Skybound.Gecko.GeckoPreferences.User["network.http.pipelining.ssl"] = true;
             Skybound.Gecko.GeckoPreferences.User["network.http.proxy.pipelining"] = true;
-            Skybound.Gecko.GeckoPreferences.User["nglayout.initialpaint.delay"] = 0;
+            Skybound.Gecko.GeckoPreferences.User["nglayout.initialpaint.delay"] = 10;
             Skybound.Gecko.GeckoPreferences.User["browser.cache.memory.enable"] = false;
+            //Disabling confirm dialog for Htaccess-Sites
+            Skybound.Gecko.GeckoPreferences.User["network.http.phishy-userpass-length"] = 255;
+
+            //Setting Prefs for ssl
+            Skybound.Gecko.GeckoPreferences.User["browser.xul.error_pages.enabled"] = true;
+            Skybound.Gecko.GeckoPreferences.User["browser.ssl_override_behavior"] = 2;
+            Skybound.Gecko.GeckoPreferences.User["browser.xul.error_pages.expert_bad_cert"] = true;
             //MessageBox.Show("You are now using high-grade security. Privoxy is helping you block phishing websites and advertisements.");
             //geckoWebBrowser1.Navigate("http://w3.org");
             addGeckoTab();
@@ -113,7 +122,7 @@ namespace Yasfib
                 else
                 {
                     gradientDown.Enabled = true;
-                    textBox1.BackColor = Color.White;
+                    textBox1o.BackColor = normCol;
                 }
             }
             else
@@ -126,7 +135,7 @@ namespace Yasfib
                 else
                 {
                     gradientDown.Enabled = true;
-                    textBox1.BackColor = Color.White;
+                    textBox1o.BackColor = normCol;
                 }
             }
 
@@ -184,11 +193,11 @@ namespace Yasfib
             }
             return lines;
         }
-        public static bool isChinese = true;
-        public static string versionNumber = "5.0.1-r1 BETA";
+        public static bool isChinese = false;
+        public static string versionNumber = "5.0.1-RC";
         void getautocomplete()
         {
-            textBox1.AutoCompleteCustomSource.Clear();
+            textBox1o.AutoCompleteCustomSource.Clear();
             try
             {
                 // Create an isntance of XmlTextReader and call Read method to read the file
@@ -202,7 +211,7 @@ namespace Yasfib
                     if (textReader.Name == "url")
                     {
                         //MessageBox.Show("");
-                        textBox1.AutoCompleteCustomSource.Add(textReader.ReadString());
+                        textBox1o.AutoCompleteCustomSource.Add(textReader.ReadString());
                         //textBox1.Items.Add(textReader.ReadString());
                         //MessageBox.Show(textReader.ReadString());
                     }
@@ -224,16 +233,16 @@ namespace Yasfib
         }
         private void select(object sender, EventArgs e)
         {
-            textBox1.Text = Convert.ToString(gwb.Url);
+            textBox1o.Text = Convert.ToString(gwb.Url);
             updateTitle(true);
             rtab();
-            textBox1.BackColor = Color.White;
+            textBox1o.BackColor = normCol;
         }
         private void selectS(object sender, EventArgs e)
         {
             try
             {
-                textBox1.Text = Convert.ToString(swb.Url);
+                textBox1o.Text = Convert.ToString(swb.Url);
                 updateTitleS();
                 rtab();
             }
@@ -317,7 +326,7 @@ namespace Yasfib
             添加新标签ToolStripMenuItem.Text = "添加新标签 (Ctrl + T)";
             addTabCtrlTToolStripMenuItem.Text = "添加新标签";
             //manageBookmarksToolStripMenuItem.Text = "手动编辑收藏夹";
-            toolStripSplitButton1.Text = "主菜单";
+            //toolStripSplitButton1.Text = "主菜单";
             //button7.Text = "压";
             //setHomePageToolStripMenuItem.Text = "将本页设为主页";
             //upgradeAntiblockingModuleToolStripMenuItem.Text = "升级反封杀模块";
@@ -347,6 +356,8 @@ namespace Yasfib
             findToolStripMenuItem.Text = "查找";
             helpToolStripMenuItem.Text = "帮助";
             translateMeToolStripMenuItem.Text = "翻译所选文本";
+            saveToolStripMenuItem.Text = "保存本页面";
+            toolStripSplitButton1.ToolTipText = "菜单";
         }
         void translate2NV()
         {
@@ -380,11 +391,11 @@ namespace Yasfib
         {
             get
             {
-                return textBox1.Text;
+                return textBox1o.Text;
             }
             set
             {
-                textBox1.Text = value;
+                textBox1o.Text = value;
             }
         }
         public void report()
@@ -434,14 +445,14 @@ namespace Yasfib
 
                 //browser1.AllowDnsPrefetch = false;
                 //browser1.BlockPopups = true;
-                textBox1.Text = "about:blank";
+                textBox1o.Text = "about:blank";
                 foobar.Focus();
                 foobar.Tag = "-";
                 rtab();
                 Bitmap interbediate = new Bitmap(Yasfib.Properties.Resources._001_40);
                 ((Form)(this.tabControl1.SelectedForm)).Icon = Icon.FromHandle(interbediate.GetHicon());
                 //browser1.Navigate("about:blank");
-                textBox1.Focus();
+                textBox1o.Focus();
             }
             catch { }
         }
@@ -489,7 +500,7 @@ namespace Yasfib
 
                 //textBox1.Text = Convert.ToString(gwb.Url);
             }
-            textBox1.Text = Convert.ToString(gwb.Url);
+            textBox1o.Text = Convert.ToString(gwb.Url);
         }
         void GF()
         {
@@ -534,6 +545,7 @@ namespace Yasfib
 
         void browser1_Navigating(object sender, Skybound.Gecko.GeckoNavigatingEventArgs e)
         {
+            
         }
         public string burl = "";
         void browser1_DomMouseDown(object sender, Skybound.Gecko.GeckoDomMouseEventArgs e)
@@ -574,11 +586,11 @@ namespace Yasfib
             //updateStatusText();
             if (label1.Text == "" || label1.Text == null)
             {
-                panel2.Visible = false;
+                label1.Visible = false;
             }
             else
             {
-                panel2.Visible = true;
+                label1.Visible = true;
             }
         }
         void changingS(object sender, EventArgs e)
@@ -587,11 +599,11 @@ namespace Yasfib
             //updateStatusText();
             if (label1.Text == "" || label1.Text == null)
             {
-                panel2.Visible = false;
+                label1.Visible = false;
             }
             else
             {
-                panel2.Visible = true;
+                label1.Visible = true;
             }
         }
         void button1_Click_1(object sender, EventArgs e)
@@ -608,10 +620,10 @@ namespace Yasfib
             try
             {
 
-                textBox1.Text = Convert.ToString(gwb.Url);
+                textBox1o.Text = Convert.ToString(gwb.Url);
                 string text = Convert.ToString(gwb.Url);
                 //System.IO.File.AppendAllText(@"ac.xml", "<url>" + text + "</url>");
-                textBox1.AutoCompleteCustomSource.Add(Convert.ToString(gwb.Url));
+                textBox1o.AutoCompleteCustomSource.Add(Convert.ToString(gwb.Url));
                 //label1.Text = "Ready";
                 System.Threading.Thread sampleThread;
                 System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false;
@@ -627,7 +639,7 @@ namespace Yasfib
                     originalXml.LoadXml(s);
                     XmlNode menu = originalXml.SelectSingleNode("i");
                     XmlNode newSub = originalXml.CreateNode(XmlNodeType.Element, "url", null);
-                    XmlText fff = originalXml.CreateTextNode(textBox1.Text);
+                    XmlText fff = originalXml.CreateTextNode(textBox1o.Text);
                     newSub.AppendChild(fff);
                     menu.AppendChild(newSub);
                     System.IO.File.WriteAllText(@"ac.xml", originalXml.OuterXml.ToString());
@@ -640,10 +652,10 @@ namespace Yasfib
         }
         void navIE(object sender, WebBrowserNavigatedEventArgs e)
         {
-            textBox1.Text = Convert.ToString(((WebBrowser)sender).Url);
+            textBox1o.Text = Convert.ToString(((WebBrowser)sender).Url);
             string text = Convert.ToString(swb.Url);
             //System.IO.File.AppendAllText(@"ac.xml", "<url>" + text + "</url>");
-            textBox1.AutoCompleteCustomSource.Add(Convert.ToString(gwb.Url));
+            textBox1o.AutoCompleteCustomSource.Add(Convert.ToString(gwb.Url));
             //label1.Text = "Ready";
             System.Threading.Thread sampleThread;
             System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false;
@@ -659,7 +671,7 @@ namespace Yasfib
                 originalXml.LoadXml(s);
                 XmlNode menu = originalXml.SelectSingleNode("i");
                 XmlNode newSub = originalXml.CreateNode(XmlNodeType.Element, "url", null);
-                XmlText fff = originalXml.CreateTextNode(textBox1.Text);
+                XmlText fff = originalXml.CreateTextNode(textBox1o.Text);
                 newSub.AppendChild(fff);
                 menu.AppendChild(newSub);
                 System.IO.File.WriteAllText(@"ac.xml", originalXml.OuterXml.ToString());
@@ -681,16 +693,16 @@ namespace Yasfib
                 if (e.CurrentProgress.ToString() == e.MaximumProgress.ToString() || e.CurrentProgress == 0)
                 {
                     progressBar1.Visible = false;
-                    button10.Visible = false;
+                    //button10.Visible = false;
                     button1.Enabled = true;
-                    panel2.Visible = false;
+                    label1.Visible = false;
                 }
                 else
                 {
                     progressBar1.Visible = true;
                     button10.Visible = true;
                     button1.Enabled = false;
-                    panel2.Visible = true;
+                    label1.Visible = true;
                 }
                 if (gwb.DocumentTitle == "")
                 {
@@ -711,27 +723,30 @@ namespace Yasfib
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "about:daedalus")
+            if (textBox1o.Text == "about:daedalus")
             {
                 gwb.Document.Body.InnerHtml = gplv3;
                 //nv("javascript:document.write('" + gplv3 + "')");
             }
-            else if (textBox1.Text == "about:hack:edit")
+            else if (textBox1o.Text == "about:hack:edit")
             {
                 nv("JavaScript:document.body.contentEditable='true'; document.designMode='on'; void 0");
             }
             else if (((Form)(this.tabControl1.SelectedForm)).Tag.ToString() != "A")
             {
-                nv(textBox1.Text);
+                nv(textBox1o.Text);
                 gwb.Focus();
             }
             else
             {
-                nv(textBox1.Text);
+                nv(textBox1o.Text);
                 swb.Focus();
             }
 
         }
+        public Color normCol = Color.White;
+        public Color ncbak = Color.White;
+        private MARGINS margins;
         public bool abWorking = true;
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -766,21 +781,46 @@ namespace Yasfib
 #if AERO
                 if (clsProcess.ProcessName.Contains("dwm"))
                 {
-                    MARGINS margins = new MARGINS();
-                    margins.cxLeftWidth = 10;
-                    margins.cxRightWidth = 10;
-                    margins.cyTopHeight = 90;
-                    margins.cyButtomheight = 200;
-                    //set all the four value -1 to apply glass effect to the whole window
-                    //set your own value to make specific part of the window glassy.
-                    IntPtr hwnd = this.Handle;
-                    int result = DwmExtendFrameIntoClientArea(hwnd, ref margins);
-                    this.BackColor = System.Drawing.Color.BlanchedAlmond;
-                    tabControl1.BackHighColor = System.Drawing.Color.BlanchedAlmond;
-                    tabControl1.BackLowColor = System.Drawing.Color.BlanchedAlmond;
-                    this.BackgroundImage = null;
-                    //tabControl1.TabBackHighColorDisabled = Color.LightSkyBlue;
-                    //label1.ForeColor = Color.White;
+                    int en = 0;
+                    MARGINS mg = new MARGINS();
+                    mg.cyBottomHeight = 0;
+                    mg.cxLeftWidth = 0;
+                    mg.cxRightWidth = 0;
+                    mg.cyTopHeight = 56;
+                    //make sure you are not on a legacy OS 
+                    if (System.Environment.OSVersion.Version.Major >= 6)
+                    {
+                        DwmIsCompositionEnabled(ref en);
+                        //check if the desktop composition is enabled
+
+                        if (en > 0)
+                        {
+                            DwmExtendFrameIntoClientArea(this.Handle, ref mg);
+                            this.BackColor = Color.Black;
+                            tabControl1.TabBackHighColorDisabled = Color.FromArgb(0x78ffffff);
+                            tabControl1.TabBackHighColor = Color.FromArgb(200, 255, 255, 255);
+                            normCol = Color.FromArgb(200, 255, 255, 255);
+                            ncbak = Color.FromArgb(200, 255, 255, 255);
+                            textBox2.BackColor = Color.FromArgb(254, 255, 255, 255);
+                            button3.BackColor = Color.Transparent;
+                            button4.BackColor = Color.Transparent;
+                            button5.BackColor = Color.Transparent;
+                            button10.BackColor = Color.Transparent;
+                            button1.BackColor = Color.Transparent;
+                            //buttonX1.BackColor = Color.Transparent;
+                            tabControl1.ForeColor = Color.FromArgb(254, 0, 0, 0);
+                            tabControl1.ForeColorDisabled = Color.FromArgb(200, 10, 10, 10);
+                        }
+                        else
+                        {
+                            MessageBox.Show("You seem to be running a system capable of Windows Aero transparency effects. However, such effects are turned off. For the best visual experience on Daedalus you may want to enable Aero transparency. \n 您运行的系统可以使用Windows Aero透明度效果，但是您并没有打开。打开Aero可以大大增加灵智浏览器的视觉效果。");
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please run this on Windows Vista.");
+                    }
                 }
 #endif
             }
@@ -856,7 +896,7 @@ namespace Yasfib
             if (gwb.DocumentTitle == "")
             {
                 ((Form)(this.tabControl1.SelectedForm)).Text = Convert.ToString(gwb.Url.DnsSafeHost);
-                //((Form)(this.tabControl1.SelectedForm)).Icon = "http://" + Convert.ToString(gwb.Url.DnsSafeHost) + "/favicon.ico";
+                
                 //textBox1.Text = Convert.ToString(gwb.Url);
                 //this.Text = Convert.ToString(gwb.Url) + " - Yasfib 2.0 ETHER";
             }
@@ -879,6 +919,11 @@ namespace Yasfib
             }
             catch { }*/
             rtab();
+            try
+            {
+                updateTitle(false);
+            }
+            catch { }
         }
         void getIcon()
         {
@@ -1012,7 +1057,17 @@ namespace Yasfib
                     this.Text = gwb.Url.ToString() + " - 灵智浏览器 " + versionNumber;
                 }
             }
-            if (url) textBox1.Text = Convert.ToString(gwb.Url);
+            if (url) textBox1o.Text = Convert.ToString(gwb.Url);
+            if (gwb.DocumentTitle == "")
+            {
+                ((Form)(gwb.Parent)).Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(gwb)).Url.DnsSafeHost);
+            }
+            else
+            {
+                ((Form)(gwb.Parent)).Text = ((Skybound.Gecko.GeckoWebBrowser)(gwb)).DocumentTitle;
+
+                //textBox1.Text = Convert.ToString(gwb.Url);
+            }
         }
         void updateTitleS()
         {
@@ -1042,7 +1097,7 @@ namespace Yasfib
                     catch { }
                 }
             }
-            textBox1.Text = Convert.ToString(gwb.Url);
+            textBox1o.Text = Convert.ToString(gwb.Url);
         }
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
@@ -1271,7 +1326,7 @@ namespace Yasfib
 
         private void 本页源代码ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string url = textBox1.Text;
+            string url = textBox1o.Text;
             addGeckoTab();
             nv
                 ("view-source:" + url);
@@ -1351,11 +1406,6 @@ namespace Yasfib
         private void toolStripTextBox1_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void button5_Click_1(object sender, EventArgs e)
-        {
-            report();
         }
 
         private void geckoWebBrowser1_CreateWindow(object sender, Skybound.Gecko.GeckoCreateWindowEventArgs e)
@@ -1438,14 +1488,18 @@ namespace Yasfib
 
         private void tabControl1_Paint(object sender, PaintEventArgs e)
         {
-
+            try
+            {
+                updateTitle(false);
+            }
+            catch { }
         }
 
         private void tabControl1_GetTabRegion(object sender, MdiTabControl.TabControl.GetTabRegionEventArgs e)
         {
-            // you can create a new point array or just modify the existing one
+            /*
             e.Points[1] = new Point(7, 0);
-            e.Points[4] = new Point(e.TabWidth - 7, 0);
+            e.Points[4] = new Point(e.TabWidth - 7, 0);*/
         }
 
         private void caretBrowsingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1522,20 +1576,20 @@ namespace Yasfib
             {
                 if (gwb.IsPhish() == true)
                 {
-                    textBox1.BackColor = System.Drawing.Color.Red;
+                    textBox1o.BackColor = System.Drawing.Color.Red;
                     //buttonX2.Visible = true;
                     //phishLock = true;
                     //warnPhish();
                 }
                 else
                 {
-                    textBox1.BackColor = Color.White;
+                    textBox1o.BackColor = normCol;
                 }
                 if (((Form)(this.tabControl1.SelectedForm)).Tag.ToString() != "A")
                 {
                     if (gwb.Url.Port == 443)
                     {
-                        textBox1.BackColor = Color.PaleGreen;
+                        textBox1o.BackColor = Color.PaleGreen;
                     }
                     else
                     {
@@ -1549,14 +1603,14 @@ namespace Yasfib
                         }
                         if (phishLock == false)
                         {
-                            if (Yasfib.FishPhish.checkAll(gwb.Document.Body.InnerHtml, textBox1.Text) == true)
+                            if (Yasfib.FishPhish.checkAll(gwb.Document.Body.InnerHtml, textBox1o.Text) == true)
                             {
-                                textBox1.BackColor = System.Drawing.Color.Red;
+                                textBox1o.BackColor = System.Drawing.Color.Red;
                                 //buttonX2.Visible = true;
                                 phishLock = true;
                                 warnPhish();
                             }
-                            else { textBox1.BackColor = Color.White; }
+                            else { textBox1o.BackColor = normCol; }
                         }
                     }
                 }
@@ -1568,7 +1622,7 @@ namespace Yasfib
 
             MessageBox.Show("Phishing site detected. \n 检测出钓鱼网站！", "Warning!");
             log("Phishing site detected at: " + gwb.Url);
-            textBox1.BackColor = System.Drawing.Color.Red;
+            textBox1o.BackColor = System.Drawing.Color.Red;
         }
         private void upgradeAntiblockingModuleToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1665,7 +1719,7 @@ namespace Yasfib
                 TextWriter rpHistory = new StreamWriter("ac.xml");
                 rpHistory.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\"?><i></i>");
                 rpHistory.Close();
-                textBox1.AutoCompleteCustomSource.Clear();
+                textBox1o.AutoCompleteCustomSource.Clear();
             }
 
         }
@@ -1724,7 +1778,7 @@ namespace Yasfib
             {
                 if (e.KeyValue == 13)
                 {
-                    nv("www." + textBox1.Text + ".com");
+                    nv("www." + textBox1o.Text + ".com");
                 }
             }
         }
@@ -1746,7 +1800,7 @@ namespace Yasfib
 
         private void textBox1_Click(object sender, EventArgs e)
         {
-            textBox1.SelectAll();
+            textBox1o.SelectAll();
         }
 
 
@@ -1762,7 +1816,7 @@ namespace Yasfib
 
         private void go_Click(object sender, EventArgs e)
         {
-            nv(textBox1.Text);
+            nv(textBox1o.Text);
         }
 
         private void fileSharingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1868,7 +1922,7 @@ namespace Yasfib
 
             //browser1.AllowDnsPrefetch = false;
             //browser1.BlockPopups = true;
-            textBox1.Text = "about:blank";
+            textBox1o.Text = "about:blank";
             foobar.Tag = "A";
             foobar.Text = "IE Shell/IE壳";
             foobar.Focus();
@@ -1929,7 +1983,7 @@ namespace Yasfib
                 {
                     tabControl1.TabCloseButtonVisible = true;
                 }
-                buttonX1.Left = (tabControl1.TabMaximumWidth - 14) * tabControl1.TabPages.Count + 20;
+                buttonX1.Left = (tabControl1.TabMaximumWidth) * tabControl1.TabPages.Count+5;
             }
             catch { }
         }
@@ -2028,7 +2082,7 @@ namespace Yasfib
             findbox.Visible = false;
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void label1_Paint(object sender, PaintEventArgs e)
         {
 
         }
@@ -2046,7 +2100,7 @@ namespace Yasfib
         private void button10_Click_1(object sender, EventArgs e)
         {
             gwb.Stop();
-            button10.Visible = false;
+            //button10.Visible = false;
             button1.Enabled = true;
         }
 
@@ -2095,7 +2149,7 @@ namespace Yasfib
 
         private void textBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            textBox1.SelectAll();
+            textBox1o.SelectAll();
         }
 
         private void textBox3_KeyDown(object sender, KeyEventArgs e)
@@ -2114,9 +2168,9 @@ namespace Yasfib
         {
             if (phishLock == false)
             {
-                if (Yasfib.FishPhish.checkAll(gwb.Document.DocumentElement.InnerHtml.ToString(), textBox1.Text) == true)
+                if (Yasfib.FishPhish.checkAll(gwb.Document.DocumentElement.InnerHtml.ToString(), textBox1o.Text) == true)
                 {
-                    textBox1.BackColor = System.Drawing.Color.Red;
+                    textBox1o.BackColor = System.Drawing.Color.Red;
                     //buttonX2.Visible = true;
                     phishLock = true;
                     warnPhish();
@@ -2320,6 +2374,60 @@ namespace Yasfib
                 nv("http://translate.google.com/?hl=en#auto|" + lang + "|" + temp);
             }
             catch {}
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog sf = new SaveFileDialog();
+                sf.DefaultExt = "html";
+                sf.Filter = "HTML Document|*.html";
+                sf.FileOk += new CancelEventHandler(sf_FileOk);
+                sf.ShowDialog();
+                gwb.SaveDocument(sf.FileName);
+            }
+            catch { }
+        }
+        void sf_FileOk(object sender, CancelEventArgs e)
+        {
+            
+        }
+
+        private void MainForm_Paint(object sender, PaintEventArgs e)
+        {
+            //e.Graphics.Clear(Color.Black);
+        }
+
+        private void textBox1o_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            if (textBox1o.Focused)
+            {
+                normCol = Color.FromArgb(254, 255, 255, 255);
+            }
+            else { normCol = ncbak; textBox1o.BackColor = normCol; }
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            TextReader tr = new StreamReader("home");
+            nv(tr.ReadLine());
+            tr.Close();
+        }
+
+        private void textBox1o_MouseEnter(object sender, EventArgs e)
+        {
+                normCol = Color.FromArgb(254, 255, 255, 255);
+        }
+
+        private void textBox1o_MouseLeave(object sender, EventArgs e)
+        {
+            normCol = ncbak; textBox1o.BackColor = normCol;
         }
 
     }

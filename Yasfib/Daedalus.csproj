@@ -100,6 +100,10 @@
     <DelaySign>false</DelaySign>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GlassUI, Version=1.0.0.17090, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\GlassUI.dll</HintPath>
+    </Reference>
     <Reference Include="MdiTabControl, Version=1.0.2527.15294, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="OpenGeckoSharp, Version=1.9.0.1, Culture=neutral, processorArchitecture=x86">
@@ -266,6 +270,11 @@
     <None Include="Resources\navigate_48.png" />
     <None Include="Resources\001_50.png" />
     <None Include="Resources\yasfib_logo1.png" />
+    <None Include="Resources\app_48.png" />
+    <None Include="Resources\001_393.png" />
+    <None Include="Resources\001_29.png" />
+    <None Include="Resources\001_394.png" />
+    <None Include="Resources\001_012.png" />
     <Content Include="yasfib_logo.ico" />
     <None Include="Resources\yasfibBackTop.png" />
     <None Include="Resources\yasfibBack1.png" />

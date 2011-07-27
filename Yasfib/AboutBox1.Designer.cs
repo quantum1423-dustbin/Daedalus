@@ -122,7 +122,7 @@
             this.labelCompanyName.Name = "labelCompanyName";
             this.labelCompanyName.Size = new System.Drawing.Size(317, 19);
             this.labelCompanyName.TabIndex = 22;
-            this.labelCompanyName.Text = "All About Stuff";
+            this.labelCompanyName.Text = "PiSoft-KelkuWeb";
             this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBoxDescription
