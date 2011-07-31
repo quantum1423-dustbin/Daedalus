@@ -13,9 +13,10 @@ E:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
 E:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\daedalus.exe
 E:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\daedalus.pdb
 E:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\Yasfib.MainForm.resources
+D:\CSProj\!Daedalus\Yasfib\bin\Debug\FishPhish.cs
 D:\CSProj\!Daedalus\Yasfib\bin\Debug\daedalus.exe.config
-D:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\daedalus.exe
-D:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\daedalus.pdb
+D:\CSProj\!Daedalus\Yasfib\bin\Debug\daedalus.exe
+D:\CSProj\!Daedalus\Yasfib\bin\Debug\daedalus.pdb
 D:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\Yasfib.AboutBox1.resources
 D:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\Yasfib.MainForm.resources
@@ -25,6 +26,5 @@ D:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\Yasfib.Form4.resources
 D:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\Yasfib.Properties.Resources.resources
 D:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\ResGen.read.1.tlog
 D:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\ResGen.write.1.tlog
-D:\CSProj\!Daedalus\Yasfib\bin\Debug\FishPhish.cs
-D:\CSProj\!Daedalus\Yasfib\bin\Debug\daedalus.exe
-D:\CSProj\!Daedalus\Yasfib\bin\Debug\daedalus.pdb
+D:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\daedalus.exe
+D:\CSProj\!Daedalus\Yasfib\obj\x86\Debug\daedalus.pdb

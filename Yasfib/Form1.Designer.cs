@@ -60,7 +60,6 @@
             this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.menuItem5 = new System.Windows.Forms.MenuItem();
             this.menuItem6 = new System.Windows.Forms.MenuItem();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabControl1 = new MdiTabControl.TabControl();
             this.findbox = new System.Windows.Forms.GroupBox();
             this.button9 = new System.Windows.Forms.Button();
@@ -75,7 +74,6 @@
             this.dl = new System.ComponentModel.BackgroundWorker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.textBox1o = new GlassUI.GlassTextBox();
             this.textBox2 = new GlassUI.GlassTextBox();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.button5 = new GlassUI.GlassButton();
@@ -116,6 +114,11 @@
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.label1 = new GlassUI.GlassLabel();
             this.buttonX1 = new System.Windows.Forms.Button();
+            this.initer2 = new System.ComponentModel.BackgroundWorker();
+            this.ac = new System.ComponentModel.BackgroundWorker();
+            this.textBox1 = new GlassUI.GlassTextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.mainCM.SuspendLayout();
@@ -346,10 +349,6 @@
             this.menuItem6.Index = 5;
             this.menuItem6.Text = "Properties";
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            // 
             // tabControl1
             // 
             this.tabControl1.Alignment = MdiTabControl.TabControl.TabAlignment.Top;
@@ -516,26 +515,6 @@
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             this.trackBar1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.trackBar1_MouseDown);
             // 
-            // textBox1o
-            // 
-            this.textBox1o.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1o.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBox1o.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox1o.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1o.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.textBox1o.DefaultToGlass = false;
-            this.textBox1o.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1o.Location = new System.Drawing.Point(159, 4);
-            this.textBox1o.Name = "textBox1o";
-            this.textBox1o.Size = new System.Drawing.Size(287, 22);
-            this.textBox1o.TabIndex = 40;
-            this.textBox1o.WordWrap = false;
-            this.textBox1o.Click += new System.EventHandler(this.textBox1_Click);
-            this.textBox1o.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.textBox1o.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyDown);
-            this.textBox1o.MouseCaptureChanged += new System.EventHandler(this.textBox1o_MouseCaptureChanged);
-            // 
             // textBox2
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -669,7 +648,7 @@
             this.exitToolStripMenuItem1});
             this.fileToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.Document;
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
-            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.fileToolStripMenuItem1.Text = "File";
             // 
             // addTabCtrlTToolStripMenuItem
@@ -735,7 +714,7 @@
             this.updateYasfibToolStripMenuItem});
             this.editToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Tools;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.editToolStripMenuItem.Text = "Tools";
             // 
             // viewSourceToolStripMenuItem
@@ -844,7 +823,7 @@
             this.toolStripMenuItem2});
             this.bookmarksToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.Favorite;
             this.bookmarksToolStripMenuItem1.Name = "bookmarksToolStripMenuItem1";
-            this.bookmarksToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.bookmarksToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.bookmarksToolStripMenuItem1.Text = "Bookmarks";
             // 
             // bookmarkThisPageToolStripMenuItem
@@ -869,7 +848,7 @@
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Help_Blue_Button;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
@@ -946,6 +925,52 @@
             this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             this.buttonX1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonX1_MouseDown);
             // 
+            // initer2
+            // 
+            this.initer2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.initer2_DoWork);
+            // 
+            // ac
+            // 
+            this.ac.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ac_DoWork);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.DefaultToGlass = false;
+            this.textBox1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(159, 4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(287, 22);
+            this.textBox1.TabIndex = 40;
+            this.textBox1.WordWrap = false;
+            this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
+            this.textBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick_1);
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyDown);
+            this.textBox1.MouseCaptureChanged += new System.EventHandler(this.textBox1o_MouseCaptureChanged);
+            // 
+            // listBox1
+            // 
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 14;
+            this.listBox1.Location = new System.Drawing.Point(159, 55);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(387, 100);
+            this.listBox1.TabIndex = 52;
+            this.listBox1.Visible = false;
+            this.listBox1.SelectedValueChanged += new System.EventHandler(this.listBox1_SelectedValueChanged);
+            // 
+            // timer4
+            // 
+            this.timer4.Enabled = true;
+            this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
+            // 
             // MainForm
             // 
             this.AcceptButton = this.go;
@@ -954,6 +979,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(784, 562);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.buttonX1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.label1);
@@ -965,7 +991,7 @@
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.go);
-            this.Controls.Add(this.textBox1o);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.findbox);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.toolStrip1);
@@ -1079,11 +1105,9 @@
         private System.Windows.Forms.ToolStripMenuItem programLogToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStripMenuItem ppToolStripMenuItem;
-        public System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.ToolStripMenuItem translateMeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private GlassUI.GlassTextBox textBox1o;
         private GlassUI.GlassTextBox textBox2;
         private GlassUI.GlassButton button4;
         private GlassUI.GlassButton button3;
@@ -1094,6 +1118,11 @@
         private System.Windows.Forms.WebBrowser webBrowser1;
         private GlassUI.GlassLabel label1;
         private System.Windows.Forms.Button buttonX1;
+        private System.ComponentModel.BackgroundWorker initer2;
+        private System.ComponentModel.BackgroundWorker ac;
+        private GlassUI.GlassTextBox textBox1;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Timer timer4;
     }
 }
 
