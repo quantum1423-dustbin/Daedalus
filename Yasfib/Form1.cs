@@ -14,6 +14,7 @@ using System.IO;
 using System.Net;
 using System.Media;
 using Microsoft.VisualBasic.MyServices;
+using System.Security.Cryptography;
 namespace Yasfib
 {
     public partial class MainForm : Form
@@ -106,6 +107,8 @@ namespace Yasfib
         }
         void nv(string url)
         {
+            panel1.Visible = false;
+            timer2.Enabled = true;
             if (url.Contains("about:") != true)
             {
                 log("Navigated to: " + url);
@@ -198,7 +201,7 @@ namespace Yasfib
         public static string versionNumber = "5.0.1";
         void getautocomplete()
         {
-            textBox1.AutoCompleteCustomSource.Clear();
+            listBox2.Items.Clear();
             try
             {
                 // Create an isntance of XmlTextReader and call Read method to read the file
@@ -212,7 +215,7 @@ namespace Yasfib
                     if (textReader.Name == "url")
                     {
                         //MessageBox.Show("");
-                        textBox1.AutoCompleteCustomSource.Add(textReader.ReadString());
+                        listBox2.Items.Add(textReader.ReadString());
                         //textBox1.Items.Add(textReader.ReadString());
                         //MessageBox.Show(textReader.ReadString());
                     }
@@ -438,8 +441,8 @@ namespace Yasfib
                 //1browser1.DomContextMenu += new Skybound.Gecko.GeckoDomMouseEventHandler(browser1_DomContextMenu);
                 browser1.NoDefaultContextMenu = true;
                 browser1.ContextMenuStrip = mainCM;
-                browser1.DocumentTitleChanged+= new EventHandler(browser_DocumentTitleChanged);
-                browser1.MouseWheel+=new MouseEventHandler(browser1_MouseWheel);
+                browser1.DocumentTitleChanged += new EventHandler(browser_DocumentTitleChanged);
+                browser1.MouseWheel += new MouseEventHandler(browser1_MouseWheel);
                 foobar.GotFocus += new
                 EventHandler(select);
                 foobar.Disposed +=
@@ -487,19 +490,20 @@ namespace Yasfib
 
                 textBox1.Text = Convert.ToString(gwb.Url);
                 string text = Convert.ToString(gwb.Url);
-                if (textBox1.AutoCompleteCustomSource.Contains(textBox1.Text))
+                if (listBox2.Items.Contains(textBox1.Text))
                 { }
                 else
                 {
-                    textBox1.AutoCompleteCustomSource.Add(Convert.ToString(gwb.Url));
+                    listBox2.Items.Add(Convert.ToString(gwb.Url));
                     ac.RunWorkerAsync();
                 }
             }
             catch { }
+            badWordSilent();
         }
         void GF()
         {
-            
+
             phishLock = false;
             if (((Form)(this.tabControl1.SelectedForm)).Tag.ToString() != "A")
             {
@@ -519,7 +523,7 @@ namespace Yasfib
             {
 
             }
- 
+
         }
         void browser1_DomContextMenu(object sender, Skybound.Gecko.GeckoDomMouseEventArgs e)
         { }
@@ -535,12 +539,12 @@ namespace Yasfib
 
         void browser1_MouseWheel(object sender, MouseEventArgs e)
         {
-            
+
         }
 
         void browser1_Navigating(object sender, Skybound.Gecko.GeckoNavigatingEventArgs e)
         {
-            
+
         }
         public string burl = "";
         void browser1_DomMouseDown(object sender, Skybound.Gecko.GeckoDomMouseEventArgs e)
@@ -612,7 +616,7 @@ namespace Yasfib
         public bool isPrivacyMode = false;
         void nav(object sender, Skybound.Gecko.GeckoNavigatedEventArgs e)
         {
-            
+            updateTitle(true);
             phishLock = false;
         }
         void navIE(object sender, WebBrowserNavigatedEventArgs e)
@@ -620,7 +624,7 @@ namespace Yasfib
             textBox1.Text = Convert.ToString(((WebBrowser)sender).Url);
             string text = Convert.ToString(swb.Url);
             //System.IO.File.AppendAllText(@"ac.xml", "<url>" + text + "</url>");
-            textBox1.AutoCompleteCustomSource.Add(Convert.ToString(gwb.Url));
+            listBox2.Items.Add(Convert.ToString(gwb.Url));
             //label1.Text = "Ready";
             if (isPrivacyMode == false)
             {
@@ -635,44 +639,45 @@ namespace Yasfib
                 System.IO.File.WriteAllText(@"ac.xml", originalXml.OuterXml.ToString());
             }
             phishLock = false;
+
         }
 
         void loading(object sender, Skybound.Gecko.GeckoProgressEventArgs e)
         {
             Debug.WriteLine("Entered Navigated!");
 
-                //label1.Text = (Math.Floor(Math.Log10(e.CurrentProgress + 1) * 1000)).ToString() + "/" + (Math.Floor(Math.Log10(e.MaximumProgress + 1) * 1000)).ToString();
-                //updateStatusText();
-                progressBar1.Maximum = e.MaximumProgress;
-                progressBar1.Value = e.CurrentProgress;
-                if (e.CurrentProgress.ToString() == e.MaximumProgress.ToString() || e.CurrentProgress == 0)
-                {
-                    progressBar1.Visible = false;
-                    //button10.Visible = false;
-                    button1.Enabled = true;
-                    label1.Visible = false;
-                }
-                else
-                {
-                    progressBar1.Visible = true;
-                    button10.Visible = true;
-                    button1.Enabled = false;
-                    label1.Visible = true;
-                }
-                if (gwb.DocumentTitle == "")
-                {
-                    ((Form)(((Skybound.Gecko.GeckoWebBrowser)(sender)).Parent)).Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(sender)).Url.DnsSafeHost);
-                }
-                else
-                {
-                    ((Form)(((Skybound.Gecko.GeckoWebBrowser)(sender)).Parent)).Text = ((Skybound.Gecko.GeckoWebBrowser)(sender)).DocumentTitle;
+            //label1.Text = (Math.Floor(Math.Log10(e.CurrentProgress + 1) * 1000)).ToString() + "/" + (Math.Floor(Math.Log10(e.MaximumProgress + 1) * 1000)).ToString();
+            //updateStatusText();
+            progressBar1.Maximum = e.MaximumProgress;
+            progressBar1.Value = e.CurrentProgress;
+            if (e.CurrentProgress.ToString() == e.MaximumProgress.ToString() || e.CurrentProgress == 0)
+            {
+                progressBar1.Visible = false;
+                //button10.Visible = false;
+                button1.Enabled = true;
+                label1.Visible = false;
+            }
+            else
+            {
+                progressBar1.Visible = true;
+                button10.Visible = true;
+                button1.Enabled = false;
+                label1.Visible = true;
+            }
+            if (gwb.DocumentTitle == "")
+            {
+                ((Form)(((Skybound.Gecko.GeckoWebBrowser)(sender)).Parent)).Text = Convert.ToString(((Skybound.Gecko.GeckoWebBrowser)(sender)).Url.DnsSafeHost);
+            }
+            else
+            {
+                ((Form)(((Skybound.Gecko.GeckoWebBrowser)(sender)).Parent)).Text = ((Skybound.Gecko.GeckoWebBrowser)(sender)).DocumentTitle;
 
-                    //textBox1.Text = Convert.ToString(gwb.Url);
-                }
-                //}
-                //else { label1.Text = "Connecting to the web page: " + e.CurrentProgress + " out of " + e.MaximumProgress; progressBar1.Value = e.CurrentProgress; }
-                //updateStatusText();
-                //updateTitle();
+                //textBox1.Text = Convert.ToString(gwb.Url);
+            }
+            //}
+            //else { label1.Text = "Connecting to the web page: " + e.CurrentProgress + " out of " + e.MaximumProgress; progressBar1.Value = e.CurrentProgress; }
+            //updateStatusText();
+            //updateTitle();
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -704,7 +709,7 @@ namespace Yasfib
         private void Form1_Load(object sender, EventArgs e)
         {
             #region SlowCode
-            
+
             toolTip1.Active = true;
             if (isChinese == false)
             {
@@ -780,9 +785,21 @@ namespace Yasfib
 #endif
             }
             readBM();
-            TextReader gpl = new StreamReader("LICENSE.txt"); 
+            TextReader gpl = new StreamReader("LICENSE.txt");
             #endregion
-            
+            #region Bad word filters
+            bool running = true;
+            string end = "";
+            TextReader tr = new StreamReader("badwords-temp.txt");
+            while (end == end)
+            {
+                end = tr.ReadLine();
+                if (end == null) { break; }
+                string name = end;
+                listBox3.Items.Add(end);
+            }
+            tr.Close();
+            #endregion
             //this.FormBorderStyle = FormBorderStyle.None;
         }
 
@@ -842,13 +859,17 @@ namespace Yasfib
             listBox1.Visible = true;
             this.AcceptButton = go;
             listBox1.Items.Clear();
-            foreach (string st in textBox1.AutoCompleteCustomSource)
+            textBox1.AutoCompleteCustomSource.Clear();
+            int c = 0;
+            foreach (string st in listBox2.Items)
             {
-                if (st.Contains(textBox1.Text))
+                if (st.Contains(textBox1.Text) && c < 10)
                 {
                     listBox1.Items.Add(st);
+                    c++;
                 }
             }
+            c = 0;
         }
 
         private void goToConfigPageToolStripMenuItem_Click(object sender, EventArgs e)
@@ -862,7 +883,7 @@ namespace Yasfib
             if (gwb.DocumentTitle == "")
             {
                 ((Form)(this.tabControl1.SelectedForm)).Text = Convert.ToString(gwb.Url.DnsSafeHost);
-                
+
                 //textBox1.Text = Convert.ToString(gwb.Url);
                 //this.Text = Convert.ToString(gwb.Url) + " - Yasfib 2.0 ETHER";
             }
@@ -1537,19 +1558,20 @@ namespace Yasfib
         public bool phishLock = false;
         private void timer2_Tick_1(object sender, EventArgs e)
         {
-            
             try
             {
+                // MessageBox.Show(gwb.phishDistance.ToString());
                 if (gwb.IsPhish() == true)
                 {
-                    textBox1.BackColor = System.Drawing.Color.Red;
                     //buttonX2.Visible = true;
                     //phishLock = true;
-                    //warnPhish();
+                    warnPhish();
                 }
                 else
                 {
                     textBox1.BackColor = normCol;
+                    if(panel1.BackColor==Color.Red) panel1.Visible = false;
+                    panel1.BackColor = Color.LightGoldenrodYellow;
                 }
                 if (((Form)(this.tabControl1.SelectedForm)).Tag.ToString() != "A")
                 {
@@ -1569,7 +1591,7 @@ namespace Yasfib
                         }
                         if (phishLock == false)
                         {
-                            if (Yasfib.FishPhish.checkAll(gwb.Document.Body.InnerHtml, textBox1.Text) == true)
+                            if (gwb.IsPhish() == true)
                             {
                                 textBox1.BackColor = System.Drawing.Color.Red;
                                 //buttonX2.Visible = true;
@@ -1581,14 +1603,20 @@ namespace Yasfib
                     }
                 }
             }
-            catch { }
+            catch (Exception)
+            {
+                Debug.WriteLine(e.ToString());
+            }
         }
         void warnPhish()
         {
-
-            MessageBox.Show("Phishing site detected. \n 检测出钓鱼网站！", "Warning!");
+            System.Media.SoundPlayer e = new System.Media.SoundPlayer("warning.wav");
+            e.Play();
             log("Phishing site detected at: " + gwb.Url);
-            textBox1.BackColor = System.Drawing.Color.Red;
+            panel1.Visible = true;
+            panel1.BackColor = Color.Red;
+            warningLabel.Text=("Phishing site detected by FishPhish!!! 检测出钓鱼网站！！！");
+            timer2.Enabled = false;
         }
         private void upgradeAntiblockingModuleToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1685,7 +1713,7 @@ namespace Yasfib
                 TextWriter rpHistory = new StreamWriter("ac.xml");
                 rpHistory.WriteLine("<i></i>");
                 rpHistory.Close();
-                textBox1.AutoCompleteCustomSource.Clear();
+                listBox2.Items.Clear();
             }
 
         }
@@ -1951,7 +1979,7 @@ namespace Yasfib
                 {
                     tabControl1.TabCloseButtonVisible = true;
                 }
-                buttonX1.Left = (tabControl1.TabMaximumWidth) * tabControl1.TabPages.Count+5;
+                buttonX1.Left = (tabControl1.TabMaximumWidth) * tabControl1.TabPages.Count + 5;
             }
             catch { }
         }
@@ -2289,12 +2317,12 @@ namespace Yasfib
 
         private void fdToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            
+
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -2333,7 +2361,7 @@ namespace Yasfib
                 addGeckoTab();
                 nv("http://translate.google.com/?hl=en#auto|" + lang + "|" + temp);
             }
-            catch {}
+            catch { }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2351,7 +2379,7 @@ namespace Yasfib
         }
         void sf_FileOk(object sender, CancelEventArgs e)
         {
-            
+
         }
 
         private void MainForm_Paint(object sender, PaintEventArgs e)
@@ -2382,7 +2410,7 @@ namespace Yasfib
 
         private void textBox1o_MouseEnter(object sender, EventArgs e)
         {
-                normCol = Color.FromArgb(254, 255, 255, 255);
+            normCol = Color.FromArgb(254, 255, 255, 255);
         }
 
         private void textBox1o_MouseLeave(object sender, EventArgs e)
@@ -2498,7 +2526,7 @@ namespace Yasfib
 
         private void textBox1_MouseClick_1(object sender, MouseEventArgs e)
         {
-            
+
         }
 
         private void timer4_Tick(object sender, EventArgs e)
@@ -2508,10 +2536,181 @@ namespace Yasfib
             else listBox1.Visible = false;
         }
 
+        private void backgroundWorker1_DoWork_1(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void bwToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            badWordSilent();
+            badWordDetails();
+        }
+
+        void badWordDetails()
+        {
+            int bwCount = 0;
+            string bwMess = "";
+            //MessageBox.Show(gwb.Document.ActiveElement.ToString());
+            foreach (string s in listBox3.Items)
+            {
+                if (gwb.Document.Body.InnerHtml.Contains(s))
+                {
+                    bwCount++;
+                    bwMess += "<span title=" + s + ">" + s + " - <b>FOUND</b><hr></span>";
+                }
+                else
+                {
+                    //bwMess += s + " - <i>CLEAR</i><hr>";
+                }
+            }
+            string bwHead = "<h1>Bad Word Analysis</h1><h2>" + bwCount.ToString() + " bad words used" + "</h2>";
+            gwb.runJS("document.write('" + bwHead + bwMess + "')");
+        }
+
+        void badWordSilent()
+        {
+            int bwCount = 0;
+            foreach (string s in listBox3.Items)
+            {
+                if (gwb.Document.Body.InnerHtml.Contains(s) && bwCount <= bwThreshold)
+                {
+                    bwCount++;
+                }
+                else
+                {
+                    
+                }
+            }
+            if (bwCount >= bwThreshold)
+            {
+                MessageBox.Show("Bad words detected!");
+                warnBW(bwCount);
+            }
+        }
+        public int bwThreshold = 8;
+        private void button11_Click_1(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+        }
+
+        private void button12_Click_1(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            if (warningLabel.Text.Contains("bad words")) badWordDetails();
+        }
+        public void EncryptTextToFile(String Data, String FileName, byte[] Key, byte[] IV)
+        {
+            try
+            {
+                // Create or open the specified file.
+                FileStream fStream = File.Open(FileName, FileMode.OpenOrCreate);
+
+                // Create a new Rijndael object.
+                Rijndael RijndaelAlg = Rijndael.Create();
+
+                // Create a CryptoStream using the FileStream 
+                // and the passed key and initialization vector (IV).
+                CryptoStream cStream = new CryptoStream(fStream,
+                    RijndaelAlg.CreateEncryptor(Key, IV),
+                    CryptoStreamMode.Write);
+
+                // Create a StreamWriter using the CryptoStream.
+                StreamWriter sWriter = new StreamWriter(cStream);
+
+                try
+                {
+                    // Write the data to the stream 
+                    // to encrypt it.
+                    sWriter.WriteLine(Data);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("An error occurred: {0}", e.Message);
+                }
+                finally
+                {
+                    // Close the streams and
+                    // close the file.
+                    sWriter.Close();
+                    cStream.Close();
+                    fStream.Close();
+                }
+            }
+            catch (CryptographicException e)
+            {
+                Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                Console.WriteLine("A file error occurred: {0}", e.Message);
+            }
+
+        }
+
+        string DecryptTextFromFile(String FileName, byte[] Key, byte[] IV)
+        {
+            try
+            {
+                // Create or open the specified file. 
+                FileStream fStream = File.Open(FileName, FileMode.OpenOrCreate);
+
+                // Create a new Rijndael object.
+                Rijndael RijndaelAlg = Rijndael.Create();
+
+                // Create a CryptoStream using the FileStream 
+                // and the passed key and initialization vector (IV).
+                CryptoStream cStream = new CryptoStream(fStream,
+                    RijndaelAlg.CreateDecryptor(Key, IV),
+                    CryptoStreamMode.Read);
+
+                // Create a StreamReader using the CryptoStream.
+                StreamReader sReader = new StreamReader(cStream);
+
+                string val = null;
+
+                try
+                {
+                    // Read the data from the stream 
+                    // to decrypt it.
+                    val = sReader.ReadLine();
+
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("An error occurred: {0}", e.Message);
+                }
+                finally
+                {
+
+                    // Close the streams and
+                    // close the file.
+                    sReader.Close();
+                    cStream.Close();
+                    fStream.Close();
+                }
+
+                // Return the string. 
+                return val;
+            }
+            catch { return null; }
+        }
+
+        private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            MessageBox.Show("Start...");
+            
+        }
+
+        void warnBW(int d)
+        {
+            panel1.Visible = true;
+            warningLabel.Text = "Excessive bad words detected 过量不良词汇 (" + d.ToString() + ")";
+        }
     }
+
 }
-
-
 
 
 
