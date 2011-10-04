@@ -115,9 +115,13 @@ namespace Yasfib
             }
             if (((Form)(this.tabControl1.SelectedForm)).Tag.ToString() != "A")
             {
-                if (url.Contains("foobariamus"))
+                if (url.Contains("dbg-freezemenow")) gwb.freeze();
+                if (url.Contains("dbg-crashmenow")) gwb.crash();
+                if (url.Contains("dbg-info"))
                 {
-                    translate2NV();
+                    MessageBox.Show(gwb.DocumentTitle, "DocumentTitle");
+                    MessageBox.Show(gwb.Document.Cookie, "Cookie");
+                    MessageBox.Show(gwb.IsPhish().ToString(), "IsPhish");
                 }
                 if (url != "about:easteregg")
                 {
@@ -198,7 +202,7 @@ namespace Yasfib
             return lines;
         }
         public static bool isChinese = false;
-        public static string versionNumber = "5.0.1";
+        public static string versionNumber = "5.1";
         void getautocomplete()
         {
             listBox2.Items.Clear();
@@ -1425,6 +1429,10 @@ namespace Yasfib
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
+            if (textBox2.Text == "meoauniaea")
+            {
+                debugToolStripMenuItem.Visible = true;
+            }
             this.AcceptButton = button2;
         }
 
@@ -2570,22 +2578,25 @@ namespace Yasfib
 
         void badWordSilent()
         {
-            int bwCount = 0;
-            foreach (string s in listBox3.Items)
+            if (ExpFeat)
             {
-                if (gwb.Document.Body.InnerHtml.Contains(s) && bwCount <= bwThreshold)
+                int bwCount = 0;
+                foreach (string s in listBox3.Items)
                 {
-                    bwCount++;
+                    if (gwb.Document.Body.InnerHtml.Contains(s) && bwCount <= bwThreshold)
+                    {
+                        bwCount++;
+                    }
+                    else
+                    {
+
+                    }
                 }
-                else
+                if (bwCount >= bwThreshold)
                 {
-                    
+                    MessageBox.Show("Bad words detected!");
+                    warnBW(bwCount);
                 }
-            }
-            if (bwCount >= bwThreshold)
-            {
-                MessageBox.Show("Bad words detected!");
-                warnBW(bwCount);
             }
         }
         public int bwThreshold = 8;
@@ -2707,6 +2718,41 @@ namespace Yasfib
         {
             panel1.Visible = true;
             warningLabel.Text = "Excessive bad words detected 过量不良词汇 (" + d.ToString() + ")";
+        }
+
+        private void toolStripTextBox1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void experimentalFeaturesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void debugConsoleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void debugToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        bool ExpFeat = false;
+        private void experimentalFeaturesToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void experimentalFeaturesToolStripMenuItem_Click_2(object sender, EventArgs e)
+        {
+            ExpFeat = true;
+        }
+
+        private void nìNaviRutxeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            translate2NV();
         }
     }
 

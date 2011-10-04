@@ -107,6 +107,9 @@
             this.bookmarksToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bookmarkThisPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.experimentalFeaturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nìNaviRutxeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
@@ -638,6 +641,7 @@
             this.fileToolStripMenuItem1,
             this.editToolStripMenuItem,
             this.bookmarksToolStripMenuItem1,
+            this.debugToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
             this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -851,6 +855,30 @@
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(186, 22);
             this.toolStripMenuItem2.Text = "________________";
+            // 
+            // debugToolStripMenuItem
+            // 
+            this.debugToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.experimentalFeaturesToolStripMenuItem,
+            this.nìNaviRutxeToolStripMenuItem});
+            this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
+            this.debugToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.debugToolStripMenuItem.Text = "Debug";
+            this.debugToolStripMenuItem.Visible = false;
+            // 
+            // experimentalFeaturesToolStripMenuItem
+            // 
+            this.experimentalFeaturesToolStripMenuItem.Name = "experimentalFeaturesToolStripMenuItem";
+            this.experimentalFeaturesToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.experimentalFeaturesToolStripMenuItem.Text = "Experimental features";
+            this.experimentalFeaturesToolStripMenuItem.Click += new System.EventHandler(this.experimentalFeaturesToolStripMenuItem_Click_2);
+            // 
+            // nìNaviRutxeToolStripMenuItem
+            // 
+            this.nìNaviRutxeToolStripMenuItem.Name = "nìNaviRutxeToolStripMenuItem";
+            this.nìNaviRutxeToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.nìNaviRutxeToolStripMenuItem.Text = "nìNa\'vi rutxe!";
+            this.nìNaviRutxeToolStripMenuItem.Click += new System.EventHandler(this.nìNaviRutxeToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -1101,7 +1129,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Daedalus";
+            this.Text = "s";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -1230,6 +1258,9 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
+        private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem experimentalFeaturesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nìNaviRutxeToolStripMenuItem;
     }
 }
 
