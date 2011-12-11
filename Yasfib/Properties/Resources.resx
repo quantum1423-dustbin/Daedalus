@@ -124,8 +124,8 @@
   <data name="navigate_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\navigate_48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="yasfib_logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\yasfib_logo1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="table_481" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\table_481.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="001_50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\001_50.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,9 +172,6 @@
   <data name="ssl" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ssl.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="circle_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\circle_green.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="zoomin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\zoomin.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -190,8 +187,14 @@
   <data name="Cancel Red Button" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cancel Red Button.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="001_012" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_012.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="download1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\download1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="encryptedc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\encryptedc1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="paper_content_pencil_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\paper_content_pencil_48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,8 +205,11 @@
   <data name="download11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\download11.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="001_21" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\001_21.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="001_392" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_392.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\normal.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ssl3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ssl3.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -220,8 +226,11 @@
   <data name="kkk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\kkk.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="table_481" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\table_481.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="internal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\internal.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="circle_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\circle_green.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ssl2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ssl2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -238,8 +247,20 @@
   <data name="001_394" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\001_394.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="001_392" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\001_392.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="normalc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\normalc1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="internalc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\internalc.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="unsafe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\unsafe.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="001_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_40.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="encrypted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\encrypted.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -277,8 +298,8 @@
   <data name="back2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\back2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="001_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\001_40.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="001_21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001_21.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Print" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Print.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -288,6 +309,9 @@
   </data>
   <data name="yasfibBack1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\yasfibBack1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yasfib_logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yasfib_logo1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="forward2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forward2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -334,6 +358,9 @@
   <data name="yasfib_compress" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\yasfib_compress.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="dangerc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dangerc1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="sign_step1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sign_step1.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -347,7 +374,7 @@
     <value>..\Resources\table_green_48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="001_012" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\001_012.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="duckduckgo-logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\duckduckgo-logo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

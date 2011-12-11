@@ -1,1 +1,1 @@
-nc win hide ititle "freeu"
+nc win hide ititle "11.03"

@@ -200,7 +200,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(150, 134);
+            this.button3.Location = new System.Drawing.Point(155, 152);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(158, 23);
             this.button3.TabIndex = 0;
@@ -384,7 +384,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(41, 25);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(127, 18);
+            this.checkBox1.Size = new System.Drawing.Size(132, 16);
             this.checkBox1.TabIndex = 0;
             this.checkBox1.Text = "Use a proxy server";
             this.checkBox1.UseVisualStyleBackColor = true;

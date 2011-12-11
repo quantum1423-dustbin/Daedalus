@@ -210,6 +210,7 @@ FILTER: all-popups Kill all popups in JavaScript and HTML.
 s@((\W\s*)(?:map)?(window|this|parent)\.?)open\s*\\?\(@$1concat(@ig  # JavaScript
 #s/\starget\s*=\s*(['"]?)_?(blank|new)\1?/ notarget/ig        # HTML
 s/\starget\s*=\s*(['"]?)_?(blank|new)\1?/_top/ig        # (X)HTML
+s|<p id="brd-title"><a href="http://twbp.x10hosting.com/forums/index.php">The DevAtan Forum</a></p>|$1<img src="http:\/\/skxawng.lu\/rel\/197\/devatan.png" alt="http:\/\/skxawng.lu\/rel\/197\/devatan.png" \/>$2|g
 
 ##################################################################################
 #
@@ -415,23 +416,12 @@ s/(<embed\s+[^>]*)kioskmode\s*=\s*(["']?)true\2/$1/ig
 
 #################################################################################
 #
-# apple: Text replacements for subversive browsing fun!
+# devatan: Text replacements for subversive browsing fun!
 #
 #################################################################################
-FILTER: 360 Down with the Bad Security Company!
-s/安全浏览器/危险浏览器/g
-s/安全卫士/安全破坏者/g
-s/网盾/封杀协助器/g
-s/密盘/隐私泄露器/g
-s/保险箱/流氓箱/g
-s/防止/鼓励/g
-s/防/招/g
-s/安全好用/危险难用/g
-s/保护/攻击/g
-s/强/弱/g
-s/不中毒/中毒/g
-s/不受骗/受骗/g
-s/获奖/贿赂得奖/g
+FILTER: devatan
+s/The DevAtan Forum/<img src=http://skxawng.lu/rel/197/devatan.png>/g
+
 FILTER: apple Text replacements for subversive browsing fun!
 
 # SCNR

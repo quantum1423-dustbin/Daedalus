@@ -54,5 +54,8 @@ g.163.com
 {+filter{msn}}
 .msn.*
 
+{+filter{devatan}}
+/
+
 {+filter{360}}
 .360.cn

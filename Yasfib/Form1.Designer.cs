@@ -67,7 +67,6 @@
             this.tosearch = new System.Windows.Forms.TextBox();
             this.gradientDown = new System.Windows.Forms.Timer(this.components);
             this.gradientUp = new System.Windows.Forms.Timer(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openANewTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openANewIEShellToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,6 +75,23 @@
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.textBox2 = new GlassUI.GlassTextBox();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.initer2 = new System.ComponentModel.BackgroundWorker();
+            this.ac = new System.ComponentModel.BackgroundWorker();
+            this.timer4 = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.warningLabel = new System.Windows.Forms.Label();
+            this.warningbar = new System.Windows.Forms.Label();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.timer5 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new GlassUI.GlassLabel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.buttonX1 = new GlassUI.GlassButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button5 = new GlassUI.GlassButton();
             this.button1 = new GlassUI.GlassButton();
             this.button3 = new GlassUI.GlassButton();
@@ -114,23 +130,6 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.label1 = new GlassUI.GlassLabel();
-            this.buttonX1 = new System.Windows.Forms.Button();
-            this.initer2 = new System.ComponentModel.BackgroundWorker();
-            this.ac = new System.ComponentModel.BackgroundWorker();
-            this.textBox1 = new GlassUI.GlassTextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.timer4 = new System.Windows.Forms.Timer(this.components);
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.warningLabel = new System.Windows.Forms.Label();
-            this.warningbar = new System.Windows.Forms.Label();
-            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.mainCM.SuspendLayout();
@@ -138,8 +137,9 @@
             this.findbox.SuspendLayout();
             this.contextMenuStrip3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -478,15 +478,6 @@
             this.gradientUp.Interval = 150;
             this.gradientUp.Tick += new System.EventHandler(this.gradientUp_Tick);
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(667, 540);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(116, 22);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar1.TabIndex = 35;
-            // 
             // contextMenuStrip3
             // 
             this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -543,6 +534,162 @@
             this.timer3.Interval = 10;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
+            // initer2
+            // 
+            this.initer2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.initer2_DoWork);
+            // 
+            // ac
+            // 
+            this.ac.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ac_DoWork);
+            // 
+            // timer4
+            // 
+            this.timer4.Enabled = true;
+            this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork_1);
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowser1.Location = new System.Drawing.Point(759, 542);
+            this.webBrowser1.Margin = new System.Windows.Forms.Padding(0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.ScrollBarsEnabled = false;
+            this.webBrowser1.Size = new System.Drawing.Size(20, 20);
+            this.webBrowser1.TabIndex = 38;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.panel1.Controls.Add(this.button12);
+            this.panel1.Controls.Add(this.button11);
+            this.panel1.Controls.Add(this.warningLabel);
+            this.panel1.Controls.Add(this.warningbar);
+            this.panel1.Location = new System.Drawing.Point(2, 55);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(781, 37);
+            this.panel1.TabIndex = 55;
+            // 
+            // button12
+            // 
+            this.button12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button12.Location = new System.Drawing.Point(634, 7);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(86, 23);
+            this.button12.TabIndex = 3;
+            this.button12.Text = "View details";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click_1);
+            // 
+            // button11
+            // 
+            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Location = new System.Drawing.Point(745, 4);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(28, 28);
+            this.button11.TabIndex = 2;
+            this.button11.Text = "X";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click_1);
+            // 
+            // warningLabel
+            // 
+            this.warningLabel.AutoSize = true;
+            this.warningLabel.Location = new System.Drawing.Point(107, 12);
+            this.warningLabel.Name = "warningLabel";
+            this.warningLabel.Size = new System.Drawing.Size(38, 14);
+            this.warningLabel.TabIndex = 1;
+            this.warningLabel.Text = "label2";
+            // 
+            // warningbar
+            // 
+            this.warningbar.AutoSize = true;
+            this.warningbar.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.warningbar.Location = new System.Drawing.Point(10, 8);
+            this.warningbar.Name = "warningbar";
+            this.warningbar.Size = new System.Drawing.Size(83, 19);
+            this.warningbar.TabIndex = 0;
+            this.warningbar.Text = "Warning:";
+            // 
+            // backgroundWorker2
+            // 
+            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
+            // 
+            // timer5
+            // 
+            this.timer5.Enabled = true;
+            this.timer5.Tick += new System.EventHandler(this.timer5_Tick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.label1.DefaultToGlass = false;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.GlowColor = System.Drawing.SystemColors.Highlight;
+            this.label1.Image = null;
+            this.label1.Location = new System.Drawing.Point(0, 540);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 22);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "glassLabel1";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar1.Location = new System.Drawing.Point(667, 540);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(116, 22);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 35;
+            // 
+            // buttonX1
+            // 
+            this.buttonX1.BackColor = System.Drawing.Color.White;
+            this.buttonX1.Image = null;
+            this.buttonX1.Location = new System.Drawing.Point(148, 31);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(23, 23);
+            this.buttonX1.TabIndex = 57;
+            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
+            this.buttonX1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonX1_MouseDown);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textBox1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(220, 4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(228, 22);
+            this.textBox1.TabIndex = 58;
+            this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
+            this.textBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick_1);
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_3);
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyDown);
+            this.textBox1.MouseCaptureChanged += new System.EventHandler(this.textBox1o_MouseCaptureChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Yasfib.Properties.Resources.internalc;
+            this.pictureBox1.Location = new System.Drawing.Point(159, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(60, 22);
+            this.pictureBox1.TabIndex = 56;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_2);
+            // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.Snow;
@@ -559,7 +706,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.Gainsboro;
             this.button1.Image = global::Yasfib.Properties.Resources._001_394;
-            this.button1.Location = new System.Drawing.Point(465, 4);
+            this.button1.Location = new System.Drawing.Point(467, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(23, 23);
             this.button1.TabIndex = 48;
@@ -592,7 +739,7 @@
             this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button10.BackColor = System.Drawing.Color.Gainsboro;
             this.button10.Image = global::Yasfib.Properties.Resources._001_29;
-            this.button10.Location = new System.Drawing.Point(445, 4);
+            this.button10.Location = new System.Drawing.Point(447, 4);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(23, 23);
             this.button10.TabIndex = 47;
@@ -899,7 +1046,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackgroundImage = global::Yasfib.Properties.Resources.favicon;
+            this.button2.BackgroundImage = global::Yasfib.Properties.Resources.duckduckgo_logo;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.Location = new System.Drawing.Point(760, 2);
             this.button2.Name = "button2";
@@ -924,174 +1071,6 @@
             this.button7.MouseHover += new System.EventHandler(this.button7_MouseHover);
             this.button7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button7_MouseMove);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label1.DefaultToGlass = false;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.GlowColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Image = null;
-            this.label1.Location = new System.Drawing.Point(0, 540);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 22);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "glassLabel1";
-            // 
-            // buttonX1
-            // 
-            this.buttonX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonX1.BackColor = System.Drawing.Color.White;
-            this.buttonX1.BackgroundImage = global::Yasfib.Properties.Resources._001_01;
-            this.buttonX1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonX1.Location = new System.Drawing.Point(140, 30);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(23, 23);
-            this.buttonX1.TabIndex = 51;
-            this.buttonX1.UseVisualStyleBackColor = false;
-            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
-            this.buttonX1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonX1_MouseDown);
-            // 
-            // initer2
-            // 
-            this.initer2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.initer2_DoWork);
-            // 
-            // ac
-            // 
-            this.ac.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ac_DoWork);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.DefaultToGlass = false;
-            this.textBox1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(159, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(287, 22);
-            this.textBox1.TabIndex = 40;
-            this.textBox1.WordWrap = false;
-            this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
-            this.textBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick_1);
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyDown);
-            this.textBox1.MouseCaptureChanged += new System.EventHandler(this.textBox1o_MouseCaptureChanged);
-            // 
-            // listBox1
-            // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 14;
-            this.listBox1.Location = new System.Drawing.Point(159, 55);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(387, 100);
-            this.listBox1.TabIndex = 52;
-            this.listBox1.Visible = false;
-            this.listBox1.SelectedValueChanged += new System.EventHandler(this.listBox1_SelectedValueChanged);
-            // 
-            // timer4
-            // 
-            this.timer4.Enabled = true;
-            this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork_1);
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 14;
-            this.listBox2.Location = new System.Drawing.Point(171, 171);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(120, 88);
-            this.listBox2.TabIndex = 53;
-            this.listBox2.Visible = false;
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser1.Location = new System.Drawing.Point(759, 542);
-            this.webBrowser1.Margin = new System.Windows.Forms.Padding(0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.ScrollBarsEnabled = false;
-            this.webBrowser1.Size = new System.Drawing.Size(20, 20);
-            this.webBrowser1.TabIndex = 38;
-            // 
-            // listBox3
-            // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 14;
-            this.listBox3.Location = new System.Drawing.Point(465, 161);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(120, 88);
-            this.listBox3.TabIndex = 54;
-            this.listBox3.Visible = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.panel1.Controls.Add(this.button12);
-            this.panel1.Controls.Add(this.button11);
-            this.panel1.Controls.Add(this.warningLabel);
-            this.panel1.Controls.Add(this.warningbar);
-            this.panel1.Location = new System.Drawing.Point(2, 55);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(781, 37);
-            this.panel1.TabIndex = 55;
-            // 
-            // button12
-            // 
-            this.button12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button12.Location = new System.Drawing.Point(634, 7);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(86, 23);
-            this.button12.TabIndex = 3;
-            this.button12.Text = "View details";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click_1);
-            // 
-            // button11
-            // 
-            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Location = new System.Drawing.Point(745, 4);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(28, 28);
-            this.button11.TabIndex = 2;
-            this.button11.Text = "X";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click_1);
-            // 
-            // warningLabel
-            // 
-            this.warningLabel.AutoSize = true;
-            this.warningLabel.Location = new System.Drawing.Point(107, 12);
-            this.warningLabel.Name = "warningLabel";
-            this.warningLabel.Size = new System.Drawing.Size(38, 14);
-            this.warningLabel.TabIndex = 1;
-            this.warningLabel.Text = "label2";
-            // 
-            // warningbar
-            // 
-            this.warningbar.AutoSize = true;
-            this.warningbar.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.warningbar.Location = new System.Drawing.Point(10, 8);
-            this.warningbar.Name = "warningbar";
-            this.warningbar.Size = new System.Drawing.Size(83, 19);
-            this.warningbar.TabIndex = 0;
-            this.warningbar.Text = "Warning:";
-            // 
-            // backgroundWorker2
-            // 
-            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
-            // 
             // MainForm
             // 
             this.AcceptButton = this.go;
@@ -1100,26 +1079,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(784, 562);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.listBox3);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.buttonX1);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.go);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.findbox);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonX1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.button7);
@@ -1149,10 +1126,11 @@
             this.findbox.PerformLayout();
             this.contextMenuStrip3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1221,7 +1199,6 @@
         private System.Windows.Forms.ToolStripMenuItem reloadToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem openInNewTabToolStripMenuItem1;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.ProgressBar progressBar1;
         public MdiTabControl.TabControl tabControl1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
         private System.Windows.Forms.ToolStripMenuItem openANewTabToolStripMenuItem;
@@ -1242,16 +1219,10 @@
         private GlassUI.GlassButton button5;
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.WebBrowser webBrowser1;
-        private GlassUI.GlassLabel label1;
-        private System.Windows.Forms.Button buttonX1;
         private System.ComponentModel.BackgroundWorker initer2;
         private System.ComponentModel.BackgroundWorker ac;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Timer timer4;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.ListBox listBox2;
-        private GlassUI.GlassTextBox textBox1;
-        private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label warningLabel;
         private System.Windows.Forms.Label warningbar;
@@ -1261,6 +1232,12 @@
         private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem experimentalFeaturesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nìNaviRutxeToolStripMenuItem;
+        private System.Windows.Forms.Timer timer5;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private GlassUI.GlassLabel label1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private GlassUI.GlassButton buttonX1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

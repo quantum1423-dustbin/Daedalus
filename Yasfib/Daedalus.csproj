@@ -57,7 +57,7 @@
     <StartupObject>Yasfib.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>yasfib_logo.ico</ApplicationIcon>
+    <ApplicationIcon>daedalus.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>Internet</TargetZone>
@@ -275,6 +275,19 @@
     <None Include="Resources\001_29.png" />
     <None Include="Resources\001_394.png" />
     <None Include="Resources\001_012.png" />
+    <None Include="Resources\normal.png" />
+    <None Include="Resources\encrypted.png" />
+    <None Include="Resources\unsafe.png" />
+    <Content Include="daedalus.ico" />
+    <Content Include="Resources\dangerc.png" />
+    <None Include="Resources\dangerc1.png" />
+    <None Include="Resources\duckduckgo-logo.png" />
+    <Content Include="Resources\encryptedc.png" />
+    <None Include="Resources\normalc.png" />
+    <None Include="Resources\normalc1.png" />
+    <None Include="Resources\encryptedc1.png" />
+    <None Include="Resources\internal.png" />
+    <None Include="Resources\internalc.png" />
     <Content Include="yasfib_logo.ico" />
     <None Include="Resources\yasfibBackTop.png" />
     <None Include="Resources\yasfibBack1.png" />

@@ -1,5 +1,4 @@
-﻿#define AERO
-using System; 
+﻿using System; 
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +14,7 @@ using System.Net;
 using System.Media;
 using Microsoft.VisualBasic.MyServices;
 using System.Security.Cryptography;
+using Microsoft.Win32;
 namespace Yasfib
 {
     public partial class MainForm : Form
@@ -107,6 +107,9 @@ namespace Yasfib
         }
         void nv(string url)
         {
+            WebBrowser d = new WebBrowser();
+            d.Navigate(url);
+            d.Dispose();
             panel1.Visible = false;
             timer2.Enabled = true;
             if (url.Contains("about:") != true)
@@ -202,10 +205,10 @@ namespace Yasfib
             return lines;
         }
         public static bool isChinese = false;
-        public static string versionNumber = "5.1";
+        public static string versionNumber = "6.0.a0 [PRE-ALPHA]";
         void getautocomplete()
         {
-            listBox2.Items.Clear();
+            textBox1.AutoCompleteCustomSource.Clear();
             try
             {
                 // Create an isntance of XmlTextReader and call Read method to read the file
@@ -219,7 +222,7 @@ namespace Yasfib
                     if (textReader.Name == "url")
                     {
                         //MessageBox.Show("");
-                        listBox2.Items.Add(textReader.ReadString());
+                        textBox1.AutoCompleteCustomSource.Add(textReader.ReadString());
                         //textBox1.Items.Add(textReader.ReadString());
                         //MessageBox.Show(textReader.ReadString());
                     }
@@ -227,7 +230,7 @@ namespace Yasfib
             }
             catch { }
         }
-        public int aBlockPortNumber = 50029;
+        public int aBlockPortNumber = 9666;
         public static void wf(string filename, string content)
         {
             StreamWriter tr;
@@ -471,6 +474,7 @@ namespace Yasfib
         }
         void browser1_DocumentCompleted(object sender, EventArgs e)
         {
+            
             try
             {
                 Debug.WriteLine("Entered DocumentCompleted!");
@@ -494,11 +498,11 @@ namespace Yasfib
 
                 textBox1.Text = Convert.ToString(gwb.Url);
                 string text = Convert.ToString(gwb.Url);
-                if (listBox2.Items.Contains(textBox1.Text))
+                if (textBox1.AutoCompleteCustomSource.Contains(textBox1.Text))
                 { }
                 else
                 {
-                    listBox2.Items.Add(Convert.ToString(gwb.Url));
+                    textBox1.AutoCompleteCustomSource.Add(Convert.ToString(gwb.Url));
                     ac.RunWorkerAsync();
                 }
             }
@@ -628,7 +632,7 @@ namespace Yasfib
             textBox1.Text = Convert.ToString(((WebBrowser)sender).Url);
             string text = Convert.ToString(swb.Url);
             //System.IO.File.AppendAllText(@"ac.xml", "<url>" + text + "</url>");
-            listBox2.Items.Add(Convert.ToString(gwb.Url));
+            textBox1.AutoCompleteCustomSource.Add(Convert.ToString(gwb.Url));
             //label1.Text = "Ready";
             if (isPrivacyMode == false)
             {
@@ -792,18 +796,8 @@ namespace Yasfib
             TextReader gpl = new StreamReader("LICENSE.txt");
             #endregion
             #region Bad word filters
-            bool running = true;
-            string end = "";
-            TextReader tr = new StreamReader("badwords-temp.txt");
-            while (end == end)
-            {
-                end = tr.ReadLine();
-                if (end == null) { break; }
-                string name = end;
-                listBox3.Items.Add(end);
-            }
-            tr.Close();
             #endregion
+            pictureBox1.Image=normal;
             //this.FormBorderStyle = FormBorderStyle.None;
         }
 
@@ -860,20 +854,6 @@ namespace Yasfib
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            listBox1.Visible = true;
-            this.AcceptButton = go;
-            listBox1.Items.Clear();
-            textBox1.AutoCompleteCustomSource.Clear();
-            int c = 0;
-            foreach (string st in listBox2.Items)
-            {
-                if (st.Contains(textBox1.Text) && c < 10)
-                {
-                    listBox1.Items.Add(st);
-                    c++;
-                }
-            }
-            c = 0;
         }
 
         private void goToConfigPageToolStripMenuItem_Click(object sender, EventArgs e)
@@ -899,7 +879,8 @@ namespace Yasfib
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        {/*
+        {
+            /*
             try
             {
                 ((Form)(this.tabControl1.SelectedForm)).Text = gwb.DocumentTitle;
@@ -987,6 +968,8 @@ namespace Yasfib
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            RegistryKey registry = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
+            registry.SetValue("ProxyEnable", 0);
             int moreThanOne = 0;
             Process[] processid = Process.GetProcessesByName("daedalus");
             foreach (Process dode in processid)
@@ -1367,6 +1350,124 @@ namespace Yasfib
             report();
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         private void 下载管理器ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Skybound.Gecko.ChromeDialog dialog = new Skybound.Gecko.ChromeDialog();
@@ -1413,7 +1514,7 @@ namespace Yasfib
 
         private void button6_Click(object sender, EventArgs e)
         {
-            nv("http://www.google.com/search?q=" + textBox2.Text);
+            nv("https://duckduckgo.com/?q=" + textBox2.Text);
             textBox2.Clear();
         }
 
@@ -1458,7 +1559,6 @@ namespace Yasfib
             TextReader tr = new StreamReader("home");
             nv(tr.ReadLine());
             tr.Close();
-
         }
 
         private void textBox1_TextUpdate(object sender, EventArgs e)
@@ -1586,6 +1686,7 @@ namespace Yasfib
                     if (gwb.Url.Port == 443)
                     {
                         textBox1.BackColor = Color.PaleGreen;
+                        pictureBox1.Image = encrypted;
                     }
                     else
                     {
@@ -1602,11 +1703,17 @@ namespace Yasfib
                             if (gwb.IsPhish() == true)
                             {
                                 textBox1.BackColor = System.Drawing.Color.Red;
+                                pictureBox1.Image = _unsafe;
                                 //buttonX2.Visible = true;
                                 phishLock = true;
                                 warnPhish();
                             }
-                            else { textBox1.BackColor = normCol; }
+                            else if (gwb.Url.Port==9666)
+                            {
+                                pictureBox1.Image = _internal;
+                                textBox1.BackColor = normCol;
+                            }
+                            else{ textBox1.BackColor = normCol; pictureBox1.Image = normal; }
                         }
                     }
                 }
@@ -1721,7 +1828,7 @@ namespace Yasfib
                 TextWriter rpHistory = new StreamWriter("ac.xml");
                 rpHistory.WriteLine("<i></i>");
                 rpHistory.Close();
-                listBox2.Items.Clear();
+                textBox1.AutoCompleteCustomSource.Clear();
             }
 
         }
@@ -2402,11 +2509,7 @@ namespace Yasfib
 
         private void timer3_Tick(object sender, EventArgs e)
         {
-            if (textBox1.Focused)
-            {
-                normCol = Color.FromArgb(254, 255, 255, 255);
-            }
-            else { normCol = ncbak; textBox1.BackColor = normCol; }
+
         }
 
         private void button5_Click_1(object sender, EventArgs e)
@@ -2525,11 +2628,7 @@ namespace Yasfib
 
         private void listBox1_SelectedValueChanged(object sender, EventArgs e)
         {
-            try
-            {
-                nv(listBox1.SelectedItem.ToString());
-            }
-            catch { }
+
         }
 
         private void textBox1_MouseClick_1(object sender, MouseEventArgs e)
@@ -2539,9 +2638,7 @@ namespace Yasfib
 
         private void timer4_Tick(object sender, EventArgs e)
         {
-            if (textBox1.Focused)
-                listBox1.Visible = true;
-            else listBox1.Visible = false;
+
         }
 
         private void backgroundWorker1_DoWork_1(object sender, DoWorkEventArgs e)
@@ -2557,47 +2654,13 @@ namespace Yasfib
 
         void badWordDetails()
         {
-            int bwCount = 0;
-            string bwMess = "";
-            //MessageBox.Show(gwb.Document.ActiveElement.ToString());
-            foreach (string s in listBox3.Items)
-            {
-                if (gwb.Document.Body.InnerHtml.Contains(s))
-                {
-                    bwCount++;
-                    bwMess += "<span title=" + s + ">" + s + " - <b>FOUND</b><hr></span>";
-                }
-                else
-                {
-                    //bwMess += s + " - <i>CLEAR</i><hr>";
-                }
-            }
-            string bwHead = "<h1>Bad Word Analysis</h1><h2>" + bwCount.ToString() + " bad words used" + "</h2>";
-            gwb.runJS("document.write('" + bwHead + bwMess + "')");
+            
         }
 
         void badWordSilent()
         {
-            if (ExpFeat)
-            {
-                int bwCount = 0;
-                foreach (string s in listBox3.Items)
-                {
-                    if (gwb.Document.Body.InnerHtml.Contains(s) && bwCount <= bwThreshold)
-                    {
-                        bwCount++;
-                    }
-                    else
-                    {
-
-                    }
-                }
-                if (bwCount >= bwThreshold)
-                {
-                    MessageBox.Show("Bad words detected!");
-                    warnBW(bwCount);
-                }
-            }
+            
+            
         }
         public int bwThreshold = 8;
         private void button11_Click_1(object sender, EventArgs e)
@@ -2753,6 +2816,80 @@ namespace Yasfib
         private void nìNaviRutxeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             translate2NV();
+        }
+
+        public int timeouter = 300;
+        private void timer5_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (timeouter >= 0)
+                {
+                    TukruPS.PluginSystem.Operations blah = new TukruPS.PluginSystem.Operations();
+                    blah.CloseProgram("iexplore");
+                    timeouter--;
+                }
+                else
+                {
+                    RegistryKey registry = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
+                    registry.SetValue("ProxyEnable", 0);
+                    timer5.Stop();
+                }
+            }
+            catch { }
+        }
+        public Image normal
+        {
+            get
+            {
+                if (isChinese == false)
+                {
+                    return Yasfib.Properties.Resources.normal;
+                }
+                else return Yasfib.Properties.Resources.normalc;
+            }
+        }
+        public Image encrypted
+        {
+            get
+            {
+                if (isChinese == false)
+                {
+                    return Yasfib.Properties.Resources.encrypted;
+                }
+                else return Yasfib.Properties.Resources.encryptedc;
+            }
+        }
+        public Image _internal
+        {
+            get
+            {
+                if (isChinese == false)
+                {
+                    return Yasfib.Properties.Resources._internal;
+                }
+                else return Yasfib.Properties.Resources.internalc;
+            }
+        }
+        public Image _unsafe
+        {
+            get
+            {
+                if (isChinese == false)
+                {
+                    return Yasfib.Properties.Resources._unsafe;
+                }
+                else return Yasfib.Properties.Resources.dangerc;
+            }
+        }
+        private void pictureBox1_Click_2(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void textBox1_TextChanged_3(object sender, EventArgs e)
+        {
+            this.AcceptButton = go;
         }
     }
 
