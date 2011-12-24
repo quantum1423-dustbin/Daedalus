@@ -204,8 +204,8 @@ namespace Yasfib
             }
             return lines;
         }
-        public static bool isChinese = false;
-        public static string versionNumber = "6.0.a0 [PRE-ALPHA]";
+        public static bool isChinese = true;
+        public static string versionNumber = "6.0.a1 [ALPHA]";
         void getautocomplete()
         {
             textBox1.AutoCompleteCustomSource.Clear();
@@ -369,6 +369,7 @@ namespace Yasfib
             translateMeToolStripMenuItem.Text = "翻译所选文本";
             saveToolStripMenuItem.Text = "保存本页面";
             toolStripSplitButton1.ToolTipText = "菜单";
+            temporaryAntiblockingToolStripMenuItem.Text = "一键暂时饭封杀";
         }
         void translate2NV()
         {
@@ -1624,7 +1625,7 @@ namespace Yasfib
                 button7.BackColor = System.Drawing.Color.Green;
                 button7.ForeColor = Color.White;
                 Skybound.Gecko.GeckoPreferences.User["network.proxy.type"] = 1;
-                Skybound.Gecko.GeckoPreferences.User["network.proxy.http"] = "yasfib-web-compressor.dyndns.org";
+                Skybound.Gecko.GeckoPreferences.User["network.proxy.http"] = "meoauniaea.no-ip.org";
                 Skybound.Gecko.GeckoPreferences.User["network.proxy.http_port"] = 8080;
                 button7.FlatStyle = FlatStyle.Flat;
                 optionsToolStripMenuItem.Enabled = false;
@@ -2890,6 +2891,41 @@ namespace Yasfib
         private void textBox1_TextChanged_3(object sender, EventArgs e)
         {
             this.AcceptButton = go;
+        }
+
+        private void toolStripTextBox1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void youTubeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nv("http://127.0.0.1:9666/001/l/?u=http://youtube.com");
+        }
+
+        private void facebookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nv("http://127.0.0.1:9666/001/l/?u=http://facebook.com");
+        }
+
+        private void twitterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nv("http://127.0.0.1:9666/001/l/?u=http://twitter.com");
+        }
+
+        private void wikipediaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nv("http://127.0.0.1:9666/001/l/?u=http://wikipedia.org");
+        }
+
+        private void devAtanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nv("http://127.0.0.1:9666/001/l/?u=http://twbp.x10hosting.com/forums/");
+        }
+
+        private void internetArchiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nv("http://127.0.0.1:9666/001/l/?u=http://archive.org");
         }
     }
 

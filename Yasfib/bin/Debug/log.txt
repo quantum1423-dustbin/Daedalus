@@ -1,11 +1,10 @@
 
-11.12.11 08:16:30    -Saving config-
-11.12.11 08:16:30    GENERAL: Show about:blank
-11.12.11 08:16:30    HPAGE: about:blank
-11.12.11 08:16:30    PROXYHOST: 127.0.0.1
-11.12.11 08:16:30    PROXYPORT: 8118
-11.12.11 08:16:31    ---Program Closed---
-11.12.11 08:16:41    ---Program Started---
-11.12.11 08:16:41    Initialized new tab
-11.12.11 08:16:41    Initialization complete
-11.12.11 08:16:45    ---Program Closed---
+11.12.24 22:09:19    ---Program Closed---
+11.12.24 22:12:52    ---Program Started---
+11.12.24 22:12:52    Initialized new tab
+11.12.24 22:12:52    Initialization complete
+11.12.24 22:13:02    ---Program Closed---
+11.12.24 22:14:09    ---Program Started---
+11.12.24 22:14:09    Initialized new tab
+11.12.24 22:14:09    Initialization complete
+11.12.24 22:14:26    ---Program Closed---

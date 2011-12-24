@@ -130,6 +130,13 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.temporaryAntiblockingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.youTubeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facebookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.twitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wikipediaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.devAtanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.internetArchiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.mainCM.SuspendLayout();
@@ -809,7 +816,7 @@
             this.exitToolStripMenuItem1});
             this.fileToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.Document;
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
-            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
+            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.fileToolStripMenuItem1.Text = "File";
             // 
             // addTabCtrlTToolStripMenuItem
@@ -875,7 +882,7 @@
             this.updateYasfibToolStripMenuItem});
             this.editToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Tools;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editToolStripMenuItem.Text = "Tools";
             // 
             // viewSourceToolStripMenuItem
@@ -891,7 +898,8 @@
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.enableAntiblockingToolStripMenuItem1,
             this.pipeliningToolStripMenuItem,
-            this.deleteBrowsingHistoryToolStripMenuItem});
+            this.deleteBrowsingHistoryToolStripMenuItem,
+            this.temporaryAntiblockingToolStripMenuItem});
             this.optionsToolStripMenuItem.Image = global::Yasfib.Properties.Resources.table_48;
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
@@ -901,7 +909,7 @@
             // 
             this.enableAntiblockingToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.circle_green;
             this.enableAntiblockingToolStripMenuItem1.Name = "enableAntiblockingToolStripMenuItem1";
-            this.enableAntiblockingToolStripMenuItem1.Size = new System.Drawing.Size(204, 22);
+            this.enableAntiblockingToolStripMenuItem1.Size = new System.Drawing.Size(207, 22);
             this.enableAntiblockingToolStripMenuItem1.Text = "Enable Anti-blocking";
             this.enableAntiblockingToolStripMenuItem1.Click += new System.EventHandler(this.premiumToolStripMenuItem_Click);
             // 
@@ -913,27 +921,27 @@
             this.offToolStripMenuItem1});
             this.pipeliningToolStripMenuItem.Image = global::Yasfib.Properties.Resources._001_25;
             this.pipeliningToolStripMenuItem.Name = "pipeliningToolStripMenuItem";
-            this.pipeliningToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.pipeliningToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.pipeliningToolStripMenuItem.Text = "Pipelining";
             // 
             // extremeToolStripMenuItem
             // 
             this.extremeToolStripMenuItem.Name = "extremeToolStripMenuItem";
-            this.extremeToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.extremeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.extremeToolStripMenuItem.Text = "Extreme";
             this.extremeToolStripMenuItem.Click += new System.EventHandler(this.extremeToolStripMenuItem_Click);
             // 
             // normalToolStripMenuItem
             // 
             this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
-            this.normalToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.normalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.normalToolStripMenuItem.Text = "Normal";
             this.normalToolStripMenuItem.Click += new System.EventHandler(this.normalToolStripMenuItem_Click);
             // 
             // offToolStripMenuItem1
             // 
             this.offToolStripMenuItem1.Name = "offToolStripMenuItem1";
-            this.offToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.offToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.offToolStripMenuItem1.Text = "Off";
             this.offToolStripMenuItem1.Click += new System.EventHandler(this.offToolStripMenuItem1_Click);
             // 
@@ -941,7 +949,7 @@
             // 
             this.deleteBrowsingHistoryToolStripMenuItem.Image = global::Yasfib.Properties.Resources.cross_48;
             this.deleteBrowsingHistoryToolStripMenuItem.Name = "deleteBrowsingHistoryToolStripMenuItem";
-            this.deleteBrowsingHistoryToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.deleteBrowsingHistoryToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.deleteBrowsingHistoryToolStripMenuItem.Text = "Delete Browsing History";
             this.deleteBrowsingHistoryToolStripMenuItem.Click += new System.EventHandler(this.deleteBrowsingHistoryToolStripMenuItem_Click);
             // 
@@ -984,7 +992,7 @@
             this.toolStripMenuItem2});
             this.bookmarksToolStripMenuItem1.Image = global::Yasfib.Properties.Resources.Favorite;
             this.bookmarksToolStripMenuItem1.Name = "bookmarksToolStripMenuItem1";
-            this.bookmarksToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
+            this.bookmarksToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.bookmarksToolStripMenuItem1.Text = "Bookmarks";
             // 
             // bookmarkThisPageToolStripMenuItem
@@ -1009,7 +1017,7 @@
             this.experimentalFeaturesToolStripMenuItem,
             this.nìNaviRutxeToolStripMenuItem});
             this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
-            this.debugToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.debugToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.debugToolStripMenuItem.Text = "Debug";
             this.debugToolStripMenuItem.Visible = false;
             // 
@@ -1033,7 +1041,7 @@
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Image = global::Yasfib.Properties.Resources.Help_Blue_Button;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
@@ -1070,6 +1078,63 @@
             this.button7.Click += new System.EventHandler(this.button7_Click);
             this.button7.MouseHover += new System.EventHandler(this.button7_MouseHover);
             this.button7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button7_MouseMove);
+            // 
+            // temporaryAntiblockingToolStripMenuItem
+            // 
+            this.temporaryAntiblockingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.youTubeToolStripMenuItem,
+            this.facebookToolStripMenuItem,
+            this.twitterToolStripMenuItem,
+            this.wikipediaToolStripMenuItem,
+            this.devAtanToolStripMenuItem,
+            this.internetArchiveToolStripMenuItem});
+            this.temporaryAntiblockingToolStripMenuItem.Image = global::Yasfib.Properties.Resources.circle_green;
+            this.temporaryAntiblockingToolStripMenuItem.Name = "temporaryAntiblockingToolStripMenuItem";
+            this.temporaryAntiblockingToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.temporaryAntiblockingToolStripMenuItem.Text = "Temporary Anti-blocking";
+            this.temporaryAntiblockingToolStripMenuItem.ToolTipText = "Only use when not using ordinary anti-blocking or WormHole.";
+            // 
+            // youTubeToolStripMenuItem
+            // 
+            this.youTubeToolStripMenuItem.Name = "youTubeToolStripMenuItem";
+            this.youTubeToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.youTubeToolStripMenuItem.Text = "YouTube";
+            this.youTubeToolStripMenuItem.Click += new System.EventHandler(this.youTubeToolStripMenuItem_Click);
+            // 
+            // facebookToolStripMenuItem
+            // 
+            this.facebookToolStripMenuItem.Name = "facebookToolStripMenuItem";
+            this.facebookToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.facebookToolStripMenuItem.Text = "Facebook";
+            this.facebookToolStripMenuItem.Click += new System.EventHandler(this.facebookToolStripMenuItem_Click);
+            // 
+            // twitterToolStripMenuItem
+            // 
+            this.twitterToolStripMenuItem.Name = "twitterToolStripMenuItem";
+            this.twitterToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.twitterToolStripMenuItem.Text = "Twitter";
+            this.twitterToolStripMenuItem.Click += new System.EventHandler(this.twitterToolStripMenuItem_Click);
+            // 
+            // wikipediaToolStripMenuItem
+            // 
+            this.wikipediaToolStripMenuItem.Name = "wikipediaToolStripMenuItem";
+            this.wikipediaToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.wikipediaToolStripMenuItem.Text = "Wikipedia";
+            this.wikipediaToolStripMenuItem.Click += new System.EventHandler(this.wikipediaToolStripMenuItem_Click);
+            // 
+            // devAtanToolStripMenuItem
+            // 
+            this.devAtanToolStripMenuItem.Name = "devAtanToolStripMenuItem";
+            this.devAtanToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.devAtanToolStripMenuItem.Text = "DevAtan";
+            this.devAtanToolStripMenuItem.Click += new System.EventHandler(this.devAtanToolStripMenuItem_Click);
+            // 
+            // internetArchiveToolStripMenuItem
+            // 
+            this.internetArchiveToolStripMenuItem.Name = "internetArchiveToolStripMenuItem";
+            this.internetArchiveToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.internetArchiveToolStripMenuItem.Text = "Internet Archive";
+            this.internetArchiveToolStripMenuItem.Click += new System.EventHandler(this.internetArchiveToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -1238,6 +1303,13 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private GlassUI.GlassButton buttonX1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolStripMenuItem temporaryAntiblockingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem youTubeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem facebookToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem twitterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wikipediaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem devAtanToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem internetArchiveToolStripMenuItem;
     }
 }
 
