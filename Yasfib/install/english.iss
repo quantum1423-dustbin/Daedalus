@@ -8,16 +8,16 @@
 AppId={{5607BD7C-6FDB-4513-8DDC-5D9770233C66}
 AppName=Daedalus
 ;AppVersion=0.5.1AppVerName=Daedalus
-AppPublisher=PiSoft
-DefaultDirName={pf}\Daedalus
+AppPublisher=AluSoft
+DefaultDirName={code:DefAppDataFolder}\Daedalus
 DefaultGroupName=Daedalus
 DisableProgramGroupPage=yes
-DisableDirPage=yes
+DisableDirPage=no
 DisableStartupPrompt=yes
 DisableReadyMemo=yes
 DisableReadyPage=yes
 OutputBaseFilename=daedalus-en
-Compression=lzma/ultra
+Compression=lzma2
 SolidCompression=yes
 
 [Languages]
@@ -41,3 +41,8 @@ Name: "{group}\{cm:UninstallProgram,Daedalus}"; Filename: "{uninstallexe}"
 Name: "{commondesktop}\Daedalus"; Filename: "{app}\Daedalus.exe"; Tasks: desktopicon
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\Daedalus"; Filename: "{app}\Daedalus.exe"; Tasks: quicklaunchicon
 
+[Code]
+function DefAppDataFolder(Param: String): String;
+begin
+    Result := ExpandConstant('{localappdata}')
+end;

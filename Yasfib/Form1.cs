@@ -107,6 +107,8 @@ namespace Yasfib
         }
         void nv(string url)
         {
+            Bitmap interbediate = new Bitmap(Yasfib.Properties.Resources._001_40);
+            ((Form)(this.tabControl1.SelectedForm)).Icon = Icon.FromHandle(interbediate.GetHicon());
             WebBrowser d = new WebBrowser();
             d.Navigate(url);
             d.Dispose();
@@ -118,13 +120,26 @@ namespace Yasfib
             }
             if (((Form)(this.tabControl1.SelectedForm)).Tag.ToString() != "A")
             {
+                if (url.Contains("dbg-warnmenow")) warnPhish();
                 if (url.Contains("dbg-freezemenow")) gwb.freeze();
                 if (url.Contains("dbg-crashmenow")) gwb.crash();
+                if (url.Contains("dbg-favmenow"))
+                {
+                    Bitmap interdbediate = new Bitmap(gwb.FaviconAsImage);
+                    ((Form)(this.tabControl1.SelectedForm)).Icon = Icon.FromHandle(interdbediate.GetHicon());
+                }
                 if (url.Contains("dbg-info"))
                 {
                     MessageBox.Show(gwb.DocumentTitle, "DocumentTitle");
                     MessageBox.Show(gwb.Document.Cookie, "Cookie");
                     MessageBox.Show(gwb.IsPhish().ToString(), "IsPhish");
+                    if (gwb.IsPhish().ToString() == "True")
+                    {
+                        //buttonX2.Visible = true;
+                        //phishLock = true;
+                        warnPhish();
+                    }
+                    gwb.Stop();
                 }
                 if (url != "about:easteregg")
                 {
@@ -205,7 +220,7 @@ namespace Yasfib
             return lines;
         }
         public static bool isChinese = true;
-        public static string versionNumber = "6.0.a1 [ALPHA]";
+        public static string versionNumber = "6.1.0";
         void getautocomplete()
         {
             textBox1.AutoCompleteCustomSource.Clear();
@@ -230,7 +245,7 @@ namespace Yasfib
             }
             catch { }
         }
-        public int aBlockPortNumber = 9666;
+        public int aBlockPortNumber = 13370;
         public static void wf(string filename, string content)
         {
             StreamWriter tr;
@@ -369,7 +384,7 @@ namespace Yasfib
             translateMeToolStripMenuItem.Text = "翻译所选文本";
             saveToolStripMenuItem.Text = "保存本页面";
             toolStripSplitButton1.ToolTipText = "菜单";
-            temporaryAntiblockingToolStripMenuItem.Text = "一键暂时饭封杀";
+            temporaryAntiblockingToolStripMenuItem.Text = "一键暂时反封杀";
         }
         void translate2NV()
         {
@@ -462,9 +477,9 @@ namespace Yasfib
                 foobar.Focus();
                 foobar.Tag = "-";
                 rtab();
-                Bitmap interbediate = new Bitmap(Yasfib.Properties.Resources._001_40);
+                Bitmap interbediate = new Bitmap(gwb.FaviconAsImage);
                 ((Form)(this.tabControl1.SelectedForm)).Icon = Icon.FromHandle(interbediate.GetHicon());
-                //browser1.Navigate("about:blank");
+                browser1.Navigate("about:blank");
                 textBox1.Focus();
             }
             catch { }
@@ -491,6 +506,8 @@ namespace Yasfib
                     //textBox1.Text = Convert.ToString(gwb.Url);
                 }
                 textBox1.Text = Convert.ToString(gwb.Url);
+                Bitmap interdbediate = new Bitmap(gwb.FaviconAsImage);
+                ((Form)(this.tabControl1.SelectedForm)).Icon = Icon.FromHandle(interdbediate.GetHicon());
                 Debug.WriteLine("Exited DocumentCompleted!");
             }
             catch { Debug.WriteLine("DocumentCompleted failed"); }
@@ -553,7 +570,8 @@ namespace Yasfib
 
         void browser1_Navigating(object sender, Skybound.Gecko.GeckoNavigatingEventArgs e)
         {
-
+            Bitmap interbediate = new Bitmap(Yasfib.Properties.Resources._001_40);
+            ((Form)(this.tabControl1.SelectedForm)).Icon = Icon.FromHandle(interbediate.GetHicon());
         }
         public string burl = "";
         void browser1_DomMouseDown(object sender, Skybound.Gecko.GeckoDomMouseEventArgs e)
@@ -584,11 +602,13 @@ namespace Yasfib
         void changing(object sender, EventArgs e)
         {
 
-            label1.Text = gwb.StatusText;
+            label1.Text = truncate2(gwb.StatusText, 70);
             if (isChinese == true)
             {
                 label1.Text = label1.Text.Replace("Waiting for", "正在等待");
                 label1.Text = label1.Text.Replace("Connecting to", "正在连接");
+                label1.Text = label1.Text.Replace("Transferring data from", "正在加载");
+                label1.Text = label1.Text.Replace("Connected to", "已连接");
                 label1.Text = label1.Text.Replace("Transferring data from", "正在加载");
             }
             //updateStatusText();
@@ -1555,6 +1575,12 @@ namespace Yasfib
             timer1.Enabled = true;
         }
 
+        public static string truncate2(string source, int length)
+        {
+            return source.Substring(0, Math.Min(length, source.Length));
+        }
+
+
         private void tabControl1_Load_1(object sender, EventArgs e)
         {
             TextReader tr = new StreamReader("home");
@@ -1691,6 +1717,7 @@ namespace Yasfib
                     }
                     else
                     {
+                        pictureBox1.Image = normal;
                         if (i == true)
                         {
                             Process dahProcess = new
@@ -1709,7 +1736,7 @@ namespace Yasfib
                                 phishLock = true;
                                 warnPhish();
                             }
-                            else if (gwb.Url.Port==9666)
+                            else if (gwb.Url.Port==aBlockPortNumber)
                             {
                                 pictureBox1.Image = _internal;
                                 textBox1.BackColor = normCol;
@@ -1726,13 +1753,15 @@ namespace Yasfib
         }
         void warnPhish()
         {
-            System.Media.SoundPlayer e = new System.Media.SoundPlayer("warning.wav");
-            e.Play();
+            //MessageBox.Show("Trying to warn...");
             log("Phishing site detected at: " + gwb.Url);
             panel1.Visible = true;
             panel1.BackColor = Color.Red;
             warningLabel.Text=("Phishing site detected by FishPhish!!! 检测出钓鱼网站！！！");
             timer2.Enabled = false;
+            System.Media.SoundPlayer e = new System.Media.SoundPlayer("warning.wav");
+            e.Play();
+            panel1.BringToFront();
         }
         private void upgradeAntiblockingModuleToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2818,27 +2847,6 @@ namespace Yasfib
         {
             translate2NV();
         }
-
-        public int timeouter = 300;
-        private void timer5_Tick(object sender, EventArgs e)
-        {
-            try
-            {
-                if (timeouter >= 0)
-                {
-                    TukruPS.PluginSystem.Operations blah = new TukruPS.PluginSystem.Operations();
-                    blah.CloseProgram("iexplore");
-                    timeouter--;
-                }
-                else
-                {
-                    RegistryKey registry = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
-                    registry.SetValue("ProxyEnable", 0);
-                    timer5.Stop();
-                }
-            }
-            catch { }
-        }
         public Image normal
         {
             get
@@ -2900,32 +2908,37 @@ namespace Yasfib
 
         private void youTubeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            nv("http://127.0.0.1:9666/001/l/?u=http://youtube.com");
+            nv("http://127.0.0.1:13370/001/l/?u=http://youtube.com");
         }
 
         private void facebookToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            nv("http://127.0.0.1:9666/001/l/?u=http://facebook.com");
+            nv("http://127.0.0.1:13370/001/l/?u=http://facebook.com");
         }
 
         private void twitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            nv("http://127.0.0.1:9666/001/l/?u=http://twitter.com");
+            nv("http://127.0.0.1:13370/001/l/?u=http://twitter.com");
         }
 
         private void wikipediaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            nv("http://127.0.0.1:9666/001/l/?u=http://wikipedia.org");
+            nv("http://127.0.0.1:13370/001/l/?u=http://wikipedia.org");
         }
 
         private void devAtanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            nv("http://127.0.0.1:9666/001/l/?u=http://twbp.x10hosting.com/forums/");
+            nv("http://127.0.0.1:13370/001/l/?u=http://www.devatan.tk");
         }
 
         private void internetArchiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            nv("http://127.0.0.1:9666/001/l/?u=http://archive.org");
+            nv("http://127.0.0.1:13370/001/l/?u=http://archive.org");
+        }
+
+        private void inHtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(gwb.Document.Body.InnerHtml.ToString());
         }
     }
 

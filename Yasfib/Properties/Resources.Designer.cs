@@ -181,7 +181,7 @@ namespace Yasfib.Properties {
         
         internal static System.Drawing.Bitmap _001_40 {
             get {
-                object obj = ResourceManager.GetObject("001_40", resourceCulture);
+                object obj = ResourceManager.GetObject("_001_40", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

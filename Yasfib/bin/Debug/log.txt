@@ -1,10 +1,2 @@
 
-11.12.24 22:09:19    ---Program Closed---
-11.12.24 22:12:52    ---Program Started---
-11.12.24 22:12:52    Initialized new tab
-11.12.24 22:12:52    Initialization complete
-11.12.24 22:13:02    ---Program Closed---
-11.12.24 22:14:09    ---Program Started---
-11.12.24 22:14:09    Initialized new tab
-11.12.24 22:14:09    Initialization complete
-11.12.24 22:14:26    ---Program Closed---
+12.02.08 17:05:38    ---Program Closed---
