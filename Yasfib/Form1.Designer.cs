@@ -1,4 +1,6 @@
-﻿namespace Yasfib
+﻿using EduardoOliveiraAndColinVerhey;
+
+namespace Yasfib
 {
     partial class MainForm
     {
@@ -60,7 +62,7 @@
             this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.menuItem5 = new System.Windows.Forms.MenuItem();
             this.menuItem6 = new System.Windows.Forms.MenuItem();
-            this.tabControl1 = new MdiTabControl.TabControl();
+            this.tabControl1 = new EduardoOliveiraAndColinVerhey.MDITabControl.TabControl();
             this.findbox = new System.Windows.Forms.GroupBox();
             this.button9 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -130,6 +132,7 @@
             this.experimentalFeaturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nìNaviRutxeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inHtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fPhNGenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
@@ -370,7 +373,7 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Alignment = MdiTabControl.TabControl.TabAlignment.Top;
+            this.tabControl1.Alignment = EduardoOliveiraAndColinVerhey.MDITabControl.TabControl.TabAlignment.Top;
             this.tabControl1.AllowDrop = true;
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
@@ -394,7 +397,7 @@
             this.tabControl1.TabBackLowColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.tabControl1.TabBackLowColorDisabled = System.Drawing.Color.White;
             this.tabControl1.TabBorderEnhanced = true;
-            this.tabControl1.TabBorderEnhanceWeight = MdiTabControl.TabControl.Weight.Strongest;
+            this.tabControl1.TabBorderEnhanceWeight = EduardoOliveiraAndColinVerhey.MDITabControl.TabControl.Weight.Strongest;
             this.tabControl1.TabCloseButtonImage = null;
             this.tabControl1.TabCloseButtonImageDisabled = null;
             this.tabControl1.TabCloseButtonImageHot = null;
@@ -407,11 +410,11 @@
             this.tabControl1.TabOffset = 0;
             this.tabControl1.TabPadLeft = 10;
             this.tabControl1.TabPadRight = 10;
-            this.tabControl1.TabsDirection = MdiTabControl.TabControl.FlowDirection.LeftToRight;
+            this.tabControl1.TabsDirection = EduardoOliveiraAndColinVerhey.MDITabControl.TabControl.FlowDirection.LeftToRight;
             this.tabControl1.TabTop = 0;
             this.tabControl1.TopSeparator = false;
-            this.tabControl1.GetTabRegion += new MdiTabControl.TabControl.GetTabRegionEventHandler(this.tabControl1_GetTabRegion);
-            this.tabControl1.TabPaintBorder += new MdiTabControl.TabControl.TabPaintBorderEventHandler(this.tabControl1_TabPaintBorder);
+            this.tabControl1.GetTabRegion += new EduardoOliveiraAndColinVerhey.MDITabControl.TabControl.GetTabRegionEventHandler(this.tabControl1_GetTabRegion);
+            this.tabControl1.TabPaintBorder += new EduardoOliveiraAndColinVerhey.MDITabControl.TabControl.TabPaintBorderEventHandler(this.tabControl1_TabPaintBorder);
             this.tabControl1.Load += new System.EventHandler(this.tabControl1_Load_1);
             this.tabControl1.ForeColorChanged += new System.EventHandler(this.tabControl1_ForeColorChanged);
             this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
@@ -550,7 +553,7 @@
             // 
             // timer4
             // 
-            this.timer4.Enabled = true;
+            this.timer4.Interval = 800;
             this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
             // 
             // backgroundWorker1
@@ -736,7 +739,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(4, 2);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(28, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(59, 28);
             this.toolStrip1.TabIndex = 19;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
@@ -1030,11 +1033,11 @@
             this.debugToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.experimentalFeaturesToolStripMenuItem,
             this.nìNaviRutxeToolStripMenuItem,
-            this.inHtToolStripMenuItem});
+            this.inHtToolStripMenuItem,
+            this.fPhNGenToolStripMenuItem});
             this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
             this.debugToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.debugToolStripMenuItem.Text = "Debug";
-            this.debugToolStripMenuItem.Visible = false;
             // 
             // experimentalFeaturesToolStripMenuItem
             // 
@@ -1056,6 +1059,13 @@
             this.inHtToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.inHtToolStripMenuItem.Text = "InHt";
             this.inHtToolStripMenuItem.Click += new System.EventHandler(this.inHtToolStripMenuItem_Click);
+            // 
+            // fPhNGenToolStripMenuItem
+            // 
+            this.fPhNGenToolStripMenuItem.Name = "fPhNGenToolStripMenuItem";
+            this.fPhNGenToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.fPhNGenToolStripMenuItem.Text = "FPhNGen";
+            this.fPhNGenToolStripMenuItem.Click += new System.EventHandler(this.fPhNGenToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -1254,7 +1264,7 @@
         private System.Windows.Forms.ToolStripMenuItem reloadToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem openInNewTabToolStripMenuItem1;
         private System.Windows.Forms.Button button8;
-        public MdiTabControl.TabControl tabControl1;
+        public EduardoOliveiraAndColinVerhey.MDITabControl.TabControl tabControl1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
         private System.Windows.Forms.ToolStripMenuItem openANewTabToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openANewIEShellToolStripMenuItem;
@@ -1299,6 +1309,7 @@
         private System.Windows.Forms.ToolStripMenuItem internetArchiveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inHtToolStripMenuItem;
         private GlassUI.GlassLabel label1;
+        private System.Windows.Forms.ToolStripMenuItem fPhNGenToolStripMenuItem;
     }
 }
 

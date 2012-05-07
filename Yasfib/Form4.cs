@@ -34,11 +34,11 @@ namespace Yasfib
             WebClient Client = new WebClient();
             if (Yasfib.MainForm.isChinese == true)
             {
-                uri = "http://www.pisoft.tk/daedl.php?version=chinese";
+                uri = "http://www.alusoft.tk/daedl.php?version=chinese";
             }
             else
             {
-                uri = "http://www.pisoft.tk/daedl.php?version=english";
+                uri = "http://www.alusoft.tk/daedl.php?version=english";
             }
             Client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
             Client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);

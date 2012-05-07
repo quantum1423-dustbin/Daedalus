@@ -45,7 +45,7 @@
             this.webBrowser1.ScrollBarsEnabled = false;
             this.webBrowser1.Size = new System.Drawing.Size(212, 28);
             this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Url = new System.Uri("http://www.pisoft.tk/version.txt", System.UriKind.Absolute);
+            this.webBrowser1.Url = new System.Uri("http://www.alusoft.tk/version.txt", System.UriKind.Absolute);
             // 
             // lav
             // 

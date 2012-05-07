@@ -1,0 +1,735 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>intelloTech.ProScript</name>
+    </assembly>
+    <members>
+        <member name="T:intelloTech.ProScript.Events">
+            <summary>
+            Contains events which agents can raise and you can subscribe to.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.MsgBox">
+            <summary>
+            The event which is raised when an agent requests a message box to be shown.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.ChangeSource">
+            <summary>
+            The event which is raised when an agent requests the current page's source to be changed.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.NavigateToURL">
+            <summary>
+            The event which is raised when an agent requests the current browser to navigate to a different URL.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.NewTab">
+            <summary>
+            The event which is raised when an agent requests a new tab to be opened.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.NewWindow">
+            <summary>
+            The event which is raised when an agent requests a new window to be opened.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.ChangeHomepage">
+            <summary>
+            The event which is raised when an agent requests the current homepage to be changed.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.ChangeNewTabPage">
+            <summary>
+            The event which is raised when an agent requests the current new tab page to be changed.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.BookmarkPage">
+            <summary>
+            The event which is raised when an agent requests a specific page to be bookmarked.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.DeleteBookmark">
+            <summary>
+            The event which is raised when an agent requests a specific bookmark to be deleted.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.ViewSource">
+            <summary>
+            The event which is raised when an agent requests the browser to view the source a specific page.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.InitiateDownload">
+            <summary>
+            The event which is raised when an agent requests a download to be initiated.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.CancelDownload">
+            <summary>
+            The event which is raised when an agent requests a download to be cancelled.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.ChangeTab">
+            <summary>
+            The event which is raised when an agent requests the current tab to be changed.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.GoBack">
+            <summary>
+            The event which is raised when an agent requests the current browser to go back one page.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.GoForward">
+            <summary>
+            The event which is raised when an agent requests the current browser to go forward one page.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.CloseTab">
+            <summary>
+            The event which is raised when an agent requests the current tab to be closed.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.CloseAllTabsButCurrent">
+            <summary>
+            The event which is raised when an agent requests all tabs but the current to be closed.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.CloseWindow">
+            <summary>
+            The event which is raised when an agent requests the current window to be closed.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.CloseAllWindowsButCurrent">
+            <summary>
+            The event which is raised when an agent requests all windows but the current to be closed.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.ClearHistory">
+            <summary>
+            The event which is raised when an agent requests the browser history to be cleaned.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.ClearCache">
+            <summary>
+            The event which is raised when an agent requests the browser cache to be cleaned.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.ClearCookies">
+            <summary>
+            The event which is raised when an agent requests all cookies to be deleted.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.ExitApplication">
+            <summary>
+            The event which is raised when an agent requests the browser to close.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.RestartApplication">
+            <summary>
+            The event which is raised when an agent requests the browser to restart.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.SaveSession">
+            <summary>
+            The event which is raised when an agent requests the current session to be saved.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.RestorePreviousSession">
+            <summary>
+            The event which is raised when an agent requests the previous session to be restored.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.CheckForUpdates">
+            <summary>
+            The event which is raised when an agent requests the browser to check for updates.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.OpenOptions">
+            <summary>
+            The event which is raised when an agent requests the browser to open its options dialog.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.OpenHistory">
+            <summary>
+            The event which is raised when an agent requests the browser to open its history manager.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.OpenBookmarks">
+            <summary>
+            The event which is raised when an agent requests the browser to open its bookmark manager.
+            </summary>
+        </member>
+        <member name="E:intelloTech.ProScript.Events.OpenDownloads">
+            <summary>
+            The event which is raised when an agent requests the browser to open its download manager.
+            </summary>
+        </member>
+        <member name="T:intelloTech.ProScript.MsgBoxEventArgs">
+            <summary>
+            Provides EventArgs for message box requests.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.MsgBoxEventArgs.Text">
+            <summary>
+            The text of the message box.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.MsgBoxEventArgs.Title">
+            <summary>
+            The title of the message box.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.MsgBoxEventArgs.Sender">
+            <summary>
+            The agent which raised the event.
+            </summary>
+        </member>
+        <member name="T:intelloTech.ProScript.DownloadEventArgs">
+            <summary>
+            Provides EventArgs for download requests.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.DownloadEventArgs.URL">
+            <summary>
+            The URL of the file the agent wants the browser to download.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.DownloadEventArgs.Target">
+            <summary>
+            The path which the file will be downloaded to.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.DownloadEventArgs.Sender">
+            <summary>
+            The agent which raised the event.
+            </summary>
+        </member>
+        <member name="T:intelloTech.ProScript.WebElementEventArgs">
+            <summary>
+            Provides EventArgs for requests associated with web pages.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.WebElementEventArgs.URL">
+            <summary>
+            The URL of the page.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.WebElementEventArgs.Title">
+            <summary>
+            The title of the page.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.WebElementEventArgs.Sender">
+            <summary>
+            The agent which raised the event.
+            </summary>
+        </member>
+        <member name="T:intelloTech.ProScript.URLElementEventArgs">
+            <summary>
+            Provides EventArgs for requests associated with URLs.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.URLElementEventArgs.URL">
+            <summary>
+            The URL.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.URLElementEventArgs.Sender">
+            <summary>
+            The agent which raised the event.
+            </summary>
+        </member>
+        <member name="T:intelloTech.ProScript.SourceEventArgs">
+            <summary>
+            Provides EventArgs for requests associated with web source files.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.SourceEventArgs.NewSource">
+            <summary>
+            The modified source.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.SourceEventArgs.Sender">
+            <summary>
+            The agent which raised the event.
+            </summary>
+        </member>
+        <member name="T:intelloTech.ProScript.BasicEventArgs">
+            <summary>
+            Provides basic EventArgs for events which don't need any information to be passed except the sender agent.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.BasicEventArgs.Sender">
+            <summary>
+            The agent which raised the event.
+            </summary>
+        </member>
+        <member name="T:intelloTech.ProScript.Agent">
+            <summary>
+            Represents a ProScript agent (plugin).
+            </summary>
+        </member>
+        <member name="M:intelloTech.ProScript.Agent.#ctor(System.String)">
+            <summary>
+            Initializes a new agent.
+            </summary>
+            <param name="file">The compiled source file of the agent.</param>
+        </member>
+        <member name="P:intelloTech.ProScript.Agent.AgentName">
+            <summary>
+            The name of the agent.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.Agent.AgentDescription">
+            <summary>
+            The description of the agent.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.Agent.AgentAuthor">
+            <summary>
+            The author of the agent.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.Agent.AgentVersion">
+            <summary>
+            The version of the agent.
+            </summary>
+        </member>
+        <member name="T:intelloTech.ProScript.EventTriggers">
+            <summary>
+            Contains triggers of in-agent events.
+            </summary>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerNewTabOpenedEvent(intelloTech.ProScript.Agent,System.String)">
+            <summary>
+            Tells the specified agent a new tab has been opened.
+            </summary>
+            <param name="agent">The agent to inform.</param>
+            <param name="url">The URL the browser object in the new tab will navigate to.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerNewTabOpenedEvent(System.Collections.ObjectModel.Collection{intelloTech.ProScript.Agent},System.String)">
+            <summary>
+            Tells the specified collection of agents a new tab has been opened.
+            </summary>
+            <param name="agents">The collection of agents to inform.</param>
+            <param name="url">The URL the browser object in the new tab will navigate to.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerNewTabOpenedEvent(System.String)">
+            <summary>
+            Tells the global collection of agents a new tab has been opened.
+            </summary>
+            <param name="url">The URL the browser object in the new tab will navigate to.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerNewWindowOpenedEvent(intelloTech.ProScript.Agent,System.String)">
+            <summary>
+            Tells the specified agent a new window has been opened.
+            </summary>
+            <param name="agent">The agent to inform.</param>
+            <param name="url">The URL the browser object in the new window will navigate to.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerNewWindowOpenedEvent(System.Collections.ObjectModel.Collection{intelloTech.ProScript.Agent},System.String)">
+            <summary>
+            Tells the specified collection of agents a new window has been opened.
+            </summary>
+            <param name="agents">The collection of agents to inform.</param>
+            <param name="url">The URL the browser object in the new window will navigate to.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerNewWindowOpenedEvent(System.String)">
+            <summary>
+            Tells the global collection of agents a new window has been opened.
+            </summary>
+            <param name="url">The URL the browser object in the new window will navigate to.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerTabClosedEvent(intelloTech.ProScript.Agent,System.String)">
+            <summary>
+            Tells the specified agent a tab has been closed.
+            </summary>
+            <param name="agent">The agent to inform.</param>
+            <param name="url">The URL of the browser object in the tab which has been closed.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerTabClosedEvent(System.Collections.ObjectModel.Collection{intelloTech.ProScript.Agent},System.String)">
+            <summary>
+            Tells the specified collection of agents a tab has been closed.
+            </summary>
+            <param name="agents">The collection of agents to inform.</param>
+            <param name="url">The URL of the browser object in the tab which has been closed.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerTabClosedEvent(System.String)">
+            <summary>
+            Tells the global collection of agents a tab has been closed.
+            </summary>
+            <param name="url">The URL of the browser object in the tab which has been closed.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerWindowClosedEvent(intelloTech.ProScript.Agent,System.String)">
+            <summary>
+            Tells the specified agent a window has been closed.
+            </summary>
+            <param name="agent">The agent to inform.</param>
+            <param name="url">The URL of the active browser object in the window which has been closed.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerWindowClosedEvent(System.Collections.ObjectModel.Collection{intelloTech.ProScript.Agent},System.String)">
+            <summary>
+            Tells the specified collection of agents a window has been closed.
+            </summary>
+            <param name="agents">The collection of agents to inform.</param>
+            <param name="url">The URL of the active browser object in the window which has been closed.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerWindowClosedEvent(System.String)">
+            <summary>
+            Tells the global collection of agents a window has been closed.
+            </summary>
+            <param name="url">The URL of the active browser object in the window which has been closed.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerNavigatingEvent(intelloTech.ProScript.Agent,System.String)">
+            <summary>
+            Tells the specified agent a browser object started to load a page.
+            </summary>
+            <param name="agent">The agent to inform.</param>
+            <param name="url">The URL the browser object started to load.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerNavigatingEvent(System.Collections.ObjectModel.Collection{intelloTech.ProScript.Agent},System.String)">
+            <summary>
+            Tells the specified collection of agents a browser object started to load a page.
+            </summary>
+            <param name="agents">The collection of agents to inform.</param>
+            <param name="url">The URL the browser object started to load.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerNavigatingEvent(System.String)">
+            <summary>
+            Tells the global collection of agents a browser object started to load a page.
+            </summary>
+            <param name="url">The URL the browser object started to load.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerPageLoadedEvent(intelloTech.ProScript.Agent,System.String)">
+            <summary>
+            Tells the specified agent a browser object finished loading a page.
+            </summary>
+            <param name="agent">The agent to inform.</param>
+            <param name="url">The URL of the page the browser object loaded.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerPageLoadedEvent(System.Collections.ObjectModel.Collection{intelloTech.ProScript.Agent},System.String)">
+            <summary>
+            Tells the specified collection of agents a browser object finished loading a page.
+            </summary>
+            <param name="agents">The collection of agents to inform.</param>
+            <param name="url">The URL of the page the browser object loaded.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerPageLoadedEvent(System.String)">
+            <summary>
+            Tells the global collection of agents a browser object finished loading a page.
+            </summary>
+            <param name="url">The URL of the page the browser object loaded.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerPhishingSiteDetectedEvent(intelloTech.ProScript.Agent,System.String)">
+            <summary>
+            Tells the specified agent a page loaded in a browser object was determined as a fraud page.
+            </summary>
+            <param name="agent">The agent to inform.</param>
+            <param name="url">The URL of the fraud page which was detected.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerPhishingSiteDetectedEvent(System.Collections.ObjectModel.Collection{intelloTech.ProScript.Agent},System.String)">
+            <summary>
+            Tells the specified collection of agents a page loaded in a browser object was determined as a fraud page.
+            </summary>
+            <param name="agents">The collection of agents to inform.</param>
+            <param name="url">The URL of the fraud page which was detected.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerPhishingSiteDetectedEvent(System.String)">
+            <summary>
+            Tells the global collection of agents a page loaded in a browser object was determined as a fraud page.
+            </summary>
+            <param name="url">The URL of the fraud page which was detected.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerDownloadInitiatedEvent(intelloTech.ProScript.Agent,System.String,System.String)">
+            <summary>
+            Tells the specified agent a download has been initiated.
+            </summary>
+            <param name="agent">The agent to inform.</param>
+            <param name="url">The URL of the file which is being downloaded.</param>
+            <param name="target">The target path of the file which will be downloaded.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerDownloadInitiatedEvent(System.Collections.ObjectModel.Collection{intelloTech.ProScript.Agent},System.String,System.String)">
+            <summary>
+            Tells the specified collection of agents a download has been initiated.
+            </summary>
+            <param name="agents">The collection of agents to inform.</param>
+            <param name="url">The URL of the file which is being downloaded.</param>
+            <param name="target">The target path of the file which will be downloaded.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerDownloadInitiatedEvent(System.String,System.String)">
+            <summary>
+            Tells the global collection of agents a download has been initiated.
+            </summary>
+            <param name="url">The URL of the file which is being downloaded.</param>
+            <param name="target">The target path of the file which will be downloaded.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerDownloadFinishedEvent(intelloTech.ProScript.Agent,System.String,System.String)">
+            <summary>
+            Tells the specified agent a download has been finished.
+            </summary>
+            <param name="agent">The agent to inform.</param>
+            <param name="url">The URL of the file which has been downloaded.</param>
+            <param name="target">The target path of the file which has been downloaded.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerDownloadFinishedEvent(System.Collections.ObjectModel.Collection{intelloTech.ProScript.Agent},System.String,System.String)">
+            <summary>
+            Tells the specified collection of agents a download has been finished.
+            </summary>
+            <param name="agents">The collection of agents to inform.</param>
+            <param name="url">The URL of the file which has been downloaded.</param>
+            <param name="target">The target path of the file which has been downloaded.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerDownloadFinishedEvent(System.String,System.String)">
+            <summary>
+            Tells the global collection of agents a download has been finished.
+            </summary>
+            <param name="url">The URL of the file which has been downloaded.</param>
+            <param name="target">The target path of the file which has been downloaded.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerDownloadCancelledEvent(intelloTech.ProScript.Agent,System.String,System.String)">
+            <summary>
+            Tells the specified agent a download has been cancelled.
+            </summary>
+            <param name="agent">The agent to inform.</param>
+            <param name="url">The URL of the download which has been cancelled.</param>
+            <param name="target">The target path of the cancelled download.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerDownloadCancelledEvent(System.Collections.ObjectModel.Collection{intelloTech.ProScript.Agent},System.String,System.String)">
+            <summary>
+            Tells the specified collection of agents a download has been cancelled.
+            </summary>
+            <param name="agents">The collection of agents to inform.</param>
+            <param name="url">The URL of the file which has been cancelled.</param>
+            <param name="target">The target path of the cancelled download.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerDownloadCancelledEvent(System.String,System.String)">
+            <summary>
+            Tells the global collection of agents a download has been cancelled.
+            </summary>
+            <param name="url">The URL of the file which has been cancelled.</param>
+            <param name="target">The target path of the cancelled download.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerNewTabRequestedEvent(intelloTech.ProScript.Agent,System.String,System.String)">
+            <summary>
+            Tells the specified agent a page has requested a new tab to be opened.
+            </summary>
+            <param name="agent">The agent to inform.</param>
+            <param name="newurl">The URL which the page wants the browser object in new tab to navigate to.</param>
+            <param name="pageurl">The URL of the page which requested the new tab to be opened.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerNewTabRequestedEvent(System.Collections.ObjectModel.Collection{intelloTech.ProScript.Agent},System.String,System.String)">
+            <summary>
+            Tells the specified collection of agents a page has requested a new tab to be opened.
+            </summary>
+            <param name="agents">The collection of agents to inform.</param>
+            <param name="newurl">The URL which the page wants the browser object in new tab to navigate to.</param>
+            <param name="pageurl">The URL of the page which requested the new tab to be opened.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerNewTabRequestedEvent(System.String,System.String)">
+            <summary>
+            Tells the global collection of agents a page has requested a new tab to be opened.
+            </summary>
+            <param name="newurl">The URL which the page wants the browser object in new tab to navigate to.</param>
+            <param name="pageurl">The URL of the page which requested the new tab to be opened.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerNewWindowRequestedEvent(intelloTech.ProScript.Agent,System.String,System.String)">
+            <summary>
+            Tells the specified agent a page has requested a new window to be opened.
+            </summary>
+            <param name="agent">The agent to inform.</param>
+            <param name="newurl">The URL which the page wants the browser object in new window to navigate to.</param>
+            <param name="pageurl">The URL of the page which requested the new window to be opened.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerNewWindowRequestedEvent(System.Collections.ObjectModel.Collection{intelloTech.ProScript.Agent},System.String,System.String)">
+            <summary>
+            Tells the specified collection of agents a page has requested a new window to be opened.
+            </summary>
+            <param name="agents">The collection of agents to inform.</param>
+            <param name="newurl">The URL which the page wants the browser object in new window to navigate to.</param>
+            <param name="pageurl">The URL of the page which requested the new window to be opened.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerNewWindowRequestedEvent(System.String,System.String)">
+            <summary>
+            Tells the global collection of agents a page has requested a new window to be opened.
+            </summary>
+            <param name="newurl">The URL which the page wants the browser object in new window to navigate to.</param>
+            <param name="pageurl">The URL of the page which requested the new window to be opened.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerApplicationStartedEvent(intelloTech.ProScript.Agent)">
+            <summary>
+            Tells the specified agent the browser has been started.
+            </summary>
+            <param name="agent">The agent to inform.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerApplicationStartedEvent(System.Collections.ObjectModel.Collection{intelloTech.ProScript.Agent})">
+            <summary>
+            Tells the specified collection of agents the browser has been started.
+            </summary>
+            <param name="agents">The collection of agents to inform.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerApplicationStartedEvent">
+            <summary>
+            Tells the global collection of agents the browser has been started.
+            </summary>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerApplicationClosingEvent(intelloTech.ProScript.Agent)">
+            <summary>
+            Tells the specified agent the browser is about to close.
+            </summary>
+            <param name="agent">The agent to inform.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerApplicationClosingEvent(System.Collections.ObjectModel.Collection{intelloTech.ProScript.Agent})">
+            <summary>
+            Tells the specified collection of agents the browser is about to close.
+            </summary>
+            <param name="agents">The collection of agents to inform.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerApplicationClosingEvent">
+            <summary>
+            Tells the global collection of agents the browser is about to close.
+            </summary>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerApplicationCrashedEvent(intelloTech.ProScript.Agent,System.String,System.String)">
+            <summary>
+            Tells the specified agent the browser crashed.
+            </summary>
+            <param name="agent">The agent to inform.</param>
+            <param name="msg">The message of the exception which caused the browser to crash (can be found in the Exception.Message property).</param>
+            <param name="stacktrace">The stack trace of the exception which caused the browser to crash (can be found in the Exception.StackTrace property).</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerApplicationCrashedEvent(System.Collections.ObjectModel.Collection{intelloTech.ProScript.Agent},System.String,System.String)">
+            <summary>
+            Tells the specified collection of agents the browser crashed.
+            </summary>
+            <param name="agents">The collection of agents to inform.</param>
+            <param name="msg">The message of the exception which caused the browser to crash (can be found in the Exception.Message property).</param>
+            <param name="stacktrace">The stack trace of the exception which caused the browser to crash (can be found in the Exception.StackTrace property).</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerApplicationCrashedEvent(System.String,System.String)">
+            <summary>
+            Tells the global collection of agents the browser crashed.
+            </summary>
+            <param name="msg">The message of the exception which caused the browser to crash (can be found in the Exception.Message property).</param>
+            <param name="stacktrace">The stack trace of the exception which caused the browser to crash (can be found in the Exception.StackTrace property).</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerUpdateFoundEvent(intelloTech.ProScript.Agent)">
+            <summary>
+            Tells the specified agent an update for the browser has been found.
+            </summary>
+            <param name="agent">The agent to inform.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerUpdateFoundEvent(System.Collections.ObjectModel.Collection{intelloTech.ProScript.Agent})">
+            <summary>
+            Tells the specified collection of agents an update for the browser has been found.
+            </summary>
+            <param name="agents">The collection of agents to inform.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.EventTriggers.TriggerUpdateFoundEvent">
+            <summary>
+            Tells the global collection of agents an update for the browser has been found.
+            </summary>
+        </member>
+        <member name="T:intelloTech.ProScript.AgentManagement">
+            <summary>
+            Contains methods and variables to manage agents and the global collection of agents.
+            </summary>
+        </member>
+        <member name="M:intelloTech.ProScript.AgentManagement.AddAgentsInFolder(System.String,System.Collections.ObjectModel.Collection{intelloTech.ProScript.Agent}@)">
+            <summary>
+            Adds all agents in the specified folder to the specified collection. This will not affect the global collection of agents (unless the collection specified is the global collection of agents).
+            </summary>
+            <param name="folder">The folder in which the agents are located</param>
+            <param name="collection">The collection the agents will be added to.</param>
+        </member>
+        <member name="M:intelloTech.ProScript.AgentManagement.AddAgentsInFolder(System.String)">
+            <summary>
+            Adds all agents in the specified folder to the global collection of agents.
+            </summary>
+            <param name="folder">The folder in which the agents are located</param>
+        </member>
+        <member name="M:intelloTech.ProScript.AgentManagement.ListAgentsInFolder(System.String)">
+            <summary>
+            Returns a collection of all agents found in the specified folder.
+            </summary>
+            <param name="folder">The folder in which the agents are located</param>
+        </member>
+        <member name="P:intelloTech.ProScript.AgentManagement.GlobalAgents">
+            <summary>
+            The global collection of agents.
+            </summary>
+        </member>
+        <member name="T:intelloTech.ProScript.MsgBoxEventHandler">
+            <summary>
+            The event handler class for message box requests.
+            </summary>
+            <param name="e">The MsgBoxEventArgs associated with the event handler.</param>
+        </member>
+        <member name="T:intelloTech.ProScript.SourceEventHandler">
+            <summary>
+            The event handler class for requests associated with web page sources.
+            </summary>
+            <param name="e">The SourceEventArgs associated with the event handler.</param>
+        </member>
+        <member name="T:intelloTech.ProScript.URLEventHandler">
+            <summary>
+            The event handler class for requests associated with URLs.
+            </summary>
+            <param name="e">The URLElementEventArgs associated with the event handler.</param>
+        </member>
+        <member name="T:intelloTech.ProScript.DownloadEventHandler">
+            <summary>
+            The event handler class for requests associated with downloads.
+            </summary>
+            <param name="e">The DownloadEventArgs associated with the event handler.</param>
+        </member>
+        <member name="T:intelloTech.ProScript.WebElementEventHandler">
+            <summary>
+            The event handler class for requests associated with web pages.
+            </summary>
+            <param name="e">The WebElementEventArgs associated with the event handler.</param>
+        </member>
+        <member name="T:intelloTech.ProScript.BasicEventHandler">
+            <summary>
+            The event handler class for requests which don't need any information to be passed except the sender agent.
+            </summary>
+            <param name="e">The BasicEventArgs associated with the event handler.</param>
+        </member>
+        <member name="T:intelloTech.ProScript.InfoCenter">
+            <summary>
+            Contains information about the browser which agents can read.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.InfoCenter.URL">
+            <summary>
+            The URL of the active browser object.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.InfoCenter.Source">
+            <summary>
+            The source of the active browser object.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.InfoCenter.Homepage">
+            <summary>
+            The current homepage of the browser.
+            </summary>
+        </member>
+        <member name="P:intelloTech.ProScript.InfoCenter.NewTabPage">
+            <summary>
+            The current new tab page of the browser.
+            </summary>
+        </member>
+        <member name="T:intelloTech.ProScript.Compiler">
+            <summary>
+            Contains methods to compile ProScript source files.
+            </summary>
+        </member>
+        <member name="M:intelloTech.ProScript.Compiler.Compile(System.String,System.String)">
+            <summary>
+            Compiles the given code and stores it into the specified file.
+            </summary>
+            <param name="code">The code to compile.</param>
+            <param name="targetfile">The file to store the result in.</param>
+        </member>
+    </members>
+</doc>
