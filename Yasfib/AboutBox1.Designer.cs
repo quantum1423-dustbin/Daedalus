@@ -107,7 +107,7 @@
             this.labelCompanyName.Name = "labelCompanyName";
             this.labelCompanyName.Size = new System.Drawing.Size(377, 19);
             this.labelCompanyName.TabIndex = 22;
-            this.labelCompanyName.Text = "PiSoft-KelkuWeb";
+            this.labelCompanyName.Text = "AluSoft";
             this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBoxDescription

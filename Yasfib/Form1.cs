@@ -1,4 +1,5 @@
-﻿using System; 
+﻿#define AERO
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,12 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.IO;
+using System.Collections;
 using System.Net;
 using System.Media;
+using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.MyServices;
 using System.Security.Cryptography;
-using Microsoft.Win32;
 using EduardoOliveiraAndColinVerhey;
 namespace Yasfib
 {
@@ -94,6 +96,7 @@ namespace Yasfib
             Skybound.Gecko.GeckoPreferences.User["network.http.proxy.pipelining"] = true;
             Skybound.Gecko.GeckoPreferences.User["nglayout.initialpaint.delay"] = 10;
             Skybound.Gecko.GeckoPreferences.User["browser.cache.memory.enable"] = false;
+            Skybound.Gecko.GeckoPreferences.User["browser.display.auto_quality_min_font_size"] = 1;
             //Disabling confirm dialog for Htaccess-Sites
             Skybound.Gecko.GeckoPreferences.User["network.http.phishy-userpass-length"] = 255;
 
@@ -167,7 +170,7 @@ namespace Yasfib
                             tabControl1.TabBackHighColor = Color.FromArgb(200, 255, 255, 255);
                             normCol = Color.FromArgb(200, 255, 255, 255);
                             ncbak = Color.FromArgb(200, 255, 255, 255);
-                            textBox2.BackColor = Color.FromArgb(254, 255, 255, 255);
+                            //textBox2.BackColor = Color.FromArgb(254, 255, 255, 255);
                             button3.BackColor = Color.Transparent;
                             button4.BackColor = Color.Transparent;
                             button5.BackColor = Color.Transparent;
@@ -252,10 +255,11 @@ namespace Yasfib
 
         void Events_ChangeSource(intelloTech.ProScript.SourceEventArgs e)
         {
-            //JS method
-            //gwb.RunJS(@"document.write('"+e.NewSource+"');");
-            //Body-only method
-            gwb.Document.Body.InnerHtml = e.NewSource;
+            
+                //JS method
+                //gwb.RunJS(@"document.write('"+e.NewSource+"');");
+                //Body-only method
+                gwb.Document.Body.InnerHtml = e.NewSource;
         }
 
         void Events_BookmarkPage(intelloTech.ProScript.WebElementEventArgs e)
@@ -345,10 +349,11 @@ namespace Yasfib
 
         }
         public static bool isChinese = true;
-        public static string versionNumber = "6.1.3-a0";
+        public static string versionNumber = "6.1.4";
+        ArrayList autoComplete = new ArrayList();
         void getautocomplete()
         {
-            textBox1.AutoCompleteCustomSource.Clear();
+            autoComplete.Clear();
             try
             {
                 // Create an isntance of XmlTextReader and call Read method to read the file
@@ -362,10 +367,14 @@ namespace Yasfib
                     if (textReader.Name == "url")
                     {
                         //MessageBox.Show("");
-                        textBox1.AutoCompleteCustomSource.Add(textReader.ReadString());
+                        autoComplete.Add(textReader.ReadString());
                         //textBox1.Items.Add(textReader.ReadString());
                         //MessageBox.Show(textReader.ReadString());
                     }
+                }
+                foreach (string a in autoComplete)
+                {
+                    textBox1.AutoCompleteCustomSource.Add(a);
                 }
             }
             catch { }
@@ -590,12 +599,16 @@ namespace Yasfib
                 Form foobar = new Form();
                 //foobar.Location.X = 5;
                 //foobar.Location.Y = 502;
-                
+
                 //tabControl2.TabPages.Add(foobar);
                 Skybound.Gecko.GeckoWebBrowser browser1 = new Skybound.Gecko.GeckoWebBrowser();
                 foobar.Controls.Add(browser1);
                 tabControl1.TabPages.Add(foobar);
                 foobar.Select();
+                foobar.BringToFront();
+                tabControl1.SelectItem(tabControl1.TabPages[foobar]);
+                foobar.Focus();
+                foobar.Activate();
                 browser1.Dock = DockStyle.Fill;
                 browser1.Navigated += new
                 Skybound.Gecko.GeckoNavigatedEventHandler(nav);
@@ -709,12 +722,16 @@ namespace Yasfib
         #region Browser control events
         void browser_DocumentTitleChanged(object sender, EventArgs e)
         {
-            updateTitle(false);
+            //updateTitle(false);
+            ((Form)(((Skybound.Gecko.GeckoWebBrowser)(sender)).Parent)).Text = ((Skybound.Gecko.GeckoWebBrowser)(sender)).DocumentTitle;
         }
         void browser1_DocumentCompleted(object sender, EventArgs e)
         {
-            intelloTech.ProScript.InfoCenter.Source = gwb.Document.Body.InnerHtml;
-            intelloTech.ProScript.EventTriggers.TriggerPageLoadedEvent(gwb.Url.ToString());
+            if (gwb.Document.Body.InnerHtml != intelloTech.ProScript.InfoCenter.Source) //sanity check
+            {
+                intelloTech.ProScript.InfoCenter.Source = gwb.Document.Body.InnerHtml;
+                intelloTech.ProScript.EventTriggers.TriggerPageLoadedEvent(gwb.Url.ToString());
+            }
             if (toGo != null && toGo != "about:blank") ((Skybound.Gecko.GeckoWebBrowser)sender).Navigate(toGo);
             toGo = null;
             timer4.Start();
@@ -1046,8 +1063,8 @@ namespace Yasfib
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            RegistryKey registry = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
-            registry.SetValue("ProxyEnable", 0);
+            //RegistryKey registry = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
+            //registry.SetValue("ProxyEnable", 0);
             int moreThanOne = 0;
             Process[] processid = Process.GetProcessesByName("daedalus");
             foreach (Process dode in processid)
@@ -1462,9 +1479,11 @@ namespace Yasfib
 
         private void geckoWebBrowser1_CreateWindow(object sender, Skybound.Gecko.GeckoCreateWindowEventArgs e)
         {
+            //MessageBox.Show(e.WebBrowser.Url.ToString());
             addGeckoTab();
             e.WebBrowser = gwb;
             gwb.Show();
+            gwb.BringToFront();
         }
 
         private void enablePublicAntiBlockingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1552,12 +1571,14 @@ namespace Yasfib
             try
             {
                 updateTitle(false);
+                
             }
             catch { }
         }
 
         private void tabControl1_GetTabRegion(object sender, EduardoOliveiraAndColinVerhey.MDITabControl.TabControl.GetTabRegionEventArgs e)
         {
+            rtab();
             /*
             e.Points[1] = new Point(7, 0);
             e.Points[4] = new Point(e.TabWidth - 7, 0);*/
@@ -1643,14 +1664,14 @@ namespace Yasfib
                 else
                 {
                     textBox1.BackColor = normCol;
-                    if(panel1.BackColor==Color.Red) panel1.Visible = false;
+                    if (panel1.BackColor == Color.Red) panel1.Visible = false;
                     panel1.BackColor = Color.LightGoldenrodYellow;
                 }
                 if (((Form)(this.tabControl1.SelectedForm)).Tag.ToString() != "A")
                 {
                     if (gwb.Url.Port == 443)
                     {
-                        textBox1.BackColor = Color.PaleGreen;
+                        //textBox1.BackColor = Color.PaleGreen;
                         pictureBox1.Image = encrypted;
                     }
                     else
@@ -1668,18 +1689,18 @@ namespace Yasfib
                         {
                             if (false == true)
                             {
-                                textBox1.BackColor = System.Drawing.Color.Red;
+                                //textBox1.BackColor = System.Drawing.Color.Red;
                                 pictureBox1.Image = _unsafe;
                                 //buttonX2.Visible = true;
                                 phishLock = true;
                                 warnPhish();
                             }
-                            else if (gwb.Url.Port==aBlockPortNumber)
+                            else if (gwb.Url.Port == aBlockPortNumber)
                             {
                                 pictureBox1.Image = _internal;
                                 textBox1.BackColor = normCol;
                             }
-                            else{ textBox1.BackColor = normCol; pictureBox1.Image = normal; }
+                            else { textBox1.BackColor = normCol; pictureBox1.Image = normal; }
                         }
                     }
                 }
@@ -1695,7 +1716,7 @@ namespace Yasfib
             log("Phishing site detected at: " + gwb.Url);
             panel1.Visible = true;
             panel1.BackColor = Color.Red;
-            warningLabel.Text=("Phishing site detected by FishPhish!!! 检测出钓鱼网站！！！");
+            warningLabel.Text = ("Phishing site detected by FishPhish!!! 检测出钓鱼网站！！！");
             timer2.Enabled = false;
             System.Media.SoundPlayer e = new System.Media.SoundPlayer("warning.wav");
             e.Play();
@@ -1822,6 +1843,7 @@ namespace Yasfib
             else
             {
                 findbox.Visible = true;
+                findbox.BringToFront();
                 tosearch.Focus();
             }
         }
@@ -1937,7 +1959,7 @@ namespace Yasfib
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gwb.CopySelection();
+            gwb.CopySelection(); gwb.CopySelection(); gwb.CopySelection(); gwb.CopySelection(); gwb.CopySelection(); gwb.CopySelection(); gwb.CopySelection(); gwb.CopySelection(); gwb.CopySelection();
         }
 
         private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2044,17 +2066,23 @@ namespace Yasfib
         }
         void rtab()
         {
+            Debug.WriteLine(Cursor.Position.X.ToString());
             try
             {
-                if (this.Width <= tabControl1.TabPages.Count * tabControl1.TabMaximumWidth)
+                Debug.WriteLine("this.Width = " + this.Width.ToString() + "\ntabControl.TabPages.Count * tabControl.TabMaximumWidth = " + (tabControl1.TabPages.Count * tabControl1.TabMaximumWidth).ToString());
+                Debug.WriteLine("tabControl.TabPages.Count * 250 = " + (tabControl1.TabPages.Count * 250).ToString());
+                if (Cursor.Position.Y >= (this.Location.Y + 80) || Cursor.Position.Y <= (this.Location.Y + 50))
                 {
-                    tabControl1.TabMaximumWidth = (this.Width - 62) / tabControl1.TabPages.Count - 2;
-                    tabControl1.TabMinimumWidth = (this.Width - 62) / tabControl1.TabPages.Count - 2;
-                }
-                else if (this.Width > tabControl1.TabPages.Count * 250)
-                {
-                    tabControl1.TabMaximumWidth = 250;
-                    tabControl1.TabMinimumWidth = 250;
+                    if (this.Width <= tabControl1.TabPages.Count * tabControl1.TabMaximumWidth)
+                    {
+                        tabControl1.TabMaximumWidth = (this.Width - 62) / tabControl1.TabPages.Count - 2;
+                        tabControl1.TabMinimumWidth = (this.Width - 62) / tabControl1.TabPages.Count - 2;
+                    }
+                    else if (this.Width > tabControl1.TabPages.Count * tabControl1.TabMaximumWidth + 100)
+                    {
+                        tabControl1.TabMaximumWidth = 250;
+                        tabControl1.TabMinimumWidth = 250;
+                    }
                 }
                 if (tabControl1.TabPages.Count == 1)
                 {
@@ -2066,8 +2094,8 @@ namespace Yasfib
                 }
                 buttonX1.Left = (tabControl1.TabMaximumWidth) * tabControl1.TabPages.Count + 5;
             }
-            catch { }
-        }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            }
 
         private void optionsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -2139,7 +2167,7 @@ namespace Yasfib
 
         private void tabControl1_ControlRemoved(object sender, ControlEventArgs e)
         {
-
+            rtab();
         }
         void find()
         {
@@ -2437,14 +2465,11 @@ namespace Yasfib
                 lang = "zh-CN";
             }
             else { lang = "en"; }
-            try
-            {
+            Clipboard.Clear();
                 gwb.CopySelection();
                 string temp = Clipboard.GetText();
                 addGeckoTab();
                 nv("http://translate.google.com/?hl=en#auto|" + lang + "|" + temp);
-            }
-            catch { }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2477,7 +2502,7 @@ namespace Yasfib
 
         private void timer3_Tick(object sender, EventArgs e)
         {
-
+            //rtab();
         }
 
         private void button5_Click_1(object sender, EventArgs e)
@@ -2622,13 +2647,13 @@ namespace Yasfib
 
         void badWordDetails()
         {
-            
+
         }
 
         void badWordSilent()
         {
-            
-            
+
+
         }
         public int bwThreshold = 8;
         private void button11_Click_1(object sender, EventArgs e)
@@ -2742,7 +2767,7 @@ namespace Yasfib
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
             MessageBox.Show("Start...");
-            
+
         }
 
         void warnBW(int d)
@@ -2831,12 +2856,16 @@ namespace Yasfib
         }
         private void pictureBox1_Click_2(object sender, EventArgs e)
         {
-           
-        }
 
+        }
+        bool notStartedYet = true;
         private void textBox1_TextChanged_3(object sender, EventArgs e)
         {
-            this.AcceptButton = go;
+            if (notStartedYet)
+            {
+                textBox1.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                notStartedYet = false;
+            }
         }
 
         private void toolStripTextBox1_Click_2(object sender, EventArgs e)
@@ -2879,9 +2908,37 @@ namespace Yasfib
             MessageBox.Show(gwb.Document.Body.InnerHtml.ToString());
         }
 
-        private void fPhNGenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void runToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            gwb.RunJS(Interaction.InputBox("Run JavaScript", "Run Javascript"));
+        }
+
+        private void injectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gwb.InjectJS(Interaction.InputBox("Run JavaScript", "Run Javascript"));
+        }
+
+        private void cSourseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        }
+
+        private void textBox1_Leave_1(object sender, EventArgs e)
+        {
+            string a = textBox1.Text;
+            textBox1.Clear();
+            textBox1.Text = a;
+        }
+
+        private void rTABToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rtab();
+        }
+
+        private void managePluginsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PSForm a = new PSForm();
+            a.Show();
         }
     }
 

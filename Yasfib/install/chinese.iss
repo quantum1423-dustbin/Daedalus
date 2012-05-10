@@ -9,7 +9,7 @@ AppId={{5607BD7C-6FDB-4513-8DDC-5D9770233C66}
 AppName=灵智浏览器
 ;AppVersion=0.6AppVerName=灵智浏览器
 AppPublisher=AluSoft
-DefaultDirName={pf}\Daedalus
+DefaultDirName={userappdata}\Daedalus
 DefaultGroupName=灵智浏览器
 DisableDirPage=yes
 DisableStartupPrompt=yes
@@ -17,7 +17,7 @@ DisableReadyMemo=yes
 DisableReadyPage=yes
 DisableProgramGroupPage=yes
 OutputBaseFilename=daedalus-cn
-Compression=lzma2
+Compression=zip/7
 SolidCompression=yes
                                                                      
 [Languages]

@@ -5,11 +5,11 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{5607BD7C-6FDB-4513-8DDC-5D9770233C66}
+AppId={{5607BD7C-6FDB-4513-8DDC-5D9770233C66}                                                                                                  
 AppName=Daedalus
 ;AppVersion=0.5.1AppVerName=Daedalus
 AppPublisher=AluSoft
-DefaultDirName={code:DefAppDataFolder}\Daedalus
+DefaultDirName={userappdata}\Daedalus
 DefaultGroupName=Daedalus
 DisableProgramGroupPage=yes
 DisableDirPage=no

@@ -259,3 +259,14 @@ May 01 09:29:45.954 000014e0 Fatal error: can't bind to 127.0.0.1:8118: There ma
 May 01 09:40:15.616 000015a8 Fatal error: can't bind to 127.0.0.1:8118: There may be another Privoxy or some other proxy running on port 8118
 May 01 10:06:54.808 00000424 Fatal error: can't bind to 127.0.0.1:8118: There may be another Privoxy or some other proxy running on port 8118
 May 01 10:18:12.554 0000173c Fatal error: can't bind to 127.0.0.1:8118: There may be another Privoxy or some other proxy running on port 8118
+May 07 20:30:51.623 00000e28 Fatal error: can't bind to 127.0.0.1:8118: There may be another Privoxy or some other proxy running on port 8118
+May 07 20:36:58.018 00000f7c Fatal error: can't bind to 127.0.0.1:8118: There may be another Privoxy or some other proxy running on port 8118
+May 09 15:03:09.307 0000175c Fatal error: can't bind to 127.0.0.1:8118: There may be another Privoxy or some other proxy running on port 8118
+May 09 15:14:38.462 00001320 Fatal error: can't bind to 127.0.0.1:8118: There may be another Privoxy or some other proxy running on port 8118
+May 09 16:35:04.649 000011d8 Fatal error: can't bind to 127.0.0.1:8118: There may be another Privoxy or some other proxy running on port 8118
+May 09 16:43:44.119 00000384 Fatal error: can't bind to 127.0.0.1:8118: There may be another Privoxy or some other proxy running on port 8118
+May 09 17:04:02.164 00001598 Fatal error: can't bind to 127.0.0.1:8118: There may be another Privoxy or some other proxy running on port 8118
+May 10 14:34:52.562 000014b0 Fatal error: can't bind to 127.0.0.1:8118: There may be another Privoxy or some other proxy running on port 8118
+May 10 14:41:37.731 00000f78 Fatal error: can't bind to 127.0.0.1:8118: There may be another Privoxy or some other proxy running on port 8118
+May 10 14:42:58.920 00000e80 Fatal error: can't bind to 127.0.0.1:8118: There may be another Privoxy or some other proxy running on port 8118
+May 10 14:43:51.520 00000934 Fatal error: can't bind to 127.0.0.1:8118: There may be another Privoxy or some other proxy running on port 8118
